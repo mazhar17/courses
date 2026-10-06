@@ -1,0 +1,5 @@
+# AI 101 target environment (not a claim that every supported combination was executed)
+# Python >=3.10; local JupyterLab is optional for the learner interface.
+numpy>=1.26
+jupyterlab>=4
+# See AI_101_Validation.md for actual execution versions.

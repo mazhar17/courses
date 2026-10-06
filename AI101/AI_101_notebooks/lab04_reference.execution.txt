@@ -1,0 +1,12 @@
+Python 3.12.14 NumPy 2.3.5
+DC W 3200.0 AC W 3072.0
+Invalid efficiency rejected
+Illustrative 2-hour energy under constant conditions: 6.144 kWh
+Daily energy is not determined by the original instantaneous input.
+equation: P_DC=eta*A*G, giving watts
+unit_error: Draft uses kW where correct values are W (factor 1000)
+energy_limit: Daily energy needs time-resolved conditions and losses
+source_status: Unnamed standard has not been supplied or verified
+verification: Known-case arithmetic and input checks passed
+validation: No real-system validation; idealized synthetic calculation
+AI_use: Illustrative authored draft; no external AI call in this reference

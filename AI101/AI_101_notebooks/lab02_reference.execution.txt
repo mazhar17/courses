@@ -1,0 +1,11 @@
+Python 3.12.14 NumPy 2.3.5
+Independent synthetic designs. train/validation/test: 90 30 30
+X units: m^3/s and Pa. y unit: kW.
+raw validation MAE kW: 0.3139
+hydraulic validation MAE kW: 0.0965
+training-mean baseline validation MAE kW: 1.5942
+Selected using validation: hydraulic
+Locked model test metrics: {'MAE': 0.10330402649693779, 'RMSE': 0.12928533589321903, 'R2': 0.9912778999994838}
+Training-mean baseline: {'MAE': 1.3268864509528344, 'RMSE': 1.5972106402611976, 'R2': -0.33121105285155705}
+Known synthetic physics baseline: {'MAE': 0.10294574553234456, 'RMSE': 0.12747524208307376, 'R2': 0.9915204224530663}
+Independent physical check: 100000 Pa * 0.02 m^3/s / 0.8 = 2500.0 W

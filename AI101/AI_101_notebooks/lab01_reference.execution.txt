@@ -1,0 +1,9 @@
+Python 3.12.14 NumPy 2.3.5
+Synthetic operating tests: 10 units: {'flow_m3s': 'm^3/s', 'pressure_rise_Pa': 'Pa', 'power_kW': 'kW'}
+(10, 2) (10,) [ 1  2  3  4  5  6  7  8  9 10]
+Flagged IDs: [4 6]
+4 missing input
+6 pressure rise violates declared screening rule
+hydraulic kW: [1.    1.65  2.4   3.25  3.78  2.76  1.89  2.596]
+measured electrical kW: [1.42 2.3  3.34 4.53 5.26 3.84 2.67 3.64]
+ratio hydraulic/electrical: [0.704 0.717 0.719 0.717 0.719 0.719 0.708 0.713]
