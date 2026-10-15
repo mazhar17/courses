@@ -113,7 +113,7 @@ timeline:['You removed nighttime rows. Does shifting 96 remaining rows necessari
 context:['Which operation updates model weights?',['Add examples to a prompt','Retrieve a manual','Fine-tune with training examples'],2,'Prompting and retrieval supply inference context; fine-tuning updates parameters.'],
 trust:['A synthetic simulator comparison passed. Does that validate real equipment?',['Yes, because the scores are good','No: real-system evidence is still needed'],1,'A synthetic exercise can verify a method, but not establish real-system suitability.'],
 project:['A predicted design has a low objective. What is next?',['Report it as the proven optimum','Verify the candidate and constraints with the original model'],1,'Predicted improvements are hypotheses requiring checks.']};let [s,opts,a,feedback]=scenarios[kind]||scenarios.trust;w.append(E('h3',{text:'Make an engineering distinction'}),E('p',{text:s}));opts.forEach((o,i)=>w.append(B(o,()=>output((i===a?'Correct. ':'Reconsider. ')+feedback))));w.append(result);}
-const FIREBASE_CONFIG=null;
+const FIREBASE_CONFIG={apiKey:'AIzaSyC1vrFamdnzRTW7zH67abWsdJEeUgHDWZY',authDomain:'ai101-course.firebaseapp.com',projectId:'ai101-course',storageBucket:'ai101-course.firebasestorage.app',messagingSenderId:'557919741297',appId:'1:557919741297:web:e27172c44dd727ae1682d0'};
 let cloud={ready:false,user:null,timer:null};
 function cloudEmpty(p){return !Object.keys(p.lessons).length&&!Object.keys(p.attempts).length&&!Object.keys(p.cards).length&&!Object.keys(p.drafts).length;}
 function cloudQueue(){if(!cloud.ready||!cloud.user)return;clearTimeout(cloud.timer);cloud.timer=setTimeout(cloudPush,1500);}
