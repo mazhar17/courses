@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; font-src 'none'; form-action 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' https://www.gstatic.com https://apis.google.com; style-src 'unsafe-inline'; img-src data: blob:; connect-src https://*.googleapis.com https://*.firebaseio.com https://apis.google.com; font-src 'none'; frame-src https://*.firebaseapp.com https://accounts.google.com https://*.googleapis.com; form-action 'none'; base-uri 'none'">
 <meta name="description" content="Self-contained offline training course: machine learning fundamentals for surrogate-based engineering optimization (Mechanical Engineering).">
 <title>ML for Surrogate-Based Optimization</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2712%27%20fill%3D%27%231f5fa8%27/%3E%3Cpath%20d%3D%27M8%2046%20C18%2046%2022%2020%2032%2020%20S46%2044%2056%2030%27%20stroke%3D%27%23ffffff%27%20stroke-width%3D%274%27%20fill%3D%27none%27%20stroke-linecap%3D%27round%27%20stroke-dasharray%3D%271%200%27/%3E%3Cpath%20d%3D%27M8%2050%20C18%2050%2022%2024%2032%2024%20S46%2048%2056%2034%20L56%2026%20C46%2040%2042%2016%2032%2016%20S18%2042%208%2042%20Z%27%20fill%3D%27%23ffffff%27%20fill-opacity%3D%270.22%27/%3E%3Ccircle%20cx%3D%2712%27%20cy%3D%2745%27%20r%3D%274%27%20fill%3D%27%23ff9a4d%27/%3E%3Ccircle%20cx%3D%2726%27%20cy%3D%2726%27%20r%3D%274%27%20fill%3D%27%23ff9a4d%27/%3E%3Ccircle%20cx%3D%2740%27%20cy%3D%2729%27%20r%3D%274%27%20fill%3D%27%23ff9a4d%27/%3E%3Ccircle%20cx%3D%2752%27%20cy%3D%2733%27%20r%3D%274%27%20fill%3D%27%23ff9a4d%27/%3E%3Cpath%20d%3D%27M32%2040%20l2.4%204.9%205.4%20.8%20-3.9%203.8%20.9%205.4%20-4.8-2.5%20-4.8%202.5%20.9-5.4%20-3.9-3.8%205.4-.8Z%27%20fill%3D%27%23ffd04d%27/%3E%3C/svg%3E">
@@ -237,7 +237,7 @@ details.card>summary{cursor:pointer} details.card[open]>summary{margin-bottom:8p
 <a class="skip" href="#main">Skip to content</a>
 <header class="topbar">
   <button class="btn menu-btn" id="menuBtn" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Open navigation">☰</button>
-  <div class="brand"><span class="brand-row"><img class="brand-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2712%27%20fill%3D%27%231f5fa8%27/%3E%3Cpath%20d%3D%27M8%2046%20C18%2046%2022%2020%2032%2020%20S46%2044%2056%2030%27%20stroke%3D%27%23ffffff%27%20stroke-width%3D%274%27%20fill%3D%27none%27%20stroke-linecap%3D%27round%27%20stroke-dasharray%3D%271%200%27/%3E%3Cpath%20d%3D%27M8%2050%20C18%2050%2022%2024%2032%2024%20S46%2048%2056%2034%20L56%2026%20C46%2040%2042%2016%2032%2016%20S18%2042%208%2042%20Z%27%20fill%3D%27%23ffffff%27%20fill-opacity%3D%270.22%27/%3E%3Ccircle%20cx%3D%2712%27%20cy%3D%2745%27%20r%3D%274%27%20fill%3D%27%23ff9a4d%27/%3E%3Ccircle%20cx%3D%2726%27%20cy%3D%2726%27%20r%3D%274%27%20fill%3D%27%23ff9a4d%27/%3E%3Ccircle%20cx%3D%2740%27%20cy%3D%2729%27%20r%3D%274%27%20fill%3D%27%23ff9a4d%27/%3E%3Ccircle%20cx%3D%2752%27%20cy%3D%2733%27%20r%3D%274%27%20fill%3D%27%23ff9a4d%27/%3E%3Cpath%20d%3D%27M32%2040%20l2.4%204.9%205.4%20.8%20-3.9%203.8%20.9%205.4%20-4.8-2.5%20-4.8%202.5%20.9-5.4%20-3.9-3.8%205.4-.8Z%27%20fill%3D%27%23ffd04d%27/%3E%3C/svg%3E" alt="" width="28" height="28"><span id="courseTitleTop">ML for Surrogate-Based Optimization</span><span class="ver-pill" id="verPill">v3.0.0</span></span><small>Self-paced course · works offline · progress stays on this device</small></div>
+  <div class="brand"><span class="brand-row"><img class="brand-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2712%27%20fill%3D%27%231f5fa8%27/%3E%3Cpath%20d%3D%27M8%2046%20C18%2046%2022%2020%2032%2020%20S46%2044%2056%2030%27%20stroke%3D%27%23ffffff%27%20stroke-width%3D%274%27%20fill%3D%27none%27%20stroke-linecap%3D%27round%27%20stroke-dasharray%3D%271%200%27/%3E%3Cpath%20d%3D%27M8%2050%20C18%2050%2022%2024%2032%2024%20S46%2048%2056%2034%20L56%2026%20C46%2040%2042%2016%2032%2016%20S18%2042%208%2042%20Z%27%20fill%3D%27%23ffffff%27%20fill-opacity%3D%270.22%27/%3E%3Ccircle%20cx%3D%2712%27%20cy%3D%2745%27%20r%3D%274%27%20fill%3D%27%23ff9a4d%27/%3E%3Ccircle%20cx%3D%2726%27%20cy%3D%2726%27%20r%3D%274%27%20fill%3D%27%23ff9a4d%27/%3E%3Ccircle%20cx%3D%2740%27%20cy%3D%2729%27%20r%3D%274%27%20fill%3D%27%23ff9a4d%27/%3E%3Ccircle%20cx%3D%2752%27%20cy%3D%2733%27%20r%3D%274%27%20fill%3D%27%23ff9a4d%27/%3E%3Cpath%20d%3D%27M32%2040%20l2.4%204.9%205.4%20.8%20-3.9%203.8%20.9%205.4%20-4.8-2.5%20-4.8%202.5%20.9-5.4%20-3.9-3.8%205.4-.8Z%27%20fill%3D%27%23ffd04d%27/%3E%3C/svg%3E" alt="" width="28" height="28"><span id="courseTitleTop">ML for Surrogate-Based Optimization</span><span class="ver-pill" id="verPill">v3.0.0</span></span><small>Self-paced course · sign-in required · progress stays on this device</small></div>
   <button class="btn small" id="themeBtn" type="button">◐ Auto</button>
 </header>
 <div id="storageBanner" class="notice warn hide" role="status" style="margin:0;border-radius:0">Browser storage is unavailable here, so progress will be lost when this tab closes. Use <a href="#/data">Your data → Export progress</a> to save it.</div>
@@ -248,6 +248,42 @@ details.card>summary{cursor:pointer} details.card[open]>summary{margin-bottom:8p
 </div>
 <div id="printArea" aria-hidden="true"></div>
 <div id="toast" role="status" aria-live="polite"></div>
+<script>
+/* ===== login gate (Firebase Auth, same accounts as AI 101) ===== */
+(function(){
+const CFG={apiKey:'AIzaSyC1vrFamdnzRTW7zH67abWsdJEeUgHDWZY',authDomain:'ai101-course.firebaseapp.com',projectId:'ai101-course',storageBucket:'ai101-course.firebasestorage.app',messagingSenderId:'557919741297',appId:'1:557919741297:web:e27172c44dd727ae1682d0'};
+function el(t,a,...k){const n=document.createElement(t);for(const x in a||{}){if(x==='text')n.textContent=a[x];else n.setAttribute(x,a[x]);}n.append(...k);return n;}
+function btn(label,fn,cls){const b=el('button',{type:'button',class:cls||'btn small',text:label});b.onclick=fn;return b;}
+const gate=el('div',{id:'gate',role:'dialog','aria-modal':'true','aria-labelledby':'gate-title'}),box=el('div');
+gate.style.cssText='position:fixed;inset:0;z-index:1000;overflow:auto;background:Canvas;color:CanvasText;display:flex;align-items:center;justify-content:center;padding:1rem';
+box.style.cssText='max-width:26rem;width:100%';gate.append(box);
+const lock=on=>{gate.style.display=on?'flex':'none';document.querySelectorAll('header,.layout').forEach(x=>{x.inert=on;});};
+const msg=el('p',{role:'status',text:'Loading sign-in\u2026'});
+box.append(el('h1',{id:'gate-title',text:'ML for Surrogate-Based Optimization'}),el('p',{text:'This course is completely free. No payment is required or will ever be charged. Registration is used to identify learners. If you already have an AI 101 account, sign in with it.'}),msg);
+document.body.append(gate);lock(true);
+(async()=>{try{
+const b='https://www.gstatic.com/firebasejs/10.12.2/';
+const [app,auth]=await Promise.all([import(b+'firebase-app.js'),import(b+'firebase-auth.js')]);
+const au=auth.getAuth(app.initializeApp(CFG));
+let mode='signin';
+const field=(id,label,type,ac)=>{const i=el('input',{id,type,autocomplete:ac});i.style.cssText='display:block;width:100%;box-sizing:border-box;padding:.5rem;margin:.25rem 0 .75rem;font:inherit';return [el('label',{for:id,text:label}),i];};
+const [nl,name]=field('g-name','Full name','text','name'),[ml,email]=field('g-email','Email','email','email'),[pl,pw]=field('g-pw','Password (at least 6 characters)','password','current-password');
+const friendly=e=>({'auth/invalid-credential':'Incorrect email or password.','auth/invalid-email':'Enter a valid email address.','auth/email-already-in-use':'An account with this email already exists. Choose Sign in instead.','auth/weak-password':'Password must be at least 6 characters.','auth/too-many-requests':'Too many attempts. Please wait a few minutes and try again.','auth/operation-not-allowed':'This sign-in method is not enabled yet.'})[e.code]||e.message;
+const nameRow=el('div',{},nl,name),submit=el('button',{type:'submit',class:'btn',text:'Sign in'});
+const setMode=m=>{mode=m;nameRow.style.display=m==='register'?'':'none';submit.textContent=m==='register'?'Create account':'Sign in';toggle.textContent=m==='register'?'Already registered? Sign in':'Need an account? Register';pw.autocomplete=m==='register'?'new-password':'current-password';msg.textContent='';};
+const toggle=btn('Need an account? Register',()=>setMode(mode==='signin'?'register':'signin'));
+const forgot=btn('Forgot password?',async()=>{const em=email.value.trim();if(!em){msg.textContent='Enter your email above, then choose Forgot password.';return;}try{await auth.sendPasswordResetEmail(au,em);msg.textContent='If an account exists for that email, a reset link has been sent.';}catch(e){msg.textContent=friendly(e);}});
+const google=btn('Continue with Google',()=>auth.signInWithPopup(au,new auth.GoogleAuthProvider()).catch(e=>{msg.textContent=friendly(e);}));
+const row=(...k)=>{const d=el('div',{},...k);d.style.cssText='display:flex;flex-wrap:wrap;gap:.5rem;margin:.5rem 0';return d;};
+const form=el('form',{},nameRow,ml,email,pl,pw,row(submit,google),row(toggle,forgot));
+form.onsubmit=async e=>{e.preventDefault();msg.textContent='';try{if(mode==='register'){const n=name.value.trim();if(!n)throw {message:'Please enter your full name.'};const c=await auth.createUserWithEmailAndPassword(au,email.value.trim(),pw.value);await auth.updateProfile(c.user,{displayName:n});}else await auth.signInWithEmailAndPassword(au,email.value.trim(),pw.value);}catch(err){msg.textContent=friendly(err);}};
+box.append(form);setMode('signin');
+const out=btn('Sign out',()=>auth.signOut(au));out.style.display='none';
+document.querySelector('header.topbar').append(out);
+auth.onAuthStateChanged(au,u=>{out.style.display=u?'':'none';out.textContent=u?'Sign out ('+(u.displayName||u.email)+')':'Sign out';lock(!u);if(u)pw.value='';});
+}catch(e){msg.textContent='Sign-in could not load: '+e.message+'. Check your connection or disable content blockers for this site, then reload.';box.append(btn('Reload',()=>location.reload()));}})();
+})();
+</script>
 <script>
 /* ===== core.js ===== */
 /* ==========================================================================
