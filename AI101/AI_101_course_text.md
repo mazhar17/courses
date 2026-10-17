@@ -887,31 +887,31 @@ Learning outcomes:
 
 ### Applications with different evidence needs
 
-AI can support design, manufacturing, thermofluids, maintenance and robotics. A surrogate approximates an expensive experiment or simulation, allowing a cheap search. The proposed design still needs verification on the original model and appropriate physical validation before hardware claims.
+AI can support design, manufacturing, thermofluids, maintenance and robotics, but each application needs evidence suited to its decision. A surrogate model learns a fast approximation from evaluated designs or operating cases, making broad search cheaper. Use it within its supported domain, check promising candidates with the original simulator or experiment, and validate physical claims with appropriate independent evidence. A surrogate speeds exploration; it does not replace the governing model or physical validation.
 
-An optimization objective describes what improves; constraints and bounds define permissible choices. Feasibility means the stated constraints are satisfied. A low predicted objective is not itself evidence of feasibility. A digital twin is a digital representation connected to a physical counterpart through data; a standalone CAD file or simulator lacks that connection.
+An optimization objective describes what improves; constraints and bounds define permissible choices. Feasibility means the stated constraints are satisfied, so a low predicted objective is not itself evidence that a design is acceptable. Bayesian optimization can guide an expensive search by using both predicted performance and uncertainty to choose the next candidate for evaluation.
 
-Physics-informed learning includes physical equations, constraints or structure in learning. A PINN is one particular family, not a synonym for every hybrid model. Learn these distinctions here; detailed surrogate and Bayesian-optimization mathematics belong in your next course.
+A digital twin is a digital representation connected through data to a physical counterpart; a static CAD model or standalone simulator is not a twin. Physics-informed learning incorporates physical equations, constraints or structure into learning. A physics-informed neural network (PINN) is one specific family, not a synonym for every hybrid model. Distinguish these approaches by how they use evidence and stay connected to the engineering system; detailed surrogate and Bayesian-optimization mathematics belong in your next course.
 
 Pause and explain: What makes a digital twin different from an isolated CAD model?
 
 ### A small project you can defend
 
-Choose one bounded task: predict pump power, classify supplied bearing scores, group operating profiles, or critique an AI-assisted calculation. State the decision, users, available features, target, data provenance and operating domain. Use labelled synthetic data if no approved measured dataset is available, and label conclusions accordingly.
+Choose one bounded task: predict pump power, classify supplied bearing scores, group operating profiles, or critique an AI-assisted calculation. State the decision and intended user, inputs available at decision time, target, data provenance, units and operating domain. Use labelled synthetic data if no approved measured dataset is available, and limit conclusions to what that synthetic evidence can support.
 
-Provide a baseline and a justified split. Fit preprocessing only on training data. Use validation for choices and final test examples for locked evaluation. Report units, relevant errors, a physics or known-case check and limitations. Keep the notebook runnable from a clean start.
+Choose an evaluation boundary that matches intended use: for example, hold out later time periods, machines, events or designs when records are related. Provide a simple or physics-based baseline evaluated on the same cases. Fit preprocessing and select features using training data only; use validation data for choices and reserve the final test set for a locked evaluation. Report units and task-appropriate measures (such as error for regression or class counts and precision/recall for fault detection), interpret errors in engineering terms, and include a physical or known-case check.
 
-The four labs support this project. A complete reference is an example of a reproducible route, not your personal work. Use the starter first and explain changes in your own words. If AI assistance is used elsewhere, follow the institution policy and record it.
+The four labs support this project. Use the relevant starter first, inspect its assumptions and outputs, and explain changes in your own words; a complete reference is an example of a reproducible route, not your personal work. Make the notebook rerunnable from a clean kernel and document the data, environment, modelling choices, limitations and failures. If AI assistance is used, follow institutional policy, record the assistance and checks, and do not send private or restricted information to an external service without authorization.
 
 Pause and explain: Write one project sentence containing decision, inputs, output and evidence.
 
 ### Submit evidence, not only a browser score
 
-The browser grade measures knowledge checks: mean best module quiz score contributes 70% and a blueprint final contributes 30%. Every module quiz and final must reach 70% for the optional browser completion record. Lessons and flashcard ratings do not earn marks. Keys are visible in the file; progress is editable and cannot authenticate identity.
+The browser grade measures knowledge checks: mean best module quiz score contributes 70% and a blueprint final contributes 30%. Every module quiz and final must reach 70% for the optional browser completion record. Lessons and flashcard ratings do not earn marks. Keys are visible in the file and progress is editable, so a browser score or completion record cannot authenticate identity or establish practical competence.
 
-Practical competence is assessed separately using the mini-project rubric: problem/data 20%, baseline/split/preprocessing 25%, evaluation/interpretation 25%, physical verification/limitations 20%, reproducibility/AI-use disclosure 10%. The course cannot inspect or certify your notebook automatically.
+Practical competence is assessed separately using the mini-project rubric: problem/data 20%, baseline/split/preprocessing 25%, evaluation/interpretation 25%, physical verification/limitations 20%, reproducibility/AI-use disclosure 10%. The course cannot inspect or certify your notebook automatically. A practical evidence package should let a reviewer inspect the problem boundary and provenance, reproduce the split and baseline, interpret metrics and physical checks, and understand limitations and AI use.
 
-Before submission, restart and run the notebook, inspect outputs, export your work and explain one modelling choice and one failure mode. An instructor or peer reviewer can use the rubric and ask you to reproduce a result. A browser certificate must not be described as authorization to deploy a model.
+Before submission, restart and run the notebook from a clean kernel, inspect outputs, export your work and explain one modelling choice and one failure mode. An instructor or peer reviewer can use the rubric and ask you to reproduce a result. A browser certificate must not be described as authorization to deploy a model.
 
 Pause and explain: Which evidence demonstrates practical skill beyond passing the browser quizzes?
 
