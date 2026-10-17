@@ -28,11 +28,14 @@ for mid, w in WALKTHROUGHS.items():
     for s, got in zip(w['steps'], outs):
         assert got == s['expected_output'], (mid, s['heading'], got, s['expected_output'])
         checked += 1
-    # 'Try it' change must apply exactly once and give the stated output
+    # 'Try it': the change applies once, to step `try_it['step']` (default: the last step).
+    # Earlier steps run unchanged; the output of the changed step and every later step must match.
     old, new = w['try_it']['change']
-    last = w['steps'][-1]['code']
-    assert last.count(old) == 1, 'try-it anchor must occur once'
-    got = run([last.replace(old, new)])[0]
+    k = w['try_it'].get('step', len(w['steps']) - 1)
+    codes = [s['code'] for s in w['steps']]
+    assert codes[k].count(old) == 1, 'try-it anchor must occur exactly once in its step'
+    changed = codes[:k] + [codes[k].replace(old, new)] + codes[k + 1:]
+    got = '\n'.join(run(changed)[k:])
     assert got == w['try_it']['expected_output'], (mid, got)
     checked += 1
     # a clean, top-to-bottom run of the whole notebook gives the same outputs
@@ -45,8 +48,13 @@ for mid, w in WALKTHROUGHS.items():
     assert path.exists(), 'notebook file missing: ' + str(path)
     assert json.loads(path.read_text(encoding='utf-8')) == json.loads(json.dumps(n, ensure_ascii=False))
     # no network, no non-stdlib imports in walkthrough code
+    # only NumPy and scikit-learn may be imported; no file access
     for s in w['steps']:
-        assert 'import ' not in s['code'] and 'open(' not in s['code'], 'unexpected import or file access'
+        assert 'open(' not in s['code'], 'unexpected file access'
+        for line in s['code'].splitlines():
+            t = line.strip()
+            if t.startswith(('import ', 'from ')):
+                assert t.split()[1].split('.')[0] in ('numpy', 'sklearn'), ('unexpected import', mid, t)
     assert set(public_data()[mid]) >= {'colab', 'download', 'steps', 'try_it'}
 
 # Module 2 arithmetic, independent of the code strings above

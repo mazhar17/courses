@@ -126,6 +126,12 @@ C         3000.0    4000.0        3950.0         -50.0''',
 }
 
 
+# Walkthroughs for later modules live in separate files so each batch can be reviewed on its own.
+import importlib
+for _name in ('ai101_wt_a', 'ai101_wt_b', 'ai101_wt_c', 'ai101_wt_d'):
+    WALKTHROUGHS.update(importlib.import_module(_name).W)
+
+
 def step_code(w, upto=None):
     """Return the list of code strings for the walkthrough steps."""
     return [s['code'] for s in w['steps'][:upto]]

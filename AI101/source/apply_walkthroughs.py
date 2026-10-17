@@ -47,7 +47,7 @@ function codePage(h,m){
   s.append(E('p',{class:'walk-note'},E('strong',{text:'Optional and not graded. '}),'This page shows code and its expected output. Python does not run on this page. To run the code yourself, use the Google Colab or notebook links at the end. Your quiz scores and progress do not depend on this page.'));
   s.append(E('h3',{text:'Objective'}),E('p',{text:w.objective}),E('p',{class:'small',text:'Supports: '+w.supports}));
   s.append(E('h3',{text:'Before you start'}));
-  let ul=E('ul');w.prereqs.forEach(x=>ul.append(E('li',{text:x})));s.append(ul);
+  let ul=E('ul');w.prereqs.forEach(x=>inlineCode(ul,'li',x));s.append(ul);
   s.append(E('p',{text:'Python ideas used on this page:'}));
   let ul2=E('ul');w.python_ideas.forEach(x=>inlineCode(ul2,'li',x));s.append(ul2);
   s.append(E('h3',{text:'The example'}));
