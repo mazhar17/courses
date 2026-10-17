@@ -882,38 +882,107 @@ Pause and explain: What evidence and disclosure would you attach to an AI-assist
 ## Module 16: Engineering applications and your mini-project
 
 Learning outcomes:
-- Formulate a defensible engineering AI study.
-- Separate browser knowledge checks from practical evidence.
+- Distinguish surrogate models, feasibility constraints, digital twins and physics-informed methods, and identify the evidence each engineering application needs.
+- Frame a bounded project with traceable data, a relevant baseline, leakage-resistant evaluation, physical checks and stated limitations.
+- Separate browser knowledge scores from practical evidence and prepare a reproducible, reviewable mini-project submission.
 
 ### Applications with different evidence needs
 
-AI can support design, manufacturing, thermofluids, maintenance and robotics, but each application needs evidence suited to its decision. A surrogate model learns a fast approximation from evaluated designs or operating cases, making broad search cheaper. Use it within its supported domain, check promising candidates with the original simulator or experiment, and validate physical claims with appropriate independent evidence. A surrogate speeds exploration; it does not replace the governing model or physical validation.
+## What you are expected to learn
 
-An optimization objective describes what improves; constraints and bounds define permissible choices. Feasibility means the stated constraints are satisfied, so a low predicted objective is not itself evidence that a design is acceptable. Bayesian optimization can guide an expensive search by using both predicted performance and uncertainty to choose the next candidate for evaluation.
+Explain why engineering applications require different evidence; describe how a surrogate supports design search; distinguish an objective from constraints and feasibility; and identify the defining data connection in a digital twin.
 
-A digital twin is a digital representation connected through data to a physical counterpart; a static CAD model or standalone simulator is not a twin. Physics-informed learning incorporates physical equations, constraints or structure into learning. A physics-informed neural network (PINN) is one specific family, not a synonym for every hybrid model. Distinguish these approaches by how they use evidence and stay connected to the engineering system; detailed surrogate and Bayesian-optimization mathematics belong in your next course.
+## Application determines the evidence
 
-Pause and explain: What makes a digital twin different from an isolated CAD model?
+AI can support design, manufacturing, thermofluids, maintenance and robotics. The model and evidence should follow the decision: screening candidate designs, estimating a thermal response, identifying a possible fault and coordinating a robot are not interchangeable tasks. The Module 16 examples use a motor-driven centrifugal pump with piped connections and instrumentation to make those physical conditions concrete.
+
+State what decision the model informs, which inputs are available at that decision, and the operating conditions for which its output is intended. A strong score on one dataset does not by itself show that the system is suitable for another machine, load range or operating regime.
+
+## Surrogates accelerate search, not sign-off
+
+A high-fidelity simulation can be expensive to run for every design. A surrogate learns an approximation from evaluated designs or operating cases and can screen additional candidates at lower cost. For example, it can help compare pump or geometry candidates without rerunning an expensive flow simulation for every option. Its accuracy is supported only where the underlying evidence represents the inputs and conditions being considered.
+
+Re-evaluate promising candidates with the original simulation or experiment. Verification checks that the intended model or calculation was implemented correctly; physical validation checks its adequacy against appropriate evidence from the real system. A surrogate helps explore the design space but does not replace either check or authorize a hardware claim.
+
+An uncertainty-aware search method such as Bayesian optimization can use a surrogate to prioritize which candidate to evaluate next. It can make expensive searches more efficient, but it does not verify the implementation, prove constraint satisfaction or establish physical validity.
+
+## Objectives and constraints answer different questions
+
+An objective states the performance goal, such as reducing a pump's electrical power demand. Constraints and bounds define which designs or outcomes are permitted—for example, a minimum required flow or a maximum allowable stress. The feasible design space contains only candidates that satisfy all stated constraints.
+
+A candidate can have an attractive predicted objective and still be infeasible: a design that predicts low power but violates a stress or flow limit is not acceptable. Check constraint values and their units separately from the objective; do not treat a good score as evidence that a design meets its bounds.
+
+## Connected twins and physics-informed learning
+
+An isolated CAD model has no active data connection to the physical equipment. A digital twin maintains a data linkage with its physical counterpart—for example, a digital representation that receives ongoing pressure, flow or temperature measurements for monitoring and state estimation. The connection, not visual similarity, is the key distinction.
+
+An active sensor connection also creates data-integrity and cybersecurity responsibilities. Check that the measurements and data path are trustworthy, and investigate disagreement between the model and independent physical readings before acting on a prediction.
+
+Physics-informed learning incorporates physical equations or constraints into a learning approach, for example by adding a penalty when a predicted state violates a governing equation or conservation relationship. A physics-informed neural network (PINN) is one particular architectural family; it is not a synonym for every hybrid or physics-informed model. Examples of physical structure include a force relationship such as F = ma or thermodynamic constraints.
+
+Pause and explain: A surrogate predicts a promising design. Which checks establish feasibility, and what makes a digital twin different from an isolated CAD model?
 
 ### A small project you can defend
 
-Choose one bounded task: predict pump power, classify supplied bearing scores, group operating profiles, or critique an AI-assisted calculation. State the decision and intended user, inputs available at decision time, target, data provenance, units and operating domain. Use labelled synthetic data if no approved measured dataset is available, and limit conclusions to what that synthetic evidence can support.
+## What you are expected to learn
 
-Choose an evaluation boundary that matches intended use: for example, hold out later time periods, machines, events or designs when records are related. Provide a simple or physics-based baseline evaluated on the same cases. Fit preprocessing and select features using training data only; use validation data for choices and reserve the final test set for a locked evaluation. Report units and task-appropriate measures (such as error for regression or class counts and precision/recall for fault detection), interpret errors in engineering terms, and include a physical or known-case check.
+Frame a bounded engineering task; document its inputs, target, data provenance and operating domain; keep training separate from locked evaluation data; and report baselines, quantitative errors and physical checks in a reproducible way.
 
-The four labs support this project. Use the relevant starter first, inspect its assumptions and outputs, and explain changes in your own words; a complete reference is an example of a reproducible route, not your personal work. Make the notebook rerunnable from a clean kernel and document the data, environment, modelling choices, limitations and failures. If AI assistance is used, follow institutional policy, record the assistance and checks, and do not send private or restricted information to an external service without authorization.
+## Bound the decision and document the data
+
+Choose one manageable task: predict pump power, classify supplied bearing scores, group operating profiles or critique an AI-assisted calculation. For the pump example, predict measured electrical input power in kW from available flow and pressure-rise inputs. Hydraulic power is pressure rise multiplied by volumetric flow; estimating electrical input power also requires accounting for efficiency and losses. State the decision and intended user, target, inputs available at decision time, and what evidence would make the result useful.
+
+Define the operating domain using relevant physical bounds, operating parameters and load ranges. Record the data source, units, relevant measurement context and assumptions. Use approved measurements when available; if you use synthetic data, label it clearly and restrict claims to what the synthetic example demonstrates. Synthetic data can exercise a workflow but cannot validate a real machine.
+
+## Separate training from evaluation
+
+Choose a split that reflects intended use. When examples share a machine, event, design or time sequence, keep related records together or hold out an appropriate group or later period; random row splitting can make evaluation too optimistic.
+
+Fit preprocessing using training data only. Use validation data to make development choices, then lock the final test set and use it only for the final evaluation. This keeps information from the evaluation examples out of preprocessing and model selection.
+
+## Compare baselines and report quantitative errors
+
+Compare the model with a training-mean predictor and, when appropriate, a known physical calculation on the same evaluation cases. For pump power, the training-mean predictor is a simple reference; an appropriate physical calculation supplies a second comparison. A baseline helps show whether the model adds value beyond a simple or established approach.
+
+On the locked test set, report task-appropriate measures with units. For regression, show MAE and RMSE in the target's unit and residuals in consistent SI units; residuals show signed prediction errors and can reveal systematic under- or over-prediction, such as errors that grow at high pressure. For classification, report the relevant class counts and measures such as precision and recall. Interpret the results in engineering terms rather than presenting a score alone.
+
+Add an independent physical check or known case, and state domain limits and assumptions. Model metrics summarize performance on selected examples; they do not establish physical validity outside the evaluated conditions.
+
+Retain evidence for each stage: the decision, inputs and provenance for problem framing; the split, baseline and fitted preprocessing for development; locked-test errors and limitations for evaluation; and known-case or independent physical checks for verification. This record lets a reviewer distinguish a repeatable method from an unsupported conclusion.
+
+## Keep the project reproducible and your own
+
+The four starter notebooks cover data inspection, pump-power modelling, fault detection and verification of an AI-assisted engineering draft. Begin with the relevant starter, inspect its assumptions, and explain any changes in your own words. A complete reference is an example of a route, not a substitute for your own work.
+
+Keep the notebook runnable from a clean kernel and record the data, environment, split, baseline, modelling choices, checks, limitations and failure modes. Follow institutional policy for AI assistance, disclose permitted use and checks, and do not submit private or restricted information to an external service without authorization.
 
 Pause and explain: Write one project sentence containing decision, inputs, output and evidence.
 
 ### Submit evidence, not only a browser score
 
-The browser grade measures knowledge checks: mean best module quiz score contributes 70% and a blueprint final contributes 30%. Every module quiz and final must reach 70% for the optional browser completion record. Lessons and flashcard ratings do not earn marks. Keys are visible in the file and progress is editable, so a browser score or completion record cannot authenticate identity or establish practical competence.
+## What you are expected to learn
 
-Practical competence is assessed separately using the mini-project rubric: problem/data 20%, baseline/split/preprocessing 25%, evaluation/interpretation 25%, physical verification/limitations 20%, reproducibility/AI-use disclosure 10%. The course cannot inspect or certify your notebook automatically. A practical evidence package should let a reviewer inspect the problem boundary and provenance, reproduce the split and baseline, interpret metrics and physical checks, and understand limitations and AI use.
+Distinguish the browser knowledge grade from practical assessment; explain the mini-project rubric; and prepare work that another person can rerun, review and assess within stated operating limits.
 
-Before submission, restart and run the notebook from a clean kernel, inspect outputs, export your work and explain one modelling choice and one failure mode. An instructor or peer reviewer can use the rubric and ask you to reproduce a result. A browser certificate must not be described as authorization to deploy a model.
+## A browser score measures knowledge checks
 
-Pause and explain: Which evidence demonstrates practical skill beyond passing the browser quizzes?
+The browser grade combines the mean of the best module quiz scores (70%) with the final blueprint assessment (30%). The optional browser completion record requires at least 70% on every module quiz and on the final. Lessons and flashcard ratings do not contribute to that grade.
+
+The score is a knowledge check, not a practical evaluation. The file exposes answer keys and progress can be edited, so a browser score cannot authenticate a learner, establish model validity or authorize deployment.
+
+## The practical rubric evaluates engineering evidence
+
+The infographic groups the mini-project rubric into data and preprocessing (45%), evaluation and physics (45%), and reproducibility and AI disclosure (10%). The course's detailed rubric breaks those groups down: problem/data (20%) plus baseline/split/preprocessing (25%); evaluation/interpretation (25%) plus physical verification/limitations (20%); and reproducibility/AI-use disclosure (10%). These are the same three groups, shown at different levels of detail.
+
+The rubric asks whether the problem and data are well defined, the baseline and split are justified, preprocessing is isolated from evaluation data, results are interpreted with physical checks, and the work can be reproduced with appropriate AI-use disclosure. The course cannot inspect or certify a notebook automatically; an instructor or peer reviewer can inspect the evidence and ask you to reproduce a result.
+
+## Make the submission reproducible and bounded
+
+Restart the kernel and run every cell from top to bottom. Resolve unrecorded variable dependencies, inspect outputs, and make the notebook runnable by a reviewer. State the model-selection rationale, failure modes or thresholds, and the physical operating domain—including the valid machine bounds, operating parameters and load ranges.
+
+Submit runnable notebooks, domain limitations, independent physics checks and AI disclosures. Preserve enough information about the data, environment and decisions for a reviewer to reproduce the result, then explain one modelling choice and one failure mode. A browser completion record must not be described as evidence that a model is safe or ready to deploy.
+
+Pause and explain: What can a clean, reproducible project demonstrate that a browser score cannot, and which operating limits must a reviewer see?
 
 ### Terms
 
