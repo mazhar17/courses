@@ -1,5 +1,6 @@
 # AI 101 target environment (not a claim that every supported combination was executed)
 # Python >=3.10; local JupyterLab is optional for the learner interface.
 numpy>=1.26
+scikit-learn>=1.3   # used only by the optional Code walkthroughs for Modules 6 and 9
 jupyterlab>=4
 # See AI_101_Validation.md for actual execution versions.

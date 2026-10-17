@@ -22,7 +22,7 @@ for path in files:
     if c['cell_type']=='code':exec(compile(''.join(c['source']),str(path)+':'+str(i+1),'exec'),ns)
   print('PASS reference execution',path.name);print(capture.getvalue())
   path.with_suffix('.execution.txt').write_text(capture.getvalue(),encoding='utf-8');executed.append(path.name)
- else:
+ elif 'starter' in path.name:
   ns={};stopped=False
   with contextlib.redirect_stdout(io.StringIO()):
    for c in n['cells']:
