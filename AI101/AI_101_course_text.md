@@ -1016,31 +1016,101 @@ Learning outcomes:
 
 ### Uncertainty and changing conditions
 
-Aleatoric uncertainty refers to variation in observations or unresolved processes, such as measurement noise. Epistemic uncertainty comes from limited knowledge, data or model assumptions. More informative observations may reduce some epistemic uncertainty, but an inadequate model can remain wrong.
+## What you are expected to learn
 
-Calibration examines whether stated probabilities or intervals agree with observed frequencies under appropriate conditions. Model confidence is not automatically calibrated. Interpolation stays within covered conditions; extrapolation reaches beyond them. Being inside simple input bounds still does not guarantee representative coverage.
+Distinguish aleatoric uncertainty from epistemic uncertainty, explain why a model's confidence may be unreliable outside its evaluated conditions, and recognize the difference between a distribution shift and gradual drift. Use these distinctions to decide when to monitor, defer a prediction or gather new evidence.
 
-Distribution shift means the deployment population differs from development. Drift describes change over time, such as wear, a new control regime or sensor recalibration. Monitor inputs and outcomes and define when to defer or retrain. A seed cannot remove shift.
+## Two sources of uncertainty
+
+Aleatoric uncertainty is variation in observations or unresolved processes, such as sensor measurement noise. Repeating measurements may characterize this variation, but it cannot remove the underlying variability. Epistemic uncertainty comes from limited knowledge: sparse measurements in an operating regime, incomplete training examples or assumptions that may not represent the equipment. More informative observations can reduce some epistemic uncertainty. They cannot repair an inadequate model structure; a confidently estimated answer from a flawed model may still be wrong.
+
+## Operating coverage is more than input bounds
+
+Interpolation estimates within conditions represented by relevant observations. Extrapolation estimates beyond the covered operating domain, where behavior is less well supported. A point can fall between the minimum and maximum of each input and still be unrepresentative: combinations of inputs, plant configurations or operating regimes may be missing. Define the domain using the conditions relevant to the intended use, not just convenient rectangular limits, and evaluate performance on evidence from that domain.
+
+## Calibration and confidence
+
+Calibration checks whether stated probabilities agree with observed frequencies under defined conditions. For example, among a sufficiently large set of comparable cases assigned about 80% probability, a calibrated model should be correct about 80% of the time. This is a group-level property, not a promise about an individual prediction and not an explanation of why the model made it. Assess calibration on independent data representative of the intended operating conditions. High model confidence is not proof of calibration, accuracy or permission to extrapolate.
+
+## Distribution shift and drift
+
+Distribution shift occurs when the deployment population differs from the development population, such as transferring a model from one plant type to another. Drift describes gradual change in data or relationships over time, for example sensor ageing, wear or a changing control regime. A random seed only controls aspects of randomized computation; it cannot correct either kind of mismatch.
+
+Monitor input ranges, missingness, output and alert patterns, and compare them with development conditions. Input changes are warning signals, not proof by themselves that accuracy has degraded; check outcomes when trustworthy labels become available. Define action rules in advance: investigate, obtain new validation evidence, recalibrate where justified, retrain only with appropriate data, or defer predictions when conditions fall outside the validated domain.
+
+## Key takeaways
+
+- Aleatoric uncertainty is variation in the observations; epistemic uncertainty comes from limited knowledge.
+- Define the operating domain by the conditions that matter, not only by the minimum and maximum of each input.
+- Calibration is a group-level property. High confidence is not proof of accuracy or permission to extrapolate.
+- Distribution shift is a change of population; drift is gradual change over time.
+- Set monitoring, deferral and revalidation rules before deployment.
 
 Pause and explain: Can a high model confidence justify using it outside the validated operating domain?
 
 ### Verification and validation are different checks
 
-Verification asks whether the intended equations or algorithm were implemented correctly. Check units, known examples, bounds, limiting cases, sign conventions and reproducibility. Validation asks whether the model adequately represents the real system for the intended purpose, using appropriate independent physical evidence.
+## What you are expected to learn
 
-For a power model, confirm that ΔpQ has watts as units and that a known test computes correctly. Then compare predictions with calibrated measurements across relevant conditions. A simulator matching itself in synthetic examples is useful verification of a workflow, not validation of real hardware.
+Separate implementation verification from real-system validation, select evidence appropriate to each, and keep enough provenance for another engineer to reproduce and audit the procedure.
 
-Keep provenance: acquisition details, transformations, split IDs, code and versions. Reproducibility means another person can regenerate the stated procedure; repeated wrong results are still wrong. Explain limitations proportional to evidence.
+## Verification: did we implement the method correctly?
+
+Verification checks whether the intended equations, code or algorithm were implemented correctly. Use known cases, dimensional analysis, bounds, limiting cases and sign conventions, and confirm that the workflow can be repeated. For a pump power model, the product of pressure drop and volumetric flow, delta-p x Q, has units Pa x m^3/s = W. A unit check and a test against a known calculation can catch implementation errors; they do not establish that the model represents a real pump.
+
+## Validation: does it represent the real system?
+
+Validation asks whether the model is adequate for its intended purpose on the physical system. Compare predictions with appropriate independent, calibrated measurements across relevant operating conditions. A synthetic dataset or simulator can test whether code runs and the evaluation workflow behaves as expected, but agreement with synthetic data alone provides no physical validation of real hardware. Keep evidence used for final validation independent of fitting and model selection, and preserve the final test boundary until development decisions are complete.
+
+## Provenance and reproducibility
+
+Record how and when data were acquired, sensor and calibration context, units, transformations, split identifiers, code and environment versions, model settings, and material manual decisions. This lets another person regenerate the stated procedure and understand which evidence supports each result. Reproducibility is not correctness: the same bug can produce the same wrong answer repeatedly. A random seed can make randomized steps more repeatable under stated conditions, but does not guarantee identical results across environments or validate a model.
+
+## Re-check after changes
+
+A new sensor, recalibration, operating regime or plant can change the evidence or the system being represented. Review calibration, set explicit deferral rules for unsupported conditions, and establish criteria for collecting new validation data or retraining. Maintain named reviewers and auditable records; neither a successful synthetic test nor a reproducible run substitutes for physical evidence.
+
+## Key takeaways
+
+- Verification checks that the method was implemented correctly; validation checks that it represents the real system.
+- Agreement with synthetic data or a simulator does not validate real equipment.
+- Keep final validation evidence independent of fitting and model selection.
+- Record provenance so another engineer can reproduce and audit the work. Reproducible does not mean correct.
+- Re-check after a new sensor, recalibration, operating regime or plant.
 
 Pause and explain: Is matching a synthetic simulator enough to validate predictions for real equipment?
 
 ### Responsible use and human oversight
 
-Hallucination or confabulation is plausible false or unsupported output. It can include fabricated references, material properties and equations. Check original sources and known numerical cases. Data coverage bias and social fairness concerns are related but different from a neural bias term; use the intended meaning explicitly.
+## What you are expected to learn
 
-Do not share restricted personal, assessment or proprietary information without appropriate permission. Follow institution rules, disclose AI help and retain your reasoning trail. Generated code and connected tools also need security review before use in real systems.
+Recognize unsupported AI-generated claims, protect restricted information, document permitted assistance, and define specific human responsibility and authority to intervene before AI-assisted work affects an engineering decision.
 
-AI computation consumes physical resources. Prefer methods that meet the task with reasonable data and compute demands; this course claims no numerical footprint for a particular tool. Human oversight must specify who checks outputs, can stop actions and owns decisions—not merely say “human in the loop.”
+## Check output integrity
+
+Hallucination or confabulation is plausible but false or unsupported output. In engineering, it may appear as an invented standard citation, incorrect material property or flawed equation. Trace claims to original, authoritative sources and independently check equations with known numerical cases, units and assumptions. A fluent response or citation label is not evidence. Pass outputs through a verification gate before using them in a report, calculation or system action.
+
+Use precise language for different kinds of bias. Data-coverage bias means relevant machines, people or operating conditions are missing or underrepresented in the examples. Social fairness concerns unequal performance or impact across people or groups when relevant to the application. The bias term in a neural network is an additive model parameter. These are distinct meanings and need different analyses; do not treat one as evidence about another.
+
+## Protect information and systems
+
+Do not share restricted personal, assessment or proprietary data without permission and appropriate safeguards. Follow institutional disclosure and information-handling policies. Generated code and connected tools can introduce security risks; review their behavior, permissions, inputs and outputs before integrating them with engineering systems. Use source control and logging so changes and actions can be examined.
+
+## Make human oversight operational
+
+“Human in the loop” is not a control unless responsibility is specific. Name the reviewer and decision owner, state which outputs require review, define what evidence must be checked, and give an authorized person explicit ability to pause or stop an action. Keep an audit trail of data provenance, assumptions, units, baseline comparisons and decisions. For an unsupported claim, restricted information or sensor shift, specify the corrective action rather than relying on a general warning.
+
+## Account for resources and disclosure
+
+AI computation consumes physical resources. Choose methods scaled to the engineering task and balance analytical needs against available compute and resource constraints; avoid unsupported numerical claims about a tool's footprint. Disclose AI assistance as required by institutional policy and retain a verifiable reasoning trail so a reviewer can distinguish supplied evidence, generated suggestions and the engineer's final decisions.
+
+## Key takeaways
+
+- Trace AI-generated claims to authoritative sources, and check equations with known cases and units.
+- Data-coverage bias, social fairness and the neural-network bias term are different ideas.
+- Do not share restricted personal, assessment or proprietary data without permission and safeguards.
+- Human oversight needs a named reviewer, defined checks and the authority to stop an action.
+- Disclose AI assistance as policy requires and keep a verifiable reasoning trail.
 
 Pause and explain: What evidence and disclosure would you attach to an AI-assisted lab submission?
 
@@ -1112,6 +1182,14 @@ An active sensor connection also creates data-integrity and cybersecurity respon
 
 Physics-informed learning incorporates physical equations or constraints into a learning approach, for example by adding a penalty when a predicted state violates a governing equation or conservation relationship. A physics-informed neural network (PINN) is one particular architectural family; it is not a synonym for every hybrid or physics-informed model. Examples of physical structure include a force relationship such as F = ma or thermodynamic constraints.
 
+## Key takeaways
+
+- Choose the model and the evidence to match the engineering decision.
+- A surrogate speeds up design search; re-evaluate promising candidates with the original simulation or experiment.
+- The objective states the goal; constraints decide which designs are feasible.
+- A digital twin has an active data connection to the physical equipment; an isolated CAD model does not.
+- Physics-informed learning builds physical equations into learning; a PINN is one particular type.
+
 Pause and explain: A surrogate predicts a promising design. Which checks establish feasibility, and what makes a digital twin different from an isolated CAD model?
 
 ### A small project you can defend
@@ -1148,6 +1226,14 @@ The four starter notebooks cover data inspection, pump-power modelling, fault de
 
 Keep the notebook runnable from a clean kernel and record the data, environment, split, baseline, modelling choices, checks, limitations and failure modes. Follow institutional policy for AI assistance, disclose permitted use and checks, and do not submit private or restricted information to an external service without authorization.
 
+## Key takeaways
+
+- Bound the project to one decision, with documented inputs, target, data provenance and operating domain.
+- Label synthetic data clearly; it can exercise a workflow but cannot validate a real machine.
+- Fit preprocessing on training data only and keep the final test set locked.
+- Compare with a training-mean baseline and, where appropriate, a physical calculation.
+- Report errors with units, add a physical check, and keep the notebook reproducible and your own.
+
 Pause and explain: Write one project sentence containing decision, inputs, output and evidence.
 
 ### Submit evidence, not only a browser score
@@ -1173,6 +1259,14 @@ The rubric asks whether the problem and data are well defined, the baseline and 
 Restart the kernel and run every cell from top to bottom. Resolve unrecorded variable dependencies, inspect outputs, and make the notebook runnable by a reviewer. State the model-selection rationale, failure modes or thresholds, and the physical operating domain—including the valid machine bounds, operating parameters and load ranges.
 
 Submit runnable notebooks, domain limitations, independent physics checks and AI disclosures. Preserve enough information about the data, environment and decisions for a reviewer to reproduce the result, then explain one modelling choice and one failure mode. A browser completion record must not be described as evidence that a model is safe or ready to deploy.
+
+## Key takeaways
+
+- The browser grade combines 70% mean best module quiz score and 30% final assessment; it checks knowledge only.
+- A browser score cannot authenticate a learner, validate a model or authorize deployment.
+- The practical rubric weights data and preprocessing 45%, evaluation and physics 45%, and reproducibility and AI disclosure 10%.
+- Restart the kernel and run the notebook from top to bottom before submitting.
+- Submit runnable notebooks, operating limits, independent physics checks and AI disclosures.
 
 Pause and explain: What can a clean, reproducible project demonstrate that a browser score cannot, and which operating limits must a reviewer see?
 
