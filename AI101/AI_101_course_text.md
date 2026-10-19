@@ -1038,6 +1038,16 @@ Distribution shift occurs when the deployment population differs from the develo
 
 Monitor input ranges, missingness, output and alert patterns, and compare them with development conditions. Input changes are warning signals, not proof by themselves that accuracy has degraded; check outcomes when trustworthy labels become available. Define action rules in advance: investigate, obtain new validation evidence, recalibrate where justified, retrain only with appropriate data, or defer predictions when conditions fall outside the validated domain.
 
+## Check your understanding
+
+Can high model confidence justify using a model outside its validated operating domain?
+
+ANSWER: No. Confidence is not proof of calibration or accuracy, and calibration is only checked for the conditions evaluated. Outside the validated domain, defer the prediction or gather new validation evidence.
+
+A pump model developed at one plant is moved to a different type of plant. Is this drift or distribution shift?
+
+ANSWER: Distribution shift: the deployment population differs from the development population. Drift is gradual change over time, such as sensor ageing or wear.
+
 ## Key takeaways
 
 - Aleatoric uncertainty is variation in the observations; epistemic uncertainty comes from limited knowledge.
@@ -1069,6 +1079,16 @@ Record how and when data were acquired, sensor and calibration context, units, t
 ## Re-check after changes
 
 A new sensor, recalibration, operating regime or plant can change the evidence or the system being represented. Review calibration, set explicit deferral rules for unsupported conditions, and establish criteria for collecting new validation data or retraining. Maintain named reviewers and auditable records; neither a successful synthetic test nor a reproducible run substitutes for physical evidence.
+
+## Check your understanding
+
+Is matching a synthetic simulator enough to validate predictions for real equipment?
+
+ANSWER: No. It can verify that the code and evaluation workflow behave as intended. Validation needs independent, calibrated measurements from the real system across the relevant operating conditions.
+
+A unit check confirms that Δp × Q gives watts. Is that verification or validation?
+
+ANSWER: Verification. It checks the implementation, not whether the model represents a real pump.
 
 ## Key takeaways
 
@@ -1103,6 +1123,16 @@ Do not share restricted personal, assessment or proprietary data without permiss
 ## Account for resources and disclosure
 
 AI computation consumes physical resources. Choose methods scaled to the engineering task and balance analytical needs against available compute and resource constraints; avoid unsupported numerical claims about a tool's footprint. Disclose AI assistance as required by institutional policy and retain a verifiable reasoning trail so a reviewer can distinguish supplied evidence, generated suggestions and the engineer's final decisions.
+
+## Check your understanding
+
+What evidence and disclosure would you attach to an AI-assisted lab submission?
+
+ANSWER: State which AI assistance you used, as policy requires. Trace claims to authoritative sources, show known-case, unit and assumption checks, and keep a reasoning trail that separates supplied evidence, generated suggestions and your own decisions.
+
+Why is "a human in the loop" not enough on its own?
+
+ANSWER: Oversight works only when responsibility is specific: a named reviewer, defined checks and the authority to pause or stop an action.
 
 ## Key takeaways
 
@@ -1182,6 +1212,16 @@ An active sensor connection also creates data-integrity and cybersecurity respon
 
 Physics-informed learning incorporates physical equations or constraints into a learning approach, for example by adding a penalty when a predicted state violates a governing equation or conservation relationship. A physics-informed neural network (PINN) is one particular architectural family; it is not a synonym for every hybrid or physics-informed model. Examples of physical structure include a force relationship such as F = ma or thermodynamic constraints.
 
+## Check your understanding
+
+A surrogate predicts a promising pump design. What must happen before the design is accepted?
+
+ANSWER: Re-evaluate it with the original simulation or experiment, check every constraint and its units separately from the objective, and validate it against evidence from the real system.
+
+What makes a digital twin different from an isolated CAD model?
+
+ANSWER: An active data connection to the physical equipment, such as ongoing pressure, flow or temperature measurements. Visual similarity is not the distinction.
+
 ## Key takeaways
 
 - Choose the model and the evidence to match the engineering decision.
@@ -1226,6 +1266,16 @@ The four starter notebooks cover data inspection, pump-power modelling, fault de
 
 Keep the notebook runnable from a clean kernel and record the data, environment, split, baseline, modelling choices, checks, limitations and failure modes. Follow institutional policy for AI assistance, disclose permitted use and checks, and do not submit private or restricted information to an external service without authorization.
 
+## Check your understanding
+
+Write one project sentence containing a decision, inputs, an output and evidence.
+
+ANSWER: For example: to help decide whether a pump is operating efficiently, predict measured electrical input power in kW from the flow and pressure rise available at decision time, and compare locked-test MAE and RMSE with a training-mean baseline and a physical calculation.
+
+Why can a random row split make results look too optimistic?
+
+ANSWER: Related records from the same machine, event or time sequence can end up in both the training and test sets, so the test no longer reflects new conditions.
+
 ## Key takeaways
 
 - Bound the project to one decision, with documented inputs, target, data provenance and operating domain.
@@ -1259,6 +1309,16 @@ The rubric asks whether the problem and data are well defined, the baseline and 
 Restart the kernel and run every cell from top to bottom. Resolve unrecorded variable dependencies, inspect outputs, and make the notebook runnable by a reviewer. State the model-selection rationale, failure modes or thresholds, and the physical operating domain—including the valid machine bounds, operating parameters and load ranges.
 
 Submit runnable notebooks, domain limitations, independent physics checks and AI disclosures. Preserve enough information about the data, environment and decisions for a reviewer to reproduce the result, then explain one modelling choice and one failure mode. A browser completion record must not be described as evidence that a model is safe or ready to deploy.
+
+## Check your understanding
+
+What can a clean, reproducible project show that a browser score cannot?
+
+ANSWER: That the work runs from top to bottom, uses a justified split and baseline, reports errors with units and physical checks, and states its limits, all of which a reviewer can rerun. A browser score only checks knowledge.
+
+Which operating limits must a reviewer see?
+
+ANSWER: The physical operating domain: the valid machine bounds, operating parameters and load ranges for which the results are claimed.
 
 ## Key takeaways
 
