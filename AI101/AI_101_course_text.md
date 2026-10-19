@@ -57,7 +57,7 @@ Consider these three examples:
 - A bearing-fault classifier learns from examples and produces an estimate related to a fault condition.
 - A generative system drafts a maintenance explanation or report.
 
-All three can operate in the same plant, but each does a different job, so each needs a different check. The trip needs its set-point and response time confirmed. The fault estimate needs testing against independent examples. The maintenance draft needs checking against records and calculations, because a draft can read well and still contain an incorrect calculation or an unsupported claim about equipment behaviour.
+All three can operate in the same plant, but each does a different job, so each needs a different check. The trip needs its setpoint and response time confirmed. The fault estimate needs testing against independent examples. The maintenance draft needs checking against records and calculations, because a draft can read well and still contain an incorrect calculation or an unsupported claim about equipment behaviour.
 
 ## Check your understanding
 
