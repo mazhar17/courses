@@ -5,58 +5,250 @@ Version 1.0. Authored foundational course; synthetic teaching examples. Practica
 ## Module 1: What AI is and where it fits
 
 Learning outcomes:
-- Distinguish AI, ML, deep learning, generative AI, automation and robotics.
-- Describe an engineering decision an AI system could support.
+- Explain how AI, machine learning, deep learning, generative AI and data science relate to each other.
+- Distinguish automation, robotics and learning, and explain narrow AI and the proposed idea of AGI.
+- Identify the decision, measurements, model output and engineering action in a pump-inspection example, and explain what synthetic examples can and cannot show.
 
 ### A map of related ideas
 
-Artificial intelligence is a broad field concerned with systems performing tasks associated with intelligent behaviour. It includes learning approaches and approaches based on explicit rules, search or knowledge. Machine learning is one approach: patterns learned from examples determine part of the system's behaviour. Deep learning uses neural networks with multiple layers.
+## What you are expected to learn
 
-Generative AI describes a capability: producing content such as text, code or images. It is not another step in a simple AI → ML → DL → GenAI nesting chain. A deep network can classify a defect without generating content. A language model can generate content using deep learning. Data science overlaps these fields while also including measurement, cleaning, analysis and communication.
+You are expected to explain how artificial intelligence (AI), machine learning (ML), deep learning, generative AI and data science relate to each other. You should also be able to describe what each one does in an engineering system.
 
-Engineering example: a fixed over-temperature trip is an automation rule. A learned classifier estimating bearing-fault probability is ML. A system drafting a maintenance explanation is generative AI. All three can appear in one plant, but their evidence and responsibilities differ.
+## Why this matters to mechanical engineers
 
-Pause and explain: Can a deep-learning system be non-generative? Give a defect-inspection example.
+Mechanical engineers work with measurements such as temperature, pressure, vibration, flow and current. AI and ML can help find patterns in these measurements or carry out a clearly defined task. Engineers still need to understand the physical system, check the results and take responsibility for decisions. This course explains when these tools can help and what evidence you need before acting on their outputs.
+
+## 1. Artificial intelligence: the broad field
+
+Artificial intelligence is a broad field concerned with systems that carry out tasks associated with intelligent behaviour. These systems can work in different ways. Some follow rules written in advance. Others search for solutions, use stored knowledge or learn patterns from examples. Calling a system AI therefore does not tell you whether it learns from data.
+
+A fixed rule tells a system what to do. A learning method uses examples to learn part of its behaviour. In the infographic, the outer rectangle represents the whole field of AI. It includes several approaches, not just one algorithm.
+
+## 2. Machine learning and deep learning
+
+Machine learning is one approach within AI. An ML model uses examples to learn patterns or to adjust its parameters, which are the values that determine how it turns inputs into an output. For example, a pump-power predictor learns from measurements taken during pump operation. A bearing-fault classifier learns to distinguish the conditions represented in its training examples.
+
+Deep learning is a type of ML that uses neural networks with multiple layers. The nested rectangles in the infographic show this relationship: AI includes ML, and ML includes deep learning. Some AI systems do not use neural networks, and some ML models do not use deep learning.
+
+The term deep learning tells you how a model is built. It does not tell you what the output means or whether the result suits the engineering decision you want to make.
+
+## 3. Classification and generation
+
+Classification means predicting which category an input belongs to. For example, a surface-defect model might label an image as cracked or intact. A neural network with multiple layers can make this prediction without generating explanatory text, code or images.
+
+Generative AI produces content. For example, a system that drafts a maintenance explanation is carrying out a generative task. A language model can use deep learning to generate text.
+
+Deep learning and generation describe different aspects of a system. Deep learning describes the model approach. Generation describes the kind of output. For this reason, generative AI should not be drawn as a required fourth level inside the AI, ML and deep-learning rectangles.
+
+When you describe a system, ask two questions. Which approach does it use? What output does it produce? A deep-learning classifier and a deep-learning text generator use the same broad approach but produce different kinds of output.
+
+## 4. Data science includes the measurement workflow
+
+Data science includes collecting measurements, cleaning data, analysing results, building models and communicating findings. It overlaps with AI and ML, but building a model is only one part of the work.
+
+The slides show five stages: measure, clean, analyse, model and communicate. Each stage matters. Before you use a model to support an engineering explanation, check the sensor calibration information and investigate missing readings. A model can produce an output even when its measurements have problems, so the output alone does not show that the data are reliable.
+
+## 5. Three components in one plant
+
+Consider these three examples:
+
+- A fixed over-temperature trip follows a rule and issues a trip command.
+- A bearing-fault classifier learns from examples and produces an estimate related to a fault condition.
+- A generative system drafts a maintenance explanation or report.
+
+All three can operate in the same plant, but each does a different job, so each needs a different check. The trip needs its set-point and response time confirmed. The fault estimate needs testing against independent examples. The maintenance draft needs checking against records and calculations, because a draft can read well and still contain an incorrect calculation or an unsupported claim about equipment behaviour.
+
+## Check your understanding
+
+Can a deep-learning system be non-generative? Try answering before opening the explanation.
+
+ANSWER: Yes. A neural network with multiple layers can classify a surface image as cracked or intact without generating new explanatory content.
+
+Why should generative AI not be shown as another compulsory level inside deep learning?
+
+ANSWER: Generation describes the content a system produces. Deep learning describes the model approach it uses. These descriptions answer different questions.
+
+## Key takeaways
+
+- AI includes systems that learn from data and systems that use other approaches.
+- ML is one approach within AI. Deep learning is ML using neural networks with multiple layers.
+- Classification predicts a category. Generation produces content.
+- Data science includes measurement, data preparation and communication, as well as modelling.
+- Identify what each engineering component produces and what evidence is needed to check it.
+
+Pause and explain: A deep-learning model labels each casting image as cracked or intact. Is it generative? Answer with the two questions: which approach does it use, and what output does it produce?
 
 ### Automation, robots and general intelligence
 
-Automation carries out a process with reduced manual intervention. A controller executing an explicit rule need not learn. A robot is a physical machine that senses or acts; it may use conventional control, AI or both. Calling equipment a robot does not establish that its decisions use ML.
+## What you are expected to learn
 
-Narrow AI addresses particular tasks. Artificial general intelligence, or AGI, refers to proposed broad capabilities; definitions and tests are contested. This course makes no claim that a current assistant has human understanding or universal competence.
+You are expected to distinguish automation, robotics and learning. You should also be able to explain narrow AI and the proposed idea of artificial general intelligence (AGI). The aim is to judge a system by what it does and what evidence supports it, not by its product label.
 
-Ask what the system actually does: what are the inputs, outputs, learned components, permitted actions and failure consequences? Marketing labels alone cannot answer those questions. A chatbot that writes fluent text is not thereby qualified to authorize a pressure-vessel design.
+## 1. Automation describes process execution
 
-Pause and explain: Is a conventional PID-controlled robot necessarily using ML? Explain.
+Automation means carrying out a process with less manual intervention. A controller can do this by following fixed rules without learning from data. In the course example, a thermostat switches off above 30 °C. This is automation: the thermostat follows a temperature rule. It does not show learning from examples.
+
+The 30 °C threshold is a teaching example, not a recommended setting for equipment. The key question is how the controller decides what to do. Was the rule specified in advance, or was the behaviour learned from data?
+
+## 2. Robotics describes physical sensing and action
+
+A robot is a physical machine that senses, decides and acts. Its decisions may come from conventional control rules, from AI or from a combination of the two. Calling a machine a robot does not tell you whether it learns.
+
+For example, the slides show a conventional PID feedback controller connected to a robot and a sensor. The controller compares the measured output with a target value, called the setpoint, and applies specified feedback rules. This arrangement can work without learning from data. If a component does learn, identify that component and explain what it does.
+
+Automation and robotics can overlap: a robot can carry out an automated process. Both can work without ML, and both can include ML. To decide whether learning is involved, examine how the system works.
+
+## 3. Narrow AI and general intelligence
+
+Narrow AI is designed for particular tasks. Familiar examples include filtering spam, estimating travel times and suggesting text completions. In engineering, a classifier that identifies a defined set of defects is narrow AI. Testing it gives evidence about those tasks under the conditions tested. Doing one task well does not show that a system can perform unrelated tasks or understands more broadly.
+
+AGI refers to proposed AI capabilities that would apply broadly across tasks. People disagree about how to define and test it, so the label alone does not show that a system can do every task. This course does not claim that a current assistant has human understanding or can reliably handle every engineering problem.
+
+For example, an assistant may produce fluent text. That fluency does not provide the evidence or authority needed to approve a pressure-vessel design. Always check the task, the supporting evidence and the actions the system is allowed to take.
+
+## 4. Five questions for evaluating a system
+
+Use the sequence in the slides to describe a system:
+
+- Inputs: What information does the system receive?
+- Learned components: Which parts, if any, learn from data?
+- Outputs: What does each component produce?
+- Permitted actions: What is the system allowed to do with that output?
+- Failure consequences: What happens if the output or action is wrong?
+
+These questions bring out details that a product label may leave out. They also separate a recommendation from an action the system has permission to carry out. A maintenance explanation, a classification result and a physical control command each need checks suited to their purpose.
+
+## Worked example: a bearing alert
+
+Consider a hypothetical bearing-alert system that uses vibration measurements. Its inputs are measurements available before the maintenance decision. A trained classifier uses them to estimate a defined condition, such as healthy or needs inspection. The alert is a reason to investigate, not a confirmed diagnosis.
+
+A responsible procedure sends the alert to a qualified person for review. It does not assume that every alert requires an automatic shutdown. Before using the system, check how often it misses faults and how often it raises false alarms. Use representative examples whose conditions have been checked independently.
+
+A similar classification method could be explored on a hypothetical garment-production line, where an image model flags a suspected fabric defect for inspection. This is a possible application, not a claim about a system in any particular factory.
+
+## 5. Matching claims with evidence
+
+A fixed controller shows that a system can follow a specified rule. To call a component ML, check that it actually learns from data. A robot arm shows physical sensing or action, but you still need to examine how it is controlled. A classifier needs performance evidence for its defined task. An AGI claim needs a clear definition and suitable tests.
+
+Describe each component separately. This makes it easier to explain what the machine does, where learning is used and who is responsible for checking its outputs.
+
+## Check your understanding
+
+Is a conventional PID-controlled robot necessarily using ML?
+
+ANSWER: No. It can follow specified feedback rules without learning from data. If another component learns, identify that component separately.
+
+Does a thermostat switching off above 30 °C demonstrate AGI?
+
+ANSWER: No. It shows a thermostat following a fixed automation rule. It provides no evidence of broad general capability.
+
+## Key takeaways
+
+- Automation reduces manual intervention. Robotics involves machines that sense, decide and act.
+- Either can use conventional control, AI or a combination.
+- The word robot does not tell you whether ML is involved.
+- Narrow AI handles defined tasks. People still disagree about how to define and test AGI.
+- Check inputs, learning, outputs, permitted actions and the consequences of errors.
+
+Pause and explain: A robot arm is driven by a conventional PID controller. Is it using ML? What would you need to find out before calling any part of it ML?
 
 ### Start with an engineering decision
 
-Useful projects start with a decision, not with an algorithm. Consider a pump whose vibration and bearing temperature increase. The decision might be whether to request inspection. Inputs must be available before that decision; the output could be a fault alert. Success might mean finding faults while keeping false alarms manageable.
+## What you are expected to learn
 
-The engineer still owns operating limits, measurement quality and validation. Distinguish the model output from the action it supports. “Fault score = 0.8” is an estimate from a model, not permission to continue running equipment. A practical description states the intended users, operating domain and escalation path.
+You are expected to use the pump-inspection example to identify four things: the decision to support, the measurements available, the model output and the engineering action. You should also be able to explain what synthetic teaching examples can and cannot demonstrate.
 
-Throughout this course, synthetic examples teach methods. They are not validated machinery recommendations. Use the applications to practise reasoning about evidence and consequences.
+## 1. The engineering decision comes first
 
-Pause and explain: State a decision, two inputs and an output for one ME application.
+Consider a pump whose vibration and bearing temperature are increasing. Start with a question: should an inspection be requested? This gives the project a clear purpose before you choose an algorithm.
+
+Choosing an algorithm does not, by itself, tell you who will use the result, what information is available or what happens if the result is wrong. State the decision you want to support first. Then consider how a model could help.
+
+## 2. Measurements, model output and inspection
+
+The slides divide the maintenance process into separate stages:
+
+- Inputs: vibration and bearing-temperature measurements available before the decision.
+- Model processing: a detector trained on examples uses those measurements.
+- Output: a fault score or alert.
+- Engineering review: the engineer reviews the output and the evidence behind it.
+- Decision: request an inspection when the defined procedure calls for one.
+
+The slides express vibration in millimetres per second and bearing temperature in degrees Celsius. They give no numerical operating limits for either quantity, so you cannot use this example to set limits.
+
+Keep the stages in order. The model supplies information for the decision. The engineer decides what action is appropriate and under which conditions.
+
+## 3. Success includes error consequences
+
+A useful system detects faults while keeping false alarms manageable. Missing a fault matters, but repeated false alarms also make an inspection system less useful, because people stop trusting its alerts.
+
+The lesson sets no numerical performance target and no score at which an alert should be issued. Its purpose is to show how to define the decision and weigh the consequences of errors. It does not describe a detector ready for use on equipment.
+
+## 4. A fault score is an estimate
+
+The course uses the illustrative output "Fault score = 0.8". The score is dimensionless, meaning it has no physical unit. It is a model estimate, and it is not permission to keep operating the pump.
+
+The example does not explain how the score was calculated. A score is a calibrated probability only if, among many cases scoring 0.8, about 80% really are faults. Nothing here shows that, so do not read 0.8 as an 80% chance of failure just because it lies between zero and one.
+
+Before acting on a score, check measurement quality, operating limits and whether the model has been validated, meaning tested on examples that were not used to build it. A practical description also names who will use the result, the conditions in which the system is intended to work, called the operating domain, and the escalation path, which is the route for passing a concern to the responsible decision-maker. This lesson gives no procedure for particular equipment.
+
+## 5. Different components require different checks
+
+The slides distinguish three components:
+
+- A fixed trip follows an automation rule when its specified condition occurs.
+- A learned detector uses patterns learned from examples to predict a fault-related score. Check its performance on examples that were not used to fit the model.
+- A maintenance assistant generates text. Check that text against the relevant records.
+
+Each check answers a different question. An accurate maintenance explanation does not show that the detector performs well, and a good detector does not make a generated explanation correct.
+
+## 6. Synthetic examples and physical validation
+
+Synthetic examples are constructed for teaching. They help you practise analytical methods and think about what evidence is needed and what could happen if a result is wrong.
+
+They do not show that a real machine is safe or that a maintenance recommendation is valid. When you discuss a result, say what the example demonstrates and what still needs to be checked on physical equipment.
+
+## Check your understanding
+
+State the decision, two inputs and one output in the pump example.
+
+ANSWER: The decision is whether to request an inspection. The inputs are vibration and bearing temperature measured before the decision. The output can be a fault alert or fault score.
+
+Does a fault score of 0.8 authorize continued operation?
+
+ANSWER: No. It is a model estimate. Engineers remain responsible for checking operating limits, measurement quality and model validation, and for passing concerns along the escalation path.
+
+## Key takeaways
+
+- Define the engineering decision before choosing an algorithm.
+- Identify the measurements available before the decision and the output the model should produce.
+- Consider both missed faults and false alarms.
+- Keep model estimates separate from decisions about equipment operation.
+- State who will use the output, its operating domain and the escalation path for concerns.
+- Synthetic teaching examples do not validate recommendations for real machinery.
+
+Pause and explain: For one mechanical-engineering application, state the decision, two inputs available before that decision, the model output and who reviews it.
 
 ### Terms
 
-**AI**: A broad field of systems performing tasks associated with intelligent behaviour. Example: Search-based planning and learned fault detection are different AI approaches.
+**AI**: AI is a broad field. It includes systems that carry out tasks associated with intelligent behaviour. Example: A system can use search to plan a task or learn from examples to detect faults.
 
-**Machine learning**: Methods that learn patterns or model parameters from data. Example: Fit a pump-power predictor from measured examples.
+**Machine learning**: Machine learning uses data to learn patterns or adjust model parameters. Example: Train a model to predict pump power using measured examples.
 
-**Deep learning**: ML using neural networks with multiple layers. Example: A CNN recognizes surface defects.
+**Deep learning**: Deep learning is machine learning that uses neural networks with multiple layers. Example: A convolutional neural network (CNN) can identify surface defects.
 
-**Generative AI**: AI that produces content, such as text, code or images. Example: Draft a Python function, then test it.
+**Generative AI**: Generative AI produces content, such as text, code or images. Example: Ask it to draft a Python function, then test the function.
 
-**Data science**: A workflow for acquiring, analysing, modelling and communicating data. Example: Inspect calibration and missing readings before fitting.
+**Data science**: Data science includes collecting data, cleaning it, analysing it, building models and explaining the results. Example: Check calibration information and missing readings before fitting a model.
 
-**Automation**: Executing a process with reduced manual intervention, possibly using fixed rules. Example: A thermostat switches at a set temperature.
+**Automation**: Automation carries out a process with less manual intervention. It can use fixed rules. Example: A thermostat switches at a set temperature.
 
-**Robotics**: The study and use of physical machines that sense and act. Example: A robot arm may use conventional control.
+**Robotics**: Robotics involves physical machines that sense, decide and act. Example: A robot arm can use conventional control without learning from data.
 
-**Narrow AI**: AI specialized for particular tasks. Example: A classifier identifies a specified family of defects.
+**Narrow AI**: Narrow AI is designed for particular tasks. Example: A classifier identifies a defined set of defects.
 
-**AGI**: A proposed broad form of general intelligence without one universally agreed test. Example: Discuss definitions without assuming an assistant meets them.
+**AGI**: AGI refers to proposed AI capabilities that would apply broadly across tasks. There is no single agreed test for it. Example: Check how AGI is defined. Do not assume that an assistant meets that definition.
 
 
 ## Module 2: Engineering problems and modelling approaches
