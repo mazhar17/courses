@@ -37,7 +37,7 @@ The term deep learning tells you how a model is built. It does not tell you what
 
 Classification means predicting which category an input belongs to. For example, a surface-defect model might label an image as cracked or intact. A neural network with multiple layers can make this prediction without generating explanatory text, code or images.
 
-Generative AI produces content [4]. For example, a system that drafts a maintenance explanation is carrying out a generative task. A language model can use deep learning to generate text.
+Generative AI produces new content, such as text, images or other samples that resemble its training data [4, Ch. 20]. For example, a system that drafts a maintenance explanation is carrying out a generative task. A language model can use deep learning to generate text.
 
 Deep learning and generation describe different aspects of a system. Deep learning describes the model approach. Generation describes the kind of output. For this reason, generative AI should not be drawn as a required fourth level inside the AI, ML and deep-learning rectangles.
 
@@ -123,7 +123,7 @@ These questions bring out details that a product label may leave out [9]. They a
 
 Consider a hypothetical bearing-alert system that uses vibration measurements. Its inputs are measurements available before the maintenance decision. A trained classifier uses them to estimate a defined condition, such as healthy or needs inspection. The alert is a reason to investigate, not a confirmed diagnosis.
 
-A responsible procedure sends the alert to a qualified person for review. It does not assume that every alert requires an automatic shutdown. Before using the system, check how often it misses faults and how often it raises false alarms [10]. Use representative examples whose conditions have been checked independently.
+A responsible procedure sends the alert to a qualified person for review. It does not assume that every alert requires an automatic shutdown. Before using the system, check how often it misses faults and how often it raises false alarms; Module 8 shows how. Check its diagnostic performance on representative examples [10], and use examples whose conditions have been checked independently.
 
 A similar classification method could be explored on a hypothetical garment-production line, where an image model flags a suspected fabric defect for inspection. This is a possible application, not a claim about a system in any particular factory.
 
@@ -207,7 +207,7 @@ Each check answers a different question. An accurate maintenance explanation doe
 
 Synthetic examples are constructed for teaching. They help you practise analytical methods and think about what evidence is needed and what could happen if a result is wrong.
 
-They do not show that a real machine is safe or that a maintenance recommendation is valid [13]. When you discuss a result, say what the example demonstrates and what still needs to be checked on physical equipment.
+They are not validation against the physical system [13], so they do not show that a real machine is safe or that a maintenance recommendation is valid. When you discuss a result, say what the example demonstrates and what still needs to be checked on physical equipment.
 
 ## Check your understanding
 
@@ -332,7 +332,7 @@ Forecasting estimates a future outcome [18]. Tomorrow's HVAC electricity demand 
 
 ## Diagnosis, control and optimization
 
-Diagnosis asks which condition or cause explains the evidence [10]. An unusual vibration can produce an anomaly alert, but confirming bearing damage requires additional evidence such as physical inspection.
+Diagnosis identifies the health state, or the fault type or location, indicated by the evidence [10]. An unusual vibration can produce an anomaly alert, but confirming bearing damage requires additional evidence such as physical inspection.
 
 Control selects actions to regulate system behaviour over time [7]. Adjusting a fan-speed command to maintain a target temperature is a control task.
 
@@ -373,7 +373,7 @@ This lesson explains when ML may add value to an engineering project. You will u
 
 A baseline is a simple comparison method [16]. Begin with the simplest adequate approach for the engineering decision. If a trusted equation meets the required accuracy and speed, additional ML can add maintenance burden without sufficient benefit.
 
-ML may be worth evaluating when relevant patterns cannot be specified directly, observations are suitable for the intended use, or a costly simulator needs an approximate response model [20]. These conditions justify evaluation; they do not guarantee success.
+ML may be worth evaluating when relevant patterns cannot be specified directly and observations are suitable for the intended use. Another case is a costly simulator that needs an approximate response model [20]. These conditions justify evaluation; they do not guarantee success.
 
 ## Four checks before proposing ML
 
@@ -453,7 +453,7 @@ You will identify samples, features, targets and labels in an engineering table,
 
 ## Read each row as an example
 
-A dataset is a collection of examples and their associated variables and context [16]. A sample is one example. In the pump dataset, one row represents a steady operating test. Its columns include flow rate, pressure rise, shaft speed and measured electrical power.
+A dataset is a collection of observations, or examples, and the variables measured on them [16]. In this course, a sample means one example; some textbooks use “sample” for the whole set of observations. In the pump dataset, one row represents a steady operating test. Its columns include flow rate, pressure rise, shaft speed and measured electrical power.
 
 Features are the input variables used by a model. The target is the output quantity or category to be learned. When estimating pump power, flow rate, pressure rise and speed are features; measured electrical power is the target. A numerical target supports a regression problem, while a category supports classification.
 
@@ -479,7 +479,7 @@ The features and target at the same row position must describe the same test. Th
 
 ## Notice when rows are time ordered
 
-A table can contain independent tests or repeated readings from a time series [18]. When rows are successive measurements from the same machine, their order and dependence matter; treating them as independent examples can mislead evaluation. Preserve timestamps and choose splits that match the intended prediction or transfer question, as developed in Modules 10 and 12.
+A table can contain cross-sectional records, such as separate tests, or repeated readings from a time series [18]. When rows are successive measurements from the same machine, their order and dependence matter; treating them as independent examples can mislead evaluation. Preserve timestamps and choose splits that match the intended prediction or transfer question, as developed in Modules 10 and 12.
 
 ## Check your understanding
 
@@ -819,7 +819,7 @@ An outlier is unusual relative to a comparison population [27]. It is not automa
 
 A missing reading can carry information about the system [32]. A sensor may drop out during vibration or communication overload. Investigate the operating and measurement context rather than assuming that missingness is unrelated to the event of interest.
 
-Imputation fills a missing value according to a declared rule [32]. It supplies a replacement for processing; it does not recover the original physical measurement. Record which values were changed, the rule used and the reason for the change.
+Imputation fills in, or predicts, a missing value using a stated method [32]. It supplies a replacement for processing; it does not recover the original physical measurement. Record which values were changed, the rule used and the reason for the change.
 
 ## Mean-imputation example
 
@@ -869,7 +869,7 @@ You will calculate min-max scaling and standardization, distinguish transformed 
 
 ## State the scaling rule
 
-Some methods, including distance-based methods and neural training, are sensitive to feature scale [16]. Scaling transforms numerical magnitudes using a stated mathematical rule. Specify that rule rather than relying on an ambiguous term such as “normalization”.
+Some methods, such as distance-based methods and penalized regression, are sensitive to feature scale [16]. Neural-network training is also commonly done on scaled inputs. Scaling transforms numerical magnitudes using a stated mathematical rule. Specify that rule rather than relying on an ambiguous term such as “normalization”.
 
 Min-max scaling is [33]:
 
@@ -927,7 +927,7 @@ You will construct meaningful engineering features, enforce their availability a
 
 ## Build features from engineering knowledge
 
-Feature engineering constructs useful inputs using knowledge of the problem [10]. The course examples include pressure rise, hydraulic power, vibration RMS, frequency-band energy and temperature above ambient. The feature must be meaningful for the task and available when the prediction is made.
+Feature engineering constructs useful inputs using knowledge of the problem; Lei et al. call this hand-crafted feature extraction [10]. The course examples include pressure rise, hydraulic power, vibration RMS, frequency-band energy and temperature above ambient. The feature must be meaningful for the task and available when the prediction is made.
 
 The slides illustrate a hydraulic-power feature:
 
@@ -1692,7 +1692,7 @@ You will explain how decision trees partition inputs, how random forests and boo
 
 ## Decision trees partition input space
 
-A decision tree divides input examples through feature tests [47]. Tests on variables such as load or vibration create piecewise prediction regions, and a terminal region produces the corresponding prediction. A small tree permits direct engineering inspection. A deep tree uses many partitions and can fit training-specific patterns, so its complexity requires validation.
+A decision tree divides input examples through feature tests [16, Ch. 8], [47]. Tests on variables such as load or vibration create piecewise prediction regions, and a terminal region produces the corresponding prediction. A small tree permits direct engineering inspection. A deep tree uses many partitions and can fit training-specific patterns, so its complexity requires validation.
 
 Follow the construction diagram in three stages. First, the root input enters the tree. Next, successive feature tests determine the applicable branch. Finally, the input reaches a terminal region and receives that region's prediction. Partitioning means dividing the input space into these regions. Piecewise means that the prediction is determined separately within each region.
 
@@ -1749,7 +1749,7 @@ You will describe k-means and principal component analysis, explain the effect o
 
 ## Unsupervised grouping and compression
 
-Standard k-means groups unlabelled data points around k centres, called centroids. It reduces the within-cluster sum of squares: the sum of squared Euclidean distances from each point to its assigned centroid [51], [91]. The algorithm can stop at a local minimum, so the result depends on the starting centroids and is often repeated from several starts [91]. The number of clusters is a user-selected algorithmic setting. A cluster count does not prove the number of physical faults or guarantee distinct physical fault classes; engineering interpretation and independent evidence are still required.
+Standard k-means groups unlabelled data points around k centres, called centroids. It reduces the within-cluster sum of squares: the sum of squared Euclidean distances from each point to its assigned centroid [91]. The usual algorithm alternates between assigning points and updating centroids, following Lloyd’s quantization method [51]. The algorithm can stop at a local minimum, so the result depends on the starting centroids and is often repeated from several starts [91]. The number of clusters is a user-selected algorithmic setting. A cluster count does not prove the number of physical faults or guarantee distinct physical fault classes; engineering interpretation and independent evidence are still required.
 
 The engineering example groups unlabelled mechanical operating profiles. A centre represents the mathematical reference for a group in feature space. The distance objective describes the grouping criterion; it supplies no fault diagnosis by itself. Choosing a cluster count tells the algorithm how many groups to form, while identifying what those groups mean physically remains a separate interpretation task.
 
@@ -2132,7 +2132,7 @@ The two weighted input contributions cancel in this example, leaving the bias as
 
 ## 5. Explain why nonlinear operations matter between layers
 
-Combining several affine transformations without nonlinear operations still produces an affine transformation [4]. The slides show three successive weight mappings as W₃(W₂(W₁x)), which can be written as one equivalent mapping. Including additive bias terms preserves the affine character of the composition: W₃(W₂(W₁x + b₁) + b₂) + b₃ = W′x + b′, where W′ = W₃W₂W₁ and b′ = W₃W₂b₁ + W₃b₂ + b₃. The result is linear only when b′ is zero.
+Combining several linear transformations without nonlinear operations still produces a linear transformation [4, Sec. 6.1]; with bias terms, each layer is affine and the combination is still affine. The slides show three successive weight mappings as W₃(W₂(W₁x)), which can be written as one equivalent mapping. Including additive bias terms preserves the affine character of the composition: W₃(W₂(W₁x + b₁) + b₂) + b₃ = W′x + b′, where W′ = W₃W₂W₁ and b′ = W₃W₂b₁ + W₃b₂ + b₃. The result is linear only when b′ is zero.
 
 Consequently, adding affine layers alone does not automatically create a useful nonlinear model. An activation such as ReLU between layers changes the mathematical mapping and prevents this simple collapse. Read the equivalent-layer diagram as a statement about the composition of operations, rather than a guarantee that any particular network will predict an engineering quantity accurately.
 
@@ -2181,7 +2181,7 @@ In a network with multiple parameters, the derivatives concern their respective 
 
 ## 3. Backpropagation computes derivatives through the network
 
-Backpropagation uses the chain rule to compute loss derivatives efficiently through the layers [61]. Follow the derivative-computation block in the slides as a calculation through the existing network. Its result provides gradients for the update stage.
+Backpropagation uses the chain rule to compute loss derivatives efficiently through the layers [4, Sec. 6.5], [61]. Follow the derivative-computation block in the slides as a calculation through the existing network. Its result provides gradients for the update stage.
 
 The distinction in the pipeline is functional: backpropagation calculates the gradients, and an optimizer uses them to change parameters. Treating both stages as one unexplained operation would hide which part computes derivatives and which part applies an update rule.
 
@@ -2263,7 +2263,7 @@ The exact-divisibility condition matters. If a dataset does not divide evenly in
 
 ## 4. More epochs can improve training fit without improving generalization
 
-Deep networks can learn representations useful for complex data, but require appropriate data, computation and validation [3]. Training duration alone does not establish whether those representations perform well on relevant unseen examples.
+Deep networks can learn representations useful for complex data; they typically rely on large datasets and substantial computation [3], and their performance must be checked on held-out data. Training duration alone does not establish whether those representations perform well on relevant unseen examples.
 
 The training-loss diagram shows loss decreasing as training continues. The validation-loss diagram shows an initial decrease followed by an increase. Together, they illustrate how an improving training fit can occur alongside worsening validation performance.
 
@@ -2271,7 +2271,7 @@ Additional epochs can fit training-specific variation. Consequently, a lower tra
 
 ## 5. Use validation to select a checkpoint
 
-A checkpoint records a model state during training [56]. The supplied selection diagram connects monitoring validation performance with choosing the model state to retain. Checkpoint selection is part of development because it determines which trained model will be used.
+A checkpoint is a saved copy of the model’s parameters during training; early stopping keeps the copy with the best validation error [56]. The supplied selection diagram connects monitoring validation performance with choosing the model state to retain. Checkpoint selection is part of development because it determines which trained model will be used.
 
 Use the validation evidence to guide that choice rather than assuming that the last epoch is best. A validation minimum is evidence for a development choice; it is not a guarantee of the best result on every future observation. The resources supply no numerical stopping tolerance or patience setting to apply universally.
 
@@ -2396,7 +2396,7 @@ RNNs, LSTMs and transformers are different mechanisms [63], [66]. The appropriat
 
 ## 3. Define the forecast issue time
 
-An operational forecast must specify when the prediction is issued and what target time or horizon it addresses [18]. Inputs must physically exist at the declared issue time. Observed load before issue may be available. A published weather forecast may be available if it was issued earlier, but its uncertainty must be recorded. Tomorrow's measured weather is unavailable at today's issue time and must not be used as an operational input. Using it evaluates a different information scenario.
+An operational forecast should state when it is issued and what target time or horizon it addresses. Only information available at the issue time can be used; Hyndman and Athanasopoulos call such forecasts ex-ante forecasts [18, Sec. 7.6]. Inputs must physically exist at the declared issue time. Observed load before issue may be available. A published weather forecast may be available if it was issued earlier, but its uncertainty must be recorded. Tomorrow's measured weather is unavailable at today's issue time and must not be used as an operational input. Using it evaluates a different information scenario.
 
 Do not report performance using future measured inputs as though they were available during deployment. Distinguish operational forecasts from future measurements and state the information contract before evaluating the model.
 
@@ -2433,13 +2433,13 @@ For complete regular data sampled every 15 minutes, a 24-hour day contains 96 sa
 
 ## 2. Define horizon and information availability
 
-A forecast horizon is the time between the issue time and the target time [18]. At the issue time, features may use observations already available and forecasts that have already been issued. They must not use future measured readings or information generated after the decision. Draw an information-availability timeline before fitting a sequence predictor.
+A forecast horizon h is the number of steps, or the time, between the forecast origin (the issue time) and the target time [18]. At the issue time, features may use observations already available and forecasts that have already been issued. They must not use future measured readings or information generated after the decision. Draw an information-availability timeline before fitting a sequence predictor.
 
 For a next-day load forecast issued at 18:00, observed load up to 18:00 may be available. A previously published weather forecast may be available, with its forecast uncertainty. Tomorrow's measured weather is not available and must be excluded.
 
 ## 3. Handle overlapping windows and temporal gaps
 
-Adjacent windows can share many raw samples [54]. If windows are randomly assigned to training and testing sets, shared samples can destroy independence and produce optimistic performance. Use chronological splits, suitable temporal gaps, or event- or equipment-level holdouts when the evaluation question requires independent information.
+Adjacent windows can share many raw samples. If windows are randomly assigned to training and testing sets, shared samples can destroy independence and produce optimistic performance [54]. Use chronological splits, suitable temporal gaps, or event- or equipment-level holdouts when the evaluation question requires independent information.
 
 State how missing intervals, changed sampling rates and incomplete windows are treated. The resource does not prescribe one universal imputation or split rule; the treatment must be justified for the task.
 
@@ -3252,7 +3252,7 @@ References 1–88 are numbered by first appearance; references 89–95 were adde
 
 [15] J. F. Gülich, *Centrifugal Pumps*, 3rd ed. Berlin, Germany: Springer, 2014. doi: 10.1007/978-3-642-40114-5 (Cited in Lesson 2.1)
 
-[16] G. James, D. Witten, T. Hastie, and R. Tibshirani, *An Introduction to Statistical Learning: With Applications in R*, 2nd ed. New York, NY, USA: Springer, 2021. doi: 10.1007/978-1-0716-1418-1 (Cited in Lessons 2.1, 2.3, 3.1, 4.1, 5.2, 7.1, 7.2, 9.1)
+[16] G. James, D. Witten, T. Hastie, and R. Tibshirani, *An Introduction to Statistical Learning: With Applications in R*, 2nd ed. New York, NY, USA: Springer, 2021. doi: 10.1007/978-1-0716-1418-1 (Cited in Lessons 2.1, 2.3, 3.1, 4.1, 5.2, 7.1, 7.2, 9.1, 9.2)
 
 [17] A. Karpatne et al., “Theory-guided data science: A new paradigm for scientific discovery from data,” *IEEE Trans. Knowl. Data Eng.*, vol. 29, no. 10, pp. 2318–2331, 2017. doi: 10.1109/TKDE.2017.2720168 (Cited in Lesson 2.1)
 
