@@ -21,15 +21,15 @@ Mechanical engineers work with measurements such as temperature, pressure, vibra
 
 ## 1. Artificial intelligence: the broad field
 
-Artificial intelligence is a broad field concerned with systems that carry out tasks associated with intelligent behaviour. These systems can work in different ways. Some follow rules written in advance. Others search for solutions, use stored knowledge or learn patterns from examples. Calling a system AI therefore does not tell you whether it learns from data.
+Artificial intelligence is a broad field concerned with systems that carry out tasks associated with intelligent behaviour. These systems can work in different ways. Some follow rules written in advance. Others search for solutions, use stored knowledge or learn patterns from examples [1]. Calling a system AI therefore does not tell you whether it learns from data.
 
 A fixed rule tells a system what to do. A learning method uses examples to learn part of its behaviour. In the infographic, the outer rectangle represents the whole field of AI. It includes several approaches, not just one algorithm.
 
 ## 2. Machine learning and deep learning
 
-Machine learning is one approach within AI. An ML model uses examples to learn patterns or to adjust its parameters, which are the values that determine how it turns inputs into an output. For example, a pump-power predictor learns from measurements taken during pump operation. A bearing-fault classifier learns to distinguish the conditions represented in its training examples.
+Machine learning is one approach within AI. An ML model uses examples to learn patterns or to adjust its parameters, which are the values that determine how it turns inputs into an output [2]. For example, a pump-power predictor learns from measurements taken during pump operation. A bearing-fault classifier learns to distinguish the conditions represented in its training examples.
 
-Deep learning is a type of ML that uses neural networks with multiple layers. The nested rectangles in the infographic show this relationship: AI includes ML, and ML includes deep learning. Some AI systems do not use neural networks, and some ML models do not use deep learning.
+Deep learning is a type of ML that uses neural networks with multiple layers [3], [4]. The nested rectangles in the infographic show this relationship: AI includes ML, and ML includes deep learning. Some AI systems do not use neural networks, and some ML models do not use deep learning.
 
 The term deep learning tells you how a model is built. It does not tell you what the output means or whether the result suits the engineering decision you want to make.
 
@@ -37,7 +37,7 @@ The term deep learning tells you how a model is built. It does not tell you what
 
 Classification means predicting which category an input belongs to. For example, a surface-defect model might label an image as cracked or intact. A neural network with multiple layers can make this prediction without generating explanatory text, code or images.
 
-Generative AI produces content. For example, a system that drafts a maintenance explanation is carrying out a generative task. A language model can use deep learning to generate text.
+Generative AI produces content [4]. For example, a system that drafts a maintenance explanation is carrying out a generative task. A language model can use deep learning to generate text.
 
 Deep learning and generation describe different aspects of a system. Deep learning describes the model approach. Generation describes the kind of output. For this reason, generative AI should not be drawn as a required fourth level inside the AI, ML and deep-learning rectangles.
 
@@ -45,7 +45,7 @@ When you describe a system, ask two questions. Which approach does it use? What 
 
 ## 4. Data science includes the measurement workflow
 
-Data science includes collecting measurements, cleaning data, analysing results, building models and communicating findings. It overlaps with AI and ML, but building a model is only one part of the work.
+Data science includes collecting measurements, cleaning data, analysing results, building models and communicating findings [5]. It overlaps with AI and ML, but building a model is only one part of the work.
 
 The slides show five stages: measure, clean, analyse, model and communicate. Each stage matters. Before you use a model to support an engineering explanation, check the sensor calibration information and investigate missing readings. A model can produce an output even when its measurements have problems, so the output alone does not show that the data are reliable.
 
@@ -87,7 +87,7 @@ You are expected to distinguish automation, robotics and learning. You should al
 
 ## 1. Automation describes process execution
 
-Automation means carrying out a process with less manual intervention. A controller can do this by following fixed rules without learning from data. In the course example, a thermostat switches off above 30 °C. This is automation: the thermostat follows a temperature rule. It does not show learning from examples.
+Automation means carrying out a process with less manual intervention [6]. A controller can do this by following fixed rules without learning from data. In the course example, a thermostat switches off above 30 °C. This is automation: the thermostat follows a temperature rule. It does not show learning from examples.
 
 The 30 °C threshold is a teaching example, not a recommended setting for equipment. The key question is how the controller decides what to do. Was the rule specified in advance, or was the behaviour learned from data?
 
@@ -95,7 +95,7 @@ The 30 °C threshold is a teaching example, not a recommended setting for equipm
 
 A robot is a physical machine that senses, decides and acts. Its decisions may come from conventional control rules, from AI or from a combination of the two. Calling a machine a robot does not tell you whether it learns.
 
-For example, the slides show a conventional PID feedback controller connected to a robot and a sensor. The controller compares the measured output with a target value, called the setpoint, and applies specified feedback rules. This arrangement can work without learning from data. If a component does learn, identify that component and explain what it does.
+For example, the slides show a conventional PID feedback controller connected to a robot and a sensor. The controller compares the measured output with a target value, called the setpoint, and applies specified feedback rules [7]. This arrangement can work without learning from data. If a component does learn, identify that component and explain what it does.
 
 Automation and robotics can overlap: a robot can carry out an automated process. Both can work without ML, and both can include ML. To decide whether learning is involved, examine how the system works.
 
@@ -103,7 +103,7 @@ Automation and robotics can overlap: a robot can carry out an automated process.
 
 Narrow AI is designed for particular tasks. Familiar examples include filtering spam, estimating travel times and suggesting text completions. In engineering, a classifier that identifies a defined set of defects is narrow AI. Testing it gives evidence about those tasks under the conditions tested. Doing one task well does not show that a system can perform unrelated tasks or understands more broadly.
 
-AGI refers to proposed AI capabilities that would apply broadly across tasks. People disagree about how to define and test it, so the label alone does not show that a system can do every task. This course does not claim that a current assistant has human understanding or can reliably handle every engineering problem.
+AGI refers to proposed AI capabilities that would apply broadly across tasks. People disagree about how to define and test it, so the label alone does not show that a system can do every task [8]. This course does not claim that a current assistant has human understanding or can reliably handle every engineering problem.
 
 For example, an assistant may produce fluent text. That fluency does not provide the evidence or authority needed to approve a pressure-vessel design. Always check the task, the supporting evidence and the actions the system is allowed to take.
 
@@ -117,13 +117,13 @@ Use the sequence in the slides to describe a system:
 - Permitted actions: What is the system allowed to do with that output?
 - Failure consequences: What happens if the output or action is wrong?
 
-These questions bring out details that a product label may leave out. They also separate a recommendation from an action the system has permission to carry out. A maintenance explanation, a classification result and a physical control command each need checks suited to their purpose.
+These questions bring out details that a product label may leave out [9]. They also separate a recommendation from an action the system has permission to carry out. A maintenance explanation, a classification result and a physical control command each need checks suited to their purpose.
 
 ## Worked example: a bearing alert
 
 Consider a hypothetical bearing-alert system that uses vibration measurements. Its inputs are measurements available before the maintenance decision. A trained classifier uses them to estimate a defined condition, such as healthy or needs inspection. The alert is a reason to investigate, not a confirmed diagnosis.
 
-A responsible procedure sends the alert to a qualified person for review. It does not assume that every alert requires an automatic shutdown. Before using the system, check how often it misses faults and how often it raises false alarms. Use representative examples whose conditions have been checked independently.
+A responsible procedure sends the alert to a qualified person for review. It does not assume that every alert requires an automatic shutdown. Before using the system, check how often it misses faults and how often it raises false alarms [10]. Use representative examples whose conditions have been checked independently.
 
 A similar classification method could be explored on a hypothetical garment-production line, where an image model flags a suspected fabric defect for inspection. This is a possible application, not a claim about a system in any particular factory.
 
@@ -161,7 +161,7 @@ You are expected to use the pump-inspection example to identify four things: the
 
 ## 1. The engineering decision comes first
 
-Consider a pump whose vibration and bearing temperature are increasing. Start with a question: should an inspection be requested? This gives the project a clear purpose before you choose an algorithm.
+Consider a pump whose vibration and bearing temperature are increasing. Start with a question: should an inspection be requested? This gives the project a clear purpose before you choose an algorithm [11].
 
 Choosing an algorithm does not, by itself, tell you who will use the result, what information is available or what happens if the result is wrong. State the decision you want to support first. Then consider how a model could help.
 
@@ -189,9 +189,9 @@ The lesson sets no numerical performance target and no score at which an alert s
 
 The course uses the illustrative output "Fault score = 0.8". The score is dimensionless, meaning it has no physical unit. It is a model estimate, and it is not permission to keep operating the pump.
 
-The example does not explain how the score was calculated. A score is a calibrated probability only if, among many cases scoring 0.8, about 80% really are faults. Nothing here shows that, so do not read 0.8 as an 80% chance of failure just because it lies between zero and one.
+The example does not explain how the score was calculated. A score is a calibrated probability only if, among many cases scoring 0.8, about 80% really are faults [12]. Nothing here shows that, so do not read 0.8 as an 80% chance of failure just because it lies between zero and one.
 
-Before acting on a score, check measurement quality, operating limits and whether the model has been validated, meaning tested on examples that were not used to build it. A practical description also names who will use the result, the conditions in which the system is intended to work, called the operating domain, and the escalation path, which is the route for passing a concern to the responsible decision-maker. This lesson gives no procedure for particular equipment.
+Before acting on a score, check measurement quality, operating limits and whether the model has been validated, meaning tested on examples that were not used to build it. A practical description also names who will use the result, the conditions in which the system is intended to work, called the operating domain, and the escalation path, which is the route for passing a concern to the responsible decision-maker [9]. This lesson gives no procedure for particular equipment.
 
 ## 5. Different components require different checks
 
@@ -207,7 +207,7 @@ Each check answers a different question. An accurate maintenance explanation doe
 
 Synthetic examples are constructed for teaching. They help you practise analytical methods and think about what evidence is needed and what could happen if a result is wrong.
 
-They do not show that a real machine is safe or that a maintenance recommendation is valid. When you discuss a result, say what the example demonstrates and what still needs to be checked on physical equipment.
+They do not show that a real machine is safe or that a maintenance recommendation is valid [13]. When you discuss a result, say what the example demonstrates and what still needs to be checked on physical equipment.
 
 ## Check your understanding
 
@@ -259,31 +259,160 @@ Learning outcomes:
 
 ### Physics, data and hybrid models
 
-A physics-based model uses governing relationships, parameters and boundary or initial conditions. For a pump, hydraulic power is Δp × Q, where pressure rise is in pascals and volumetric flow is in m³/s. The product has units W. Estimating shaft or electrical power requires efficiencies and other losses.
+## What you are expected to learn
 
-A data-driven model estimates a relationship from observations. It might predict electrical power from flow, pressure rise and speed without explicitly imposing the power equation. A hybrid approach combines physical structure with a learned component, such as learning a residual correction to a physics prediction.
+This lesson compares physics-based, data-driven and hybrid models. You will use the pump example to distinguish hydraulic power, input power and a residual correction.
 
-The choice depends on what is known, the quality of measurements, the operating range and the purpose. A model with lower error is not automatically more defensible: its inputs may be unavailable, it may violate limits, or its test may be flawed.
+## Physics-based, data-driven and hybrid models
+
+A physics-based model uses governing relationships, stated parameters and appropriate conditions [14]. For a pump, hydraulic power is calculated from pressure rise and volumetric flow rate [15]. The model must still be checked against its assumptions and physical measurements.
+
+A data-driven model estimates an input-output relationship from observations [16]. For example, it can estimate electrical power from flow rate, pressure rise and shaft speed without explicitly imposing a hydraulic-power equation.
+
+A hybrid model retains a physical baseline and adds a learned correction [14], [17]. It is useful when the physical calculation is informative but does not represent every observed effect.
+
+## Pump-power example
+
+The hydraulic-power relationship is:
+
+P_h = Δp × Q
+
+- P_h: hydraulic power, in watts (W).
+- Δp: pressure rise, in pascals (Pa).
+- Q: volumetric flow rate, in cubic metres per second (m³/s).
+
+For Δp = 100 kPa = 100,000 Pa and Q = 0.02 m³/s:
+
+P_h = 100,000 Pa × 0.02 m³/s = 2,000 W
+
+The stated input-power relationship is:
+
+P_in = P_h / η
+
+Here, η is efficiency and is dimensionless. With η = 0.8, P_in = 2,500 W. The stated input-power meaning and the corresponding efficiency must be matched; hydraulic, shaft and electrical power are different quantities.
+
+## Residual correction
+
+A residual compares a measured value with a prediction:
+
+r = y − ŷ
+
+For measured input power y = 2,800 W and predicted input power ŷ = 2,500 W, r = +300 W. A positive residual means that the baseline prediction is below the measurement. It identifies a discrepancy; it does not, by itself, prove its physical cause.
+
+## Choose an approach within its evidence limits
+
+Use a physics-based model when its governing relationships, parameters and assumptions are suitable for the question. Consider a data-driven model when representative observations cover the intended use and the relevant relationship is difficult to specify directly. A hybrid can retain a useful physical baseline and learn a correction when repeatable residual patterns and adequate data support one. None of these choices guarantees reliable extrapolation: outside the evidence and assumptions used for validation, check the model rather than trusting a confident numerical output.
+
+## Check your understanding
+
+Why are 2,000 W and 2,500 W different in this example?
+
+ANSWER: 2,000 W is hydraulic power. 2,500 W is input power calculated using the stated dimensionless efficiency of 0.8.
+
+## Key takeaways
+
+- Physics models use physical relationships; data-driven models learn from observations; hybrid models use both.
+- State the power quantity and use consistent SI units.
+- A residual can support a learned correction, but it does not establish a cause.
 
 Pause and explain: Calculate hydraulic power for Δp=100,000 Pa and Q=0.02 m³/s.
 
 ### Different questions need different outputs
 
-Prediction estimates an unknown outcome from inputs. Forecasting predicts a future outcome and must use information available at its issue time. Diagnosis attempts to identify a condition or cause; a predictive association alone does not prove the physical cause. Control chooses actions over time to regulate a system. Optimization searches for choices that improve an objective subject to limits.
+## What you are expected to learn
 
-Example: estimating tomorrow's HVAC electricity is forecasting. Flagging an unusual compressor vibration is anomaly detection; declaring a bearing damaged requires additional evidence. Choosing a setpoint is control. Choosing insulation thickness to reduce a cost objective is design optimization.
+This lesson matches an engineering question to the required output: prediction, forecasting, diagnosis, control or optimization. It also distinguishes ML training optimization from engineering design optimization.
 
-Do not confuse mathematical optimization during ML training with engineering design optimization. One adjusts model parameters to reduce a training loss; the other adjusts design or operational variables to improve an engineering objective.
+## Prediction and forecasting
+
+Prediction estimates an unknown output from supplied inputs. Estimating pump power at a stated operating condition is a prediction problem.
+
+Forecasting estimates a future outcome [18]. Tomorrow's HVAC electricity demand or PV energy generation are forecasting examples. A forecast must use only information available when the forecast is issued.
+
+## Diagnosis, control and optimization
+
+Diagnosis asks which condition or cause explains the evidence [10]. An unusual vibration can produce an anomaly alert, but confirming bearing damage requires additional evidence such as physical inspection.
+
+Control selects actions to regulate system behaviour over time [7]. Adjusting a fan-speed command to maintain a target temperature is a control task.
+
+Optimization searches feasible choices that improve an objective while satisfying constraints [19]. Selecting insulation thickness to reduce a life-cycle cost is a design-optimization example. A power prediction can inform this search, but a prediction alone does not optimize the system.
+
+## Two different uses of optimization
+
+ML training optimization changes internal model parameters, such as weights, to reduce a mathematical loss function [4].
+
+Engineering design optimization changes physical design or operational variables to improve an engineering objective under physical constraints. Identify the variables, objective and limits before using the word “optimization”.
+
+## Check your understanding
+
+Why does predicting pump power not itself optimize pump operation?
+
+ANSWER: Prediction estimates power for supplied inputs. Optimization also needs decision variables, an objective, constraints and a search over feasible choices.
+
+Does an unusual vibration alert confirm bearing damage?
+
+ANSWER: No. It indicates that investigation is required; diagnosis needs additional evidence.
+
+## Key takeaways
+
+- Prediction estimates an output; forecasting estimates a future output.
+- Diagnosis explains evidence; control selects regulating actions.
+- Optimization requires objectives, constraints and feasible decision variables.
+- Training loss reduction and engineering-performance improvement are different goals.
 
 Pause and explain: Explain why predicting pump power does not itself optimize pump operation.
 
 ### When ML is worth considering
 
-Begin with the simplest adequate baseline. If a trusted equation meets the required accuracy and speed, ML may add maintenance burden rather than value. ML can help when patterns are hard to specify, observations are plentiful, or a costly simulator needs an approximate response model.
+## What you are expected to learn
 
-Before proposing ML, state the decision, inputs available at use time, output, success criterion and comparison baseline. Ask whether representative data exist. A data model trained at one speed or on one machine may fail at another. A physics model also needs validation of assumptions; physics-based does not mean automatically correct.
+This lesson explains when ML may add value to an engineering project. You will use a simple baseline, check whether the inputs and data are suitable, and interpret a hybrid residual model.
 
-Worked example: Δp=100 kPa, Q=0.02 m³/s and efficiency=0.8 imply 2,500 W input power for that idealized relationship. A measured 2,800 W creates a +300 W residual. A hybrid model might learn such residuals, while retaining the physics calculation.
+## Start with a baseline
+
+A baseline is a simple comparison method [16]. Begin with the simplest adequate approach for the engineering decision. If a trusted equation meets the required accuracy and speed, additional ML can add maintenance burden without sufficient benefit.
+
+ML may be worth evaluating when relevant patterns cannot be specified directly, observations are suitable for the intended use, or a costly simulator needs an approximate response model [20]. These conditions justify evaluation; they do not guarantee success.
+
+## Four checks before proposing ML
+
+- Purpose: state the engineering decision and required output.
+- Inputs: confirm that the inputs are available when the decision is made.
+- Baseline: retain a simple comparison method.
+- Coverage: check that measurements represent the intended operating range.
+
+Also state the success criterion and project scope. Data from one machine or operating condition may not represent another [21].
+
+When checking coverage, consider whether the data represent the conditions expected at use: different loads, operating modes, shifts or seasonal environments. A model trained only on one narrow condition may not support decisions in another. State the intended operating domain and collect or evaluate evidence for the conditions that matter.
+
+## Hybrid pump example
+
+The physical baseline is:
+
+P_in = Δp × Q / η
+
+For Δp = 100,000 Pa, Q = 0.02 m³/s and η = 0.8, the hydraulic power is 2,000 W and the predicted input power is 2,500 W. If the measured input power is 2,800 W, then:
+
+r = y − ŷ = +300 W
+
+A hybrid model can learn a correction from residuals while retaining the physical calculation [14]. One residual does not show that the correction will apply across other operating conditions.
+
+## Validate the proposed benefit
+
+Compare the proposed model with the baseline for the stated purpose. Check physical assumptions against calibrated measurements and check whether observations cover the intended operating range. Add complexity only when the evidence shows a useful improvement in accuracy, speed or the required engineering outcome.
+
+## Check your understanding
+
+What must be stated before proposing ML for an engineering project?
+
+ANSWER: State the decision, the inputs available at use time, the required output, the success criterion, a comparison baseline and whether representative data are available.
+
+## Key takeaways
+
+- Use a simple adequate baseline before adding ML.
+- Check purpose, available inputs, baseline and operating coverage.
+- Hybrid models retain physical structure and learn from discrepancies.
+- Validate both data coverage and physical assumptions.
 
 Pause and explain: Name a baseline and a validation requirement for a power-prediction project.
 
@@ -1364,3 +1493,48 @@ Pause and explain: What can a clean, reproducible project demonstrate that a bro
 - Submit a runnable notebook with outputs and a short report. Browser completion is separate.
 
 Rubric: problem/data 20%; baseline/split/preprocessing 25%; evaluation/interpretation 25%; physical checks/limitations 20%; reproducibility/disclosure 10%.
+
+## References (Modules 1–2 pilot)
+
+[1] S. Russell and P. Norvig, Artificial Intelligence: A Modern Approach, 4th ed. Hoboken, NJ, USA: Pearson, 2021. (Cited in Lesson 1.1)
+
+[2] T. M. Mitchell, Machine Learning. Boston, MA, USA: McGraw-Hill, 1997. (Cited in Lesson 1.1)
+
+[3] Y. LeCun, Y. Bengio, and G. Hinton, “Deep learning,” Nature, vol. 521, no. 7553, pp. 436–444, 2015. doi: 10.1038/nature14539 (Cited in Lesson 1.1)
+
+[4] I. Goodfellow, Y. Bengio, and A. Courville, Deep Learning. Cambridge, MA, USA: MIT Press, 2016. (Cited in Lessons 1.1, 2.2)
+
+[5] F. Provost and T. Fawcett, “Data science and its relationship to big data and data-driven decision making,” Big Data, vol. 1, no. 1, pp. 51–59, 2013. doi: 10.1089/big.2013.1508 (Cited in Lesson 1.1)
+
+[6] R. Parasuraman, T. B. Sheridan, and C. D. Wickens, “A model for types and levels of human interaction with automation,” IEEE Trans. Syst., Man, Cybern. A, Syst. Humans, vol. 30, no. 3, pp. 286–297, 2000. doi: 10.1109/3468.844354 (Cited in Lesson 1.2)
+
+[7] K. J. Åström and R. M. Murray, Feedback Systems: An Introduction for Scientists and Engineers, 2nd ed. Princeton, NJ, USA: Princeton Univ. Press, 2021. (Cited in Lessons 1.2, 2.2)
+
+[8] M. R. Morris et al., “Position: Levels of AGI for operationalizing progress on the path to AGI,” in Proc. 41st Int. Conf. Mach. Learn. (ICML), PMLR, vol. 235, 2024, pp. 36308–36321. (Cited in Lesson 1.2)
+
+[9] National Institute of Standards and Technology, “Artificial Intelligence Risk Management Framework (AI RMF 1.0),” NIST AI 100-1, Gaithersburg, MD, USA, 2023. doi: 10.6028/NIST.AI.100-1 (Cited in Lessons 1.2, 1.3)
+
+[10] Y. Lei, B. Yang, X. Jiang, F. Jia, N. Li, and A. K. Nandi, “Applications of machine learning to machine fault diagnosis: A review and roadmap,” Mech. Syst. Signal Process., vol. 138, Art. no. 106587, 2020. doi: 10.1016/j.ymssp.2019.106587 (Cited in Lessons 1.2, 2.2)
+
+[11] Y. Lei, N. Li, L. Guo, N. Li, T. Yan, and J. Lin, “Machinery health prognostics: A systematic review from data acquisition to RUL prediction,” Mech. Syst. Signal Process., vol. 104, pp. 799–834, 2018. doi: 10.1016/j.ymssp.2017.11.016 (Cited in Lesson 1.3)
+
+[12] C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger, “On calibration of modern neural networks,” in Proc. 34th Int. Conf. Mach. Learn. (ICML), PMLR, vol. 70, 2017, pp. 1321–1330. (Cited in Lesson 1.3)
+
+[13] W. L. Oberkampf and C. J. Roy, Verification and Validation in Scientific Computing. Cambridge, U.K.: Cambridge Univ. Press, 2010. doi: 10.1017/CBO9780511760396 (Cited in Lesson 1.3)
+
+[14] J. Willard, X. Jia, S. Xu, M. Steinbach, and V. Kumar, “Integrating scientific knowledge with machine learning for engineering and environmental systems,” ACM Comput. Surv., vol. 55, no. 4, pp. 1–37, 2023. doi: 10.1145/3514228 (Cited in Lessons 2.1, 2.3)
+
+[15] J. F. Gülich, Centrifugal Pumps, 3rd ed. Berlin, Germany: Springer, 2014. doi: 10.1007/978-3-642-40114-5 (Cited in Lesson 2.1)
+
+[16] G. James, D. Witten, T. Hastie, and R. Tibshirani, An Introduction to Statistical Learning: With Applications in R, 2nd ed. New York, NY, USA: Springer, 2021. doi: 10.1007/978-1-0716-1418-1 (Cited in Lessons 2.1, 2.3)
+
+[17] A. Karpatne et al., “Theory-guided data science: A new paradigm for scientific discovery from data,” IEEE Trans. Knowl. Data Eng., vol. 29, no. 10, pp. 2318–2331, 2017. doi: 10.1109/TKDE.2017.2720168 (Cited in Lesson 2.1)
+
+[18] R. J. Hyndman and G. Athanasopoulos, Forecasting: Principles and Practice, 3rd ed. Melbourne, Australia: OTexts, 2021. [Online]. Available: https://otexts.com/fpp3/ (Cited in Lesson 2.2)
+
+[19] S. Boyd and L. Vandenberghe, Convex Optimization. Cambridge, U.K.: Cambridge Univ. Press, 2004. doi: 10.1017/CBO9780511804441 (Cited in Lesson 2.2)
+
+[20] A. I. J. Forrester, A. Sóbester, and A. J. Keane, Engineering Design via Surrogate Modelling: A Practical Guide. Chichester, U.K.: Wiley, 2008. doi: 10.1002/9780470770801 (Cited in Lesson 2.3)
+
+[21] J. Quiñonero-Candela, M. Sugiyama, A. Schwaighofer, and N. D. Lawrence, Eds., Dataset Shift in Machine Learning. Cambridge, MA, USA: MIT Press, 2009. doi: 10.7551/mitpress/9780262170055.001.0001 (Cited in Lesson 2.3)
+
