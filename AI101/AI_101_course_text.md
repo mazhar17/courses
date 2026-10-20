@@ -1496,45 +1496,45 @@ Rubric: problem/data 20%; baseline/split/preprocessing 25%; evaluation/interpret
 
 ## References (Modules 1–2 pilot)
 
-[1] S. Russell and P. Norvig, Artificial Intelligence: A Modern Approach, 4th ed. Hoboken, NJ, USA: Pearson, 2021. (Cited in Lesson 1.1)
+[1] S. Russell and P. Norvig, *Artificial Intelligence: A Modern Approach*, 4th ed. Hoboken, NJ, USA: Pearson, 2021. (Cited in Lesson 1.1)
 
-[2] T. M. Mitchell, Machine Learning. Boston, MA, USA: McGraw-Hill, 1997. (Cited in Lesson 1.1)
+[2] T. M. Mitchell, *Machine Learning*. Boston, MA, USA: McGraw-Hill, 1997. (Cited in Lesson 1.1)
 
-[3] Y. LeCun, Y. Bengio, and G. Hinton, “Deep learning,” Nature, vol. 521, no. 7553, pp. 436–444, 2015. doi: 10.1038/nature14539 (Cited in Lesson 1.1)
+[3] Y. LeCun, Y. Bengio, and G. Hinton, “Deep learning,” *Nature*, vol. 521, no. 7553, pp. 436–444, 2015. doi: 10.1038/nature14539 (Cited in Lesson 1.1)
 
-[4] I. Goodfellow, Y. Bengio, and A. Courville, Deep Learning. Cambridge, MA, USA: MIT Press, 2016. (Cited in Lessons 1.1, 2.2)
+[4] I. Goodfellow, Y. Bengio, and A. Courville, *Deep Learning*. Cambridge, MA, USA: MIT Press, 2016. (Cited in Lessons 1.1, 2.2)
 
-[5] F. Provost and T. Fawcett, “Data science and its relationship to big data and data-driven decision making,” Big Data, vol. 1, no. 1, pp. 51–59, 2013. doi: 10.1089/big.2013.1508 (Cited in Lesson 1.1)
+[5] F. Provost and T. Fawcett, “Data science and its relationship to big data and data-driven decision making,” *Big Data*, vol. 1, no. 1, pp. 51–59, 2013. doi: 10.1089/big.2013.1508 (Cited in Lesson 1.1)
 
-[6] R. Parasuraman, T. B. Sheridan, and C. D. Wickens, “A model for types and levels of human interaction with automation,” IEEE Trans. Syst., Man, Cybern. A, Syst. Humans, vol. 30, no. 3, pp. 286–297, 2000. doi: 10.1109/3468.844354 (Cited in Lesson 1.2)
+[6] R. Parasuraman, T. B. Sheridan, and C. D. Wickens, “A model for types and levels of human interaction with automation,” *IEEE Trans. Syst., Man, Cybern. A, Syst. Humans*, vol. 30, no. 3, pp. 286–297, 2000. doi: 10.1109/3468.844354 (Cited in Lesson 1.2)
 
-[7] K. J. Åström and R. M. Murray, Feedback Systems: An Introduction for Scientists and Engineers, 2nd ed. Princeton, NJ, USA: Princeton Univ. Press, 2021. (Cited in Lessons 1.2, 2.2)
+[7] K. J. Åström and R. M. Murray, *Feedback Systems: An Introduction for Scientists and Engineers*, 2nd ed. Princeton, NJ, USA: Princeton Univ. Press, 2021. (Cited in Lessons 1.2, 2.2)
 
-[8] M. R. Morris et al., “Position: Levels of AGI for operationalizing progress on the path to AGI,” in Proc. 41st Int. Conf. Mach. Learn. (ICML), PMLR, vol. 235, 2024, pp. 36308–36321. (Cited in Lesson 1.2)
+[8] M. R. Morris et al., “Position: Levels of AGI for operationalizing progress on the path to AGI,” in *Proc. 41st Int. Conf. Mach. Learn. (ICML)*, PMLR, vol. 235, 2024, pp. 36308–36321. (Cited in Lesson 1.2)
 
 [9] National Institute of Standards and Technology, “Artificial Intelligence Risk Management Framework (AI RMF 1.0),” NIST AI 100-1, Gaithersburg, MD, USA, 2023. doi: 10.6028/NIST.AI.100-1 (Cited in Lessons 1.2, 1.3)
 
-[10] Y. Lei, B. Yang, X. Jiang, F. Jia, N. Li, and A. K. Nandi, “Applications of machine learning to machine fault diagnosis: A review and roadmap,” Mech. Syst. Signal Process., vol. 138, Art. no. 106587, 2020. doi: 10.1016/j.ymssp.2019.106587 (Cited in Lessons 1.2, 2.2)
+[10] Y. Lei, B. Yang, X. Jiang, F. Jia, N. Li, and A. K. Nandi, “Applications of machine learning to machine fault diagnosis: A review and roadmap,” *Mech. Syst. Signal Process.*, vol. 138, Art. no. 106587, 2020. doi: 10.1016/j.ymssp.2019.106587 (Cited in Lessons 1.2, 2.2)
 
-[11] Y. Lei, N. Li, L. Guo, N. Li, T. Yan, and J. Lin, “Machinery health prognostics: A systematic review from data acquisition to RUL prediction,” Mech. Syst. Signal Process., vol. 104, pp. 799–834, 2018. doi: 10.1016/j.ymssp.2017.11.016 (Cited in Lesson 1.3)
+[11] Y. Lei, N. Li, L. Guo, N. Li, T. Yan, and J. Lin, “Machinery health prognostics: A systematic review from data acquisition to RUL prediction,” *Mech. Syst. Signal Process.*, vol. 104, pp. 799–834, 2018. doi: 10.1016/j.ymssp.2017.11.016 (Cited in Lesson 1.3)
 
-[12] C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger, “On calibration of modern neural networks,” in Proc. 34th Int. Conf. Mach. Learn. (ICML), PMLR, vol. 70, 2017, pp. 1321–1330. (Cited in Lesson 1.3)
+[12] C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger, “On calibration of modern neural networks,” in *Proc. 34th Int. Conf. Mach. Learn. (ICML)*, PMLR, vol. 70, 2017, pp. 1321–1330. (Cited in Lesson 1.3)
 
-[13] W. L. Oberkampf and C. J. Roy, Verification and Validation in Scientific Computing. Cambridge, U.K.: Cambridge Univ. Press, 2010. doi: 10.1017/CBO9780511760396 (Cited in Lesson 1.3)
+[13] W. L. Oberkampf and C. J. Roy, *Verification and Validation in Scientific Computing*. Cambridge, U.K.: Cambridge Univ. Press, 2010. doi: 10.1017/CBO9780511760396 (Cited in Lesson 1.3)
 
-[14] J. Willard, X. Jia, S. Xu, M. Steinbach, and V. Kumar, “Integrating scientific knowledge with machine learning for engineering and environmental systems,” ACM Comput. Surv., vol. 55, no. 4, pp. 1–37, 2023. doi: 10.1145/3514228 (Cited in Lessons 2.1, 2.3)
+[14] J. Willard, X. Jia, S. Xu, M. Steinbach, and V. Kumar, “Integrating scientific knowledge with machine learning for engineering and environmental systems,” *ACM Comput. Surv.*, vol. 55, no. 4, pp. 1–37, 2023. doi: 10.1145/3514228 (Cited in Lessons 2.1, 2.3)
 
-[15] J. F. Gülich, Centrifugal Pumps, 3rd ed. Berlin, Germany: Springer, 2014. doi: 10.1007/978-3-642-40114-5 (Cited in Lesson 2.1)
+[15] J. F. Gülich, *Centrifugal Pumps*, 3rd ed. Berlin, Germany: Springer, 2014. doi: 10.1007/978-3-642-40114-5 (Cited in Lesson 2.1)
 
-[16] G. James, D. Witten, T. Hastie, and R. Tibshirani, An Introduction to Statistical Learning: With Applications in R, 2nd ed. New York, NY, USA: Springer, 2021. doi: 10.1007/978-1-0716-1418-1 (Cited in Lessons 2.1, 2.3)
+[16] G. James, D. Witten, T. Hastie, and R. Tibshirani, *An Introduction to Statistical Learning: With Applications in R*, 2nd ed. New York, NY, USA: Springer, 2021. doi: 10.1007/978-1-0716-1418-1 (Cited in Lessons 2.1, 2.3)
 
-[17] A. Karpatne et al., “Theory-guided data science: A new paradigm for scientific discovery from data,” IEEE Trans. Knowl. Data Eng., vol. 29, no. 10, pp. 2318–2331, 2017. doi: 10.1109/TKDE.2017.2720168 (Cited in Lesson 2.1)
+[17] A. Karpatne et al., “Theory-guided data science: A new paradigm for scientific discovery from data,” *IEEE Trans. Knowl. Data Eng.*, vol. 29, no. 10, pp. 2318–2331, 2017. doi: 10.1109/TKDE.2017.2720168 (Cited in Lesson 2.1)
 
-[18] R. J. Hyndman and G. Athanasopoulos, Forecasting: Principles and Practice, 3rd ed. Melbourne, Australia: OTexts, 2021. [Online]. Available: https://otexts.com/fpp3/ (Cited in Lesson 2.2)
+[18] R. J. Hyndman and G. Athanasopoulos, *Forecasting: Principles and Practice*, 3rd ed. Melbourne, Australia: OTexts, 2021. [Online]. Available: https://otexts.com/fpp3/ (Cited in Lesson 2.2)
 
-[19] S. Boyd and L. Vandenberghe, Convex Optimization. Cambridge, U.K.: Cambridge Univ. Press, 2004. doi: 10.1017/CBO9780511804441 (Cited in Lesson 2.2)
+[19] S. Boyd and L. Vandenberghe, *Convex Optimization*. Cambridge, U.K.: Cambridge Univ. Press, 2004. doi: 10.1017/CBO9780511804441 (Cited in Lesson 2.2)
 
-[20] A. I. J. Forrester, A. Sóbester, and A. J. Keane, Engineering Design via Surrogate Modelling: A Practical Guide. Chichester, U.K.: Wiley, 2008. doi: 10.1002/9780470770801 (Cited in Lesson 2.3)
+[20] A. I. J. Forrester, A. Sóbester, and A. J. Keane, *Engineering Design via Surrogate Modelling: A Practical Guide*. Chichester, U.K.: Wiley, 2008. doi: 10.1002/9780470770801 (Cited in Lesson 2.3)
 
-[21] J. Quiñonero-Candela, M. Sugiyama, A. Schwaighofer, and N. D. Lawrence, Eds., Dataset Shift in Machine Learning. Cambridge, MA, USA: MIT Press, 2009. doi: 10.7551/mitpress/9780262170055.001.0001 (Cited in Lesson 2.3)
+[21] J. Quiñonero-Candela, M. Sugiyama, A. Schwaighofer, and N. D. Lawrence, Eds., *Dataset Shift in Machine Learning*. Cambridge, MA, USA: MIT Press, 2009. doi: 10.7551/mitpress/9780262170055.001.0001 (Cited in Lesson 2.3)
 
