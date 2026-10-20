@@ -23,13 +23,13 @@ Mechanical engineers work with measurements such as temperature, pressure, vibra
 
 Artificial intelligence is a broad field concerned with systems that carry out tasks associated with intelligent behaviour. These systems can work in different ways. Some follow rules written in advance. Others search for solutions, use stored knowledge or learn patterns from examples [1]. Calling a system AI therefore does not tell you whether it learns from data.
 
-A fixed rule tells a system what to do. A learning method uses examples to learn part of its behaviour. In the infographic, the outer rectangle represents the whole field of AI. It includes several approaches, not just one algorithm.
+A fixed rule tells a system what to do. A learning method uses examples to learn part of its behaviour. AI is the whole, outer field. It includes several approaches, not just one algorithm.
 
 ## 2. Machine learning and deep learning
 
 Machine learning is one approach within AI. An ML model uses examples to learn patterns or to adjust its parameters, which are the values that determine how it turns inputs into an output [2]. For example, a pump-power predictor learns from measurements taken during pump operation. A bearing-fault classifier learns to distinguish the conditions represented in its training examples.
 
-Deep learning is a type of ML that uses neural networks with multiple layers [3], [4]. The nested rectangles in the infographic show this relationship: AI includes ML, and ML includes deep learning. Some AI systems do not use neural networks, and some ML models do not use deep learning.
+Deep learning is a type of ML that uses neural networks with multiple layers [3], [4]. The three are nested: AI includes ML, and ML includes deep learning. Some AI systems do not use neural networks, and some ML models do not use deep learning.
 
 The term deep learning tells you how a model is built. It does not tell you what the output means or whether the result suits the engineering decision you want to make.
 
@@ -39,7 +39,7 @@ Classification means predicting which category an input belongs to. For example,
 
 Generative AI produces new content, such as text, images or other samples that resemble its training data [4, Ch. 20]. For example, a system that drafts a maintenance explanation is carrying out a generative task. A language model can use deep learning to generate text.
 
-Deep learning and generation describe different aspects of a system. Deep learning describes the model approach. Generation describes the kind of output. For this reason, generative AI should not be drawn as a required fourth level inside the AI, ML and deep-learning rectangles.
+Deep learning and generation describe different aspects of a system. Deep learning describes the model approach. Generation describes the kind of output. For this reason, generative AI should not be treated as a required fourth level nested inside AI, ML and deep learning.
 
 When you describe a system, ask two questions. Which approach does it use? What output does it produce? A deep-learning classifier and a deep-learning text generator use the same broad approach but produce different kinds of output.
 
@@ -47,7 +47,7 @@ When you describe a system, ask two questions. Which approach does it use? What 
 
 Data science includes collecting measurements, cleaning data, analysing results, building models and communicating findings [5]. It overlaps with AI and ML, but building a model is only one part of the work.
 
-The slides show five stages: measure, clean, analyse, model and communicate. Each stage matters. Before you use a model to support an engineering explanation, check the sensor calibration information and investigate missing readings. A model can produce an output even when its measurements have problems, so the output alone does not show that the data are reliable.
+Data science has five stages: measure, clean, analyse, model and communicate. Each stage matters. Before you use a model to support an engineering explanation, check the sensor calibration information and investigate missing readings. A model can produce an output even when its measurements have problems, so the output alone does not show that the data are reliable.
 
 ## 5. Three components in one plant
 
@@ -95,7 +95,7 @@ The 30 °C threshold is a teaching example, not a recommended setting for equipm
 
 In this lesson, we describe a robot in simple terms as a physical machine that senses, decides and acts. This is an introductory simplification; formal robotics terms are defined in the ISO robotics vocabulary [89]. A robot's decisions may come from conventional control rules, from AI or from a combination of the two. Calling a machine a robot does not tell you whether it learns.
 
-For example, the slides show a conventional PID feedback controller connected to a robot and a sensor. The controller compares the measured output with a target value, called the setpoint, and applies specified feedback rules [7]. This arrangement can work without learning from data. If a component does learn, identify that component and explain what it does.
+For example, consider a conventional PID feedback controller connected to a robot and a sensor. The controller compares the measured output with a target value, called the setpoint, and applies specified feedback rules [7]. This arrangement can work without learning from data. If a component does learn, identify that component and explain what it does.
 
 Automation and robotics can overlap: a robot can carry out an automated process. Both can work without ML, and both can include ML. To decide whether learning is involved, examine how the system works.
 
@@ -109,7 +109,7 @@ For example, an assistant may produce fluent text. That fluency does not provide
 
 ## 4. Five questions for evaluating a system
 
-Use the sequence in the slides to describe a system:
+Use this sequence to describe a system:
 
 - Inputs: What information does the system receive?
 - Learned components: Which parts, if any, learn from data?
@@ -167,7 +167,7 @@ Choosing an algorithm does not, by itself, tell you who will use the result, wha
 
 ## 2. Measurements, model output and inspection
 
-The slides divide the maintenance process into separate stages:
+The maintenance process divides into separate stages:
 
 - Inputs: vibration and bearing-temperature measurements available before the decision.
 - Model processing: a detector trained on examples uses those measurements.
@@ -175,7 +175,7 @@ The slides divide the maintenance process into separate stages:
 - Engineering review: the engineer reviews the output and the evidence behind it.
 - Decision: request an inspection when the defined procedure calls for one.
 
-The slides express vibration in millimetres per second and bearing temperature in degrees Celsius. They give no numerical operating limits for either quantity, so you cannot use this example to set limits.
+In this example, vibration is expressed in millimetres per second and bearing temperature in degrees Celsius. The example gives no numerical operating limits for either quantity, so you cannot use this example to set limits.
 
 Keep the stages in order. The model supplies information for the decision. The engineer decides what action is appropriate and under which conditions.
 
@@ -195,7 +195,7 @@ Before acting on a score, check measurement quality, operating limits and whethe
 
 ## 5. Different components require different checks
 
-The slides distinguish three components:
+Distinguish three components:
 
 - A fixed trip follows an automation rule when its specified condition occurs.
 - A learned detector uses patterns learned from examples to predict a fault-related score. Check its performance on examples that were not used to fit the model.
@@ -471,11 +471,11 @@ For 120 pump tests and three features:
 - X contains 120 × 3 = 360 feature values.
 - y has shape (120,), with 120 target values.
 
-Flow rate is recorded in m³/s, pressure rise in Pa, shaft angular speed in rad/s and electrical power in W in the slide example. Keep each variable's meaning and unit associated with its column.
+In the pump-test example, flow rate is recorded in m³/s, pressure rise in Pa, shaft angular speed in rad/s and electrical power in W. Keep each variable's meaning and unit associated with its column.
 
 ## Preserve row alignment
 
-The features and target at the same row position must describe the same test. The slides use test identifiers to maintain this correspondence when extracting separate arrays. A test identifier records which example a row represents; it is not automatically a physically meaningful predictor.
+The features and target at the same row position must describe the same test. Use test identifiers to maintain this correspondence when extracting separate arrays. A test identifier records which example a row represents; it is not automatically a physically meaningful predictor.
 
 ## Notice when rows are time ordered
 
@@ -559,7 +559,7 @@ Correlation describes statistical association: do variables vary together?
 
 Prediction asks whether available inputs estimate outputs on relevant unseen examples. Successful prediction establishes useful estimation under the evaluated conditions, rather than proving that an input causes the output.
 
-Causation asks whether an intervention changes the outcome under appropriate conditions [26]. The slides distinguish observational records, evaluation on unseen data and controlled intervention evidence. Match the claim to the evidence actually available.
+Causation asks whether an intervention changes the outcome under appropriate conditions [26]. Observational records, evaluation on unseen data and controlled intervention evidence are different kinds of evidence. Match the claim to the evidence actually available.
 
 ## Flow and motor current example
 
@@ -640,7 +640,7 @@ A useful analogy is studying with an answer key versus sorting unlabeled parts. 
 
 Anomaly detection flags departures from expected behaviour [27]. Depending on the available labels, it can use different learning setups. An anomaly is a reason to investigate rather than proof of mechanical damage.
 
-For example, unusual vibration or current can reflect a changed load, altered control settings, sensor problems or an actual fault. The resources show physical inspection, functional testing and independent reference measurements as ways to assess the alert and establish whether a fault is present.
+For example, unusual vibration or current can reflect a changed load, altered control settings, sensor problems or an actual fault. Physical inspection, functional testing and independent reference measurements are ways to assess the alert and establish whether a fault is present.
 
 ## When only some examples have labels
 
@@ -679,7 +679,7 @@ The absence of manually supplied fault labels does not remove the training objec
 
 ## Masked-signal reconstruction
 
-The slides separate four parts of this task:
+This task has four parts:
 
 - Observation: the original measured signal.
 - Constructed input: the signal with a section deliberately hidden.
@@ -729,7 +729,7 @@ The objective is usually cumulative reward over time. An action can affect later
 
 ## Simulated thermal controller
 
-The lesson resources map the RL terms to a thermal-control example:
+The RL terms map to a thermal-control example:
 
 - State: information about current temperature and target temperature.
 - Action: the heater command.
@@ -737,11 +737,11 @@ The lesson resources map the RL terms to a thermal-control example:
 - Reward: feedback reflecting temperature tracking and energy consumption.
 - Policy: the rule or model selecting heater commands from available state information.
 
-Temperature is a dimensional quantity, shown in K in the thermal slide. Heater power, when used to express the command, is measured in W. The resources provide no numerical temperatures, reward coefficients or operating limits for this example; the illustration explains the roles of the quantities.
+Temperature is a dimensional quantity, expressed in K in this example. Heater power, when used to express the command, is measured in W. This example provides no numerical temperatures, reward coefficients or operating limits; it explains the roles of the quantities.
 
 ## Rewards and safety limits
 
-Rewards express the intended performance goal. For a thermal controller, the resources describe tracking accuracy and penalties for energy consumption. Safety constraints separately limit allowable operation, including the temperature range.
+Rewards express the intended performance goal. For a thermal controller, the reward can reflect tracking accuracy and penalties for energy consumption. Safety constraints separately limit allowable operation, including the temperature range.
 
 A poorly specified reward can increase a numerical score while violating the intended purpose [31]. Reward improvement does not itself establish safe behaviour. Define the actions, reward feedback and interactive environment, and assess safety using separate constraints and evidence.
 
@@ -827,7 +827,7 @@ The supplied example contains readings [20, 22, missing, 24]. The observed-value
 
 (20 + 22 + 24) / 3 = 22
 
-Mean imputation produces [20, 22, 22, 24]. It fills the gap but artificially reduces visible variability. The source does not specify the physical unit of these readings; interpret them as an arithmetic illustration rather than assigning a sensor quantity.
+Mean imputation produces [20, 22, 22, 24]. It fills the gap but artificially reduces visible variability. This example does not specify the physical unit of these readings; interpret them as an arithmetic illustration rather than assigning a sensor quantity.
 
 For a predictive pipeline, estimate a learned replacement from training data. Do not calculate it from the full dataset or refit it using final-test inputs.
 
@@ -893,7 +893,7 @@ Keep the original measurements and units for physical interpretation. A dimensio
 
 Encoding represents categories numerically. Assigning types A, B and C the values 1, 2 and 3 can impose an unsupported order and distance between categories.
 
-One-hot encoding instead uses separate binary indicator columns [34]. For three known categories, the slide example uses A: [1, 0, 0], B: [0, 1, 0] and C: [0, 0, 1]. These indicators are dimensionless and identify membership rather than physical magnitude.
+One-hot encoding instead uses separate binary indicator columns [34]. For three known categories, the example uses A: [1, 0, 0], B: [0, 1, 0] and C: [0, 0, 1]. These indicators are dimensionless and identify membership rather than physical magnitude.
 
 Fit category handling on training data and declare how an unseen category will be treated. Do not invent an ordering merely because a model needs numerical inputs.
 
@@ -929,7 +929,7 @@ You will construct meaningful engineering features, enforce their availability a
 
 Feature engineering constructs useful inputs using knowledge of the problem; Lei et al. call this hand-crafted feature extraction [10]. The course examples include pressure rise, hydraulic power, vibration RMS, frequency-band energy and temperature above ambient. The feature must be meaningful for the task and available when the prediction is made.
 
-The slides illustrate a hydraulic-power feature:
+One example is a hydraulic-power feature:
 
 P_h = Δp × Q
 
@@ -947,7 +947,7 @@ Document the window and the decision time alongside the feature. A physically pl
 
 ## Split, fit and apply consistently
 
-A pipeline bundles preprocessing and modelling into a repeatable sequence [34]. The resources distinguish learning preprocessing parameters from applying them:
+A pipeline bundles preprocessing and modelling into a repeatable sequence [34]. Distinguish learning preprocessing parameters from applying them:
 
 - Split examples before fitting learned preprocessing.
 - Fit scalers, imputers and learned feature selection within the training folds.
@@ -1025,7 +1025,7 @@ A model maps inputs to outputs. A simple linear model is:
 
 Here x is the input, ŷ is the predicted output, b_0 is the intercept and b_1 is the slope. The equation describes the mapping; it does not describe how the coefficients were obtained.
 
-A learning algorithm is the procedure that obtains or updates parameters from data [2]. Least squares, the example in the resources, estimates coefficients by minimizing the sum of squared residuals. A residual is the difference between a measured output and its prediction. Different fitting procedures can be used for related model structures.
+A learning algorithm is the procedure that obtains or updates parameters from data [2]. Least squares, the example used here, estimates coefficients by minimizing the sum of squared residuals. A residual is the difference between a measured output and its prediction. Different fitting procedures can be used for related model structures.
 
 ## Training fits; inference applies
 
@@ -1041,7 +1041,7 @@ The supplied model is:
 
 Its intercept is 2 and its slope is 3. At x = 4, inference gives ŷ = 2 + 3 × 4 = 14. Changing x changes the prediction; fitting again may change the intercept or slope.
 
-The resources do not assign a physical input quantity or SI units to this arithmetic example. In a physical application, the input and output units must be specified: the intercept has the output unit and the slope has output units per input unit. Do not interpret 14 as a particular engineering quantity without that information.
+This arithmetic example has no assigned physical input quantity or SI units. In a physical application, the input and output units must be specified: the intercept has the output unit and the slope has output units per input unit. Do not interpret 14 as a particular engineering quantity without that information.
 
 For a one-input linear model, the intercept is the predicted output at x = 0, and the slope describes the predicted change per unit change in x. The slope's units are output units divided by input units. Whether either coefficient has a useful physical interpretation depends on the measurement range and model assumptions; Module 7 works through these units in detail.
 
@@ -1087,7 +1087,7 @@ For the linear model from Lesson 6.1, the fitted intercept and slope are paramet
 
 ## Hyperparameters control structure or training
 
-Hyperparameters are settings that govern model structure or training [4]. Examples in the resources include maximum tree depth, learning rate and batch size. They are usually selected through validation rather than fitted by the same operation that learns the model parameters.
+Hyperparameters are settings that govern model structure or training [4]. Examples include maximum tree depth, learning rate and batch size. They are usually selected through validation rather than fitted by the same operation that learns the model parameters.
 
 A fitted regression slope and a chosen tree-depth limit therefore have different roles: the slope is learned within fitting, while the depth limit governs the permitted tree structure. The distinction depends on the method and the acquisition of the value.
 
@@ -1132,7 +1132,7 @@ You will interpret a performance result using a fair baseline, identify the cont
 
 ## Select a simple comparison
 
-A baseline is a simple comparison approach. For regression, the resources suggest predicting the training mean or using a trusted physical relationship. For classification, a majority-class rule provides a comparison, together with suitable fault-sensitive metrics.
+A baseline is a simple comparison approach. For regression, a baseline can predict the training mean or use a trusted physical relationship. For classification, a majority-class rule provides a comparison, together with suitable fault-sensitive metrics.
 
 Evaluate the proposed model and baseline on the same evaluation examples with comparable information available at prediction time. State the metric. A model's training score alone is not a fair held-out comparison.
 
@@ -1253,7 +1253,7 @@ Here y is the measured rise, ŷ is its prediction and r is the residual, all in 
 
 Adjusting the line in the course activity changes the proposed model. It does not collect a new measurement or perform a physical experiment. The illustrative calculation is teaching evidence rather than a validated industrial recommendation.
 
-With several inputs, the same idea extends to a model such as `y_hat = b_0 + b_1 x_1 + b_2 x_2`. Each coefficient describes the model's change per unit of its feature when the other inputs are held fixed. Its units are output units divided by that feature's units; the fitted association is not automatically a causal or physical law.
+With several inputs, the same idea extends to a model such as `ŷ = b_0 + b_1 x_1 + b_2 x_2`. Each coefficient describes the model's change per unit of its feature when the other inputs are held fixed. Its units are output units divided by that feature's units; the fitted association is not automatically a causal or physical law.
 
 ## Check your understanding
 
@@ -1504,7 +1504,7 @@ The harmonic mean used by F1 is pulled toward the smaller of precision and recal
 
 ## Calculate the supplied example
 
-The resources give TP = 8, FP = 2, FN = 4 and TN = 86, for N = 100 evaluated examples:
+The example has TP = 8, FP = 2, FN = 4 and TN = 86, for N = 100 evaluated examples:
 
 - Accuracy = (8 + 86) / 100 = 94%.
 - Precision = 8 / (8 + 2) = 80%.
@@ -1564,7 +1564,7 @@ Use validation examples to select the threshold, considering false alarms and mi
 
 Missed alarms and false alarms have different consequences. Their physical and economic costs depend on the machinery and intended use. A false alarm may consume inspection resources; a missed fault may leave damage undetected. The classroom example does not assign universal costs to these outcomes.
 
-Before acting on a detector output, state who receives the alert, when an inspection is required and what evidence is needed for a maintenance decision. The supplied workflow connects an alert with evidence review, inspection and a subsequent action.
+Before acting on a detector output, state who receives the alert, when an inspection is required and what evidence is needed for a maintenance decision. A sound workflow connects an alert with evidence review, inspection and a subsequent action.
 
 Synthetic demonstrations illustrate these decisions; they do not authorize deployment or validate equipment safety. A threshold that performs well in the exercise requires further operating-domain evidence before it can support a real application.
 
@@ -1639,21 +1639,21 @@ You will distinguish weighted predictive models from distance and margin-based m
 
 Linear regression predicts a numerical value from a weighted combination of input features. In a schematic form, feature values x₁ and x₂ pass through weights w₁ and w₂ and are combined to produce a numerical prediction ŷ. The model name does not establish that the prediction is accurate; performance must be checked on appropriate unseen data.
 
-Read the slide diagram from left to right: input feature values enter the model, weights determine their contributions, and the combined contributions produce the prediction. The predicted continuous pressure in the method-comparison table is a numerical output. It differs from a category such as fault or healthy. The diagram is schematic and supplies no numerical coefficients or physical units for its generic symbols.
+Input feature values enter the model, weights determine their contributions, and the combined contributions produce the prediction. A predicted continuous pressure is a numerical output. It differs from a category such as fault or healthy. This schematic form supplies no numerical coefficients or physical units for its generic symbols.
 
 Logistic regression is commonly used for binary classification [16]. It combines features and weights, then applies a mathematical link function to estimate a class probability. For example, it can estimate the probability of a binary fault. The word regression in the method name does not mean that the output must be a continuous engineering measurement.
 
-The link function is the additional mathematical mapping between the combined input contributions and the probability output. When reading the slides, distinguish the weighted combination from this final mapping. Linear and logistic regression can therefore use similar input-combination diagrams while serving different output tasks. Their names describe model construction; neither name proves useful performance on the available data.
+The link function is the additional mathematical mapping between the combined input contributions and the probability output. Distinguish the weighted combination from this final mapping. Linear and logistic regression can therefore use similar input combinations while serving different output tasks. Their names describe model construction; neither name proves useful performance on the available data.
 
 ## Geometric boundary models
 
 k-nearest neighbours, or kNN, estimates an output using nearby examples under a defined distance rule. Cover and Hart studied the nearest-neighbour rule for classification [45]. For a numerical quantity such as power generation, kNN regression averages the target values of the nearest training examples [16, Sec. 3.5], [91]. Because the method depends on distances, the selected features, their units and their scaling affect which examples count as neighbours.
 
-Here, nearby refers to positions in feature space: the coordinates represent input features describing operating points. It does not mean that two machines must be physically close to one another. Read the diagram by identifying the point requiring a prediction, its neighbouring examples and the distance rule that makes them neighbours. The course introduces this mechanism without specifying a numerical neighbour count or a complete implementation.
+Here, nearby refers to positions in feature space: the coordinates represent input features describing operating points. It does not mean that two machines must be physically close to one another. Identify the point requiring a prediction, its neighbouring examples and the distance rule that makes them neighbours. The course introduces this mechanism without specifying a numerical neighbour count or a complete implementation.
 
 A support vector machine, or SVM, learns a separating boundary for data classification [46]. It uses a geometric margin between classes. Kernel methods allow some support-vector techniques to express nonlinear relations, and related support-vector methods can also perform numerical regression. These are geometric representations; they do not by themselves establish a physical limit.
 
-In the slide diagram, the two groups of markers represent different classes, the central line represents the separating boundary, and the flanking lines illustrate the margin. The kernel is a mathematical means of expressing nonlinear relationships within the method. This lesson requires you to recognize these roles rather than derive a kernel equation or implement the training procedure.
+Picture two groups of points representing different classes: a central line forms the separating boundary, and lines on either side of it mark the margin. The kernel is a mathematical means of expressing nonlinear relationships within the method. This lesson requires you to recognize these roles rather than derive a kernel equation or implement the training procedure.
 
 ## Unit scaling and method selection
 
@@ -1661,7 +1661,7 @@ Changing a length from metres to millimetres leaves the physical separation unch
 
 Select a method by the required output format, dataset size, data structure and performance checks. Small tabular data may suit parametric or geometric methods, whereas raw images may require other architectures. The choice must be justified by evidence for the intended engineering task.
 
-Use the source's selection questions in order: What output is required? What structure does the method assume? How much data are available? How will performance on unseen examples be checked? The tabular-data and raw-image distinction is a consideration in selection, rather than a guarantee that one method always succeeds for a particular data format.
+Ask these selection questions in order: What output is required? What structure does the method assume? How much data are available? How will performance on unseen examples be checked? The tabular-data and raw-image distinction is a consideration in selection, rather than a guarantee that one method always succeeds for a particular data format.
 
 In scikit-learn, common implementation names include LogisticRegression, KNeighborsClassifier, KNeighborsRegressor and SVC for a support-vector classifier [91]. Check each method's assumptions and scaling needs, and compare candidates with the same valid split and preprocessing. These names are useful when moving from the lesson to a lab; no one algorithm is best for every engineering dataset.
 
@@ -1694,9 +1694,9 @@ You will explain how decision trees partition inputs, how random forests and boo
 
 A decision tree divides input examples through feature tests [16, Ch. 8], [47]. Tests on variables such as load or vibration create piecewise prediction regions, and a terminal region produces the corresponding prediction. A small tree permits direct engineering inspection. A deep tree uses many partitions and can fit training-specific patterns, so its complexity requires validation.
 
-Follow the construction diagram in three stages. First, the root input enters the tree. Next, successive feature tests determine the applicable branch. Finally, the input reaches a terminal region and receives that region's prediction. Partitioning means dividing the input space into these regions. Piecewise means that the prediction is determined separately within each region.
+A tree is built in three stages. First, the root input enters the tree. Next, successive feature tests determine the applicable branch. Finally, the input reaches a terminal region and receives that region's prediction. Partitioning means dividing the input space into these regions. Piecewise means that the prediction is determined separately within each region.
 
-The load-and-vibration example explains why the regions matter: operating examples are separated by tests on their feature values. The resources provide no numerical split threshold for this example, so the diagram cannot supply an equipment setting. A small tree's inspectability means its tests can be examined; it does not establish that those tests are physically valid.
+The load-and-vibration example explains why the regions matter: operating examples are separated by tests on their feature values. This example provides no numerical split threshold, so it cannot supply an equipment setting. A small tree's inspectability means its tests can be examined; it does not establish that those tests are physically valid.
 
 Tree predictions are piecewise outputs. They differ from a smooth response equation, even when both are used to estimate the same engineering quantity. A learned threshold is an empirical rule produced by the data and training procedure; it is not automatically a physical fault limit or a manufacturer specification.
 
@@ -1704,13 +1704,13 @@ Tree predictions are piecewise outputs. They differ from a smooth response equat
 
 A random forest combines multiple individual models into one ensemble [48]. It uses randomized trees constructed in parallel and aggregates their predictions, for example by averaging or voting. Aggregation reduces reliance on any one decision tree and can reduce variance, but it adds computational cost and can reduce interpretability [49]. Each tree is grown separately from a random sample, but all the trees learn from the same data, so their predictions are usually correlated rather than independent [48]. Ensembles in general do not require independent members.
 
-An ensemble is a combination of multiple models. In the forest diagram, several trees each supply a prediction to a common aggregation block. Read parallel as the construction contrast with sequential boosting: the diagram does not claim that the software must execute every tree simultaneously. The final output combines the tree predictions rather than simply selecting one tree's output.
+An ensemble is a combination of multiple models. In a random forest, several trees each supply a prediction to a common aggregation step. Read parallel as the construction contrast with sequential boosting: it does not mean that the software must execute every tree simultaneously. The final output combines the tree predictions rather than simply selecting one tree's output.
 
 ## Boosting corrects errors sequentially
 
 Boosting constructs models sequentially rather than in parallel [50]. Each later stage targets remaining objective errors from earlier stages, so the final output is a sequence of error-correcting additions. Boosting is therefore mechanically different from randomized parallel aggregation. Its model complexity must be checked with strict validation.
 
-Read the boosting diagram as an initial model, an assessment of its remaining error, and a subsequent model stage that addresses that error. The dependence on earlier stages is the defining distinction in this lesson. A forest aggregation diagram and a boosting sequence both contain several models, but they describe different ways of constructing and combining them.
+Boosting starts with an initial model, assesses its remaining error, and adds a subsequent model stage that addresses that error. The dependence on earlier stages is the defining distinction in this lesson. A forest and a boosting sequence both contain several models, but they describe different ways of constructing and combining them.
 
 ## Engineering limits and validation scope
 
@@ -1718,7 +1718,7 @@ An algorithm can learn a prediction rule from load and vibration without proving
 
 Educational examples and synthetic data demonstrate construction and evaluation ideas. They do not constitute validation for operational industrial hardware. Operational validation requires relevant machine data and evidence appropriate to the intended use.
 
-The method-limitations table connects each construction with a practical concern: a small tree has restricted representation; a deep tree risks training-specific fitting; a forest adds cost and makes interpretation more difficult; boosting requires validation of complexity. Use these concerns alongside performance evidence when comparing methods. Adding models alone does not establish a better engineering decision.
+Each construction has a practical concern: a small tree has restricted representation; a deep tree risks training-specific fitting; a forest adds cost and makes interpretation more difficult; boosting requires validation of complexity. Use these concerns alongside performance evidence when comparing methods. Adding models alone does not establish a better engineering decision.
 
 In scikit-learn, RandomForestClassifier and GradientBoostingClassifier are common classifier interfaces for two tree-ensemble families [91]. Their availability does not make one automatically preferable: compare them with a simple baseline, inspect error consequences and consider whether the result can be validated for the intended machines.
 
@@ -1757,7 +1757,7 @@ The number of k-means clusters must be chosen. One exploratory aid is to compare
 
 Principal component analysis, or PCA, projects data vectors onto directions of high mathematical variance [52]. It can compress correlated sensor feature inputs and ranks principal components by captured variance. High variance is not necessarily task relevance: normal ambient-load variation may dominate, while a rare mechanical fault may occupy a low-variance direction. PCA does not filter components according to actual fault relevance.
 
-A projection represents the data along selected directions, and the resulting representations are principal components. In the source diagram, the broad distribution associated with normal ambient load shows the direction of greatest variation, while the rare-fault example illustrates a different direction. The distinction concerns the criterion: capturing variation and identifying diagnostically useful information are different questions. The illustration does not establish that every rare fault follows the same geometric pattern.
+A projection represents the data along selected directions, and the resulting representations are principal components. For example, the broad spread of data under normal ambient load can define the direction of greatest variation, while a rare fault may lie along a different direction. The distinction concerns the criterion: capturing variation and identifying diagnostically useful information are different questions. This example does not establish that every rare fault follows the same geometric pattern.
 
 ## Feature scaling implications
 
@@ -1767,7 +1767,7 @@ Distance-based methods require scaling that respects physical units. An unscaled
 
 Compare candidate methods on common development data [53]. Fit preprocessing transformations strictly inside each training fold, including scalers and other learned transformations. Use validation folds for hyperparameter tuning and candidate selection. After the choice is fixed, evaluate it once on an isolated locked test set.
 
-Read the validation diagram as a sequence of information boundaries:
+Treat validation as a sequence of information boundaries:
 
 - Common development data supply the candidate comparisons.
 - Training folds contain the examples used to fit each model and its preprocessing.
@@ -1845,11 +1845,11 @@ You will distinguish training, validation and final-test data, explain cross-val
 
 Generalization concerns performance on examples outside the data used to develop the model. In an engineering application, unseen must be defined in relation to the deployment question. Predicting later observations and transferring to a machine absent from development are different questions. They require different evaluation boundaries.
 
-Read the development-data and unseen-machine diagram in the slides as a separation between model development and assessment. The held-out examples provide evidence about the stated use only when the development procedure has respected that separation. A large number of rows does not establish that the examples are independent or relevant to deployment.
+Keep development data separate from the unseen machines used for assessment. The held-out examples provide evidence about the stated use only when the development procedure has respected that separation. A large number of rows does not establish that the examples are independent or relevant to deployment.
 
 ## 2. Three datasets have different functions
 
-The training set supplies examples for fitting model parameters, such as regression coefficients. Fitting changes the model using those examples. This is the training set's role in the data-split table.
+The training set supplies examples for fitting model parameters, such as regression coefficients. Fitting changes the model using those examples. This is the training set's role in a data split.
 
 The validation set supports development choices. These include selecting a model family, choosing tree depth, or setting an alert threshold. Validation therefore influences the chosen procedure, even though it is separate from fitting that procedure's parameters. Distinguish parameter fitting from deciding which model and settings to retain.
 
@@ -1861,7 +1861,7 @@ The distinction is about how information is used. Calling a file a test set does
 
 Cross-validation repeats training and validation over different folds within the development dataset [39]. In each iteration, a portion is held out for validation and the remaining portion is used for training. The repeated assessments support development choices; they do not replace the role of a reserved final test set.
 
-The slides give a mathematical example with 100 independent examples divided equally into five folds. Each fold contains 20 examples. In one iteration, 80 examples are used for training and 20 are held out for validation. These are counts of examples, not dimensional quantities requiring SI units. The example explicitly assumes independence and equal fold sizes.
+Consider a mathematical example with 100 independent examples divided equally into five folds. Each fold contains 20 examples. In one iteration, 80 examples are used for training and 20 are held out for validation. These are counts of examples, not dimensional quantities requiring SI units. The example explicitly assumes independence and equal fold sizes.
 
 Learned preprocessing must be fitted separately within each iteration's training fold. For example, a scaler or imputer obtains its fitted values from that training portion. The validation portion is transformed using those fitted values. Fitting preprocessing on all development examples before forming the folds allows each held-out portion to influence its own assessment.
 
@@ -1869,7 +1869,7 @@ For classification folds where examples are otherwise exchangeable, stratificati
 
 ## 4. Match the split to the deployment question
 
-There is no universal split rule for every engineering dataset [54]. The slides distinguish three situations:
+There is no universal split rule for every engineering dataset [54]. Three situations call for different splits:
 
 - Forecasting requires splits that respect chronological order.
 - Transfer to new equipment requires holding out whole machines when the question concerns machines absent from development.
@@ -1881,7 +1881,7 @@ Use the intended engineering question to select the boundary. Randomly splitting
 
 Vibration data may be represented as measurement windows. If overlapping windows from the same event occur in both training and test sets, the sets share event information. The apparent performance can be optimistic because the assessment does not represent the intended independent evidence.
 
-The slides illustrate this issue with 5,000 overlapping windows from ten machines and a goal of transfer to unseen equipment. Random row splitting distributes each machine's windows across both sets. The corrected arrangement holds out whole machines, keeps related overlapping events within consistent boundaries, fits preprocessing on the training portion, and locks the procedure before evaluating the held-out equipment. The numbers describe a teaching example, not a required dataset size.
+Consider 5,000 overlapping windows from ten machines and a goal of transfer to unseen equipment. Random row splitting distributes each machine's windows across both sets. The corrected arrangement holds out whole machines, keeps related overlapping events within consistent boundaries, fits preprocessing on the training portion, and locks the procedure before evaluating the held-out equipment. The numbers describe a teaching example, not a required dataset size.
 
 For exchangeable classification examples, scikit-learn provides train_test_split and StratifiedKFold as common split tools. These do not replace time-ordered or group-based holdouts when examples from the same machine, event or future period must stay together. Choose the evaluation boundary for the deployment question before selecting an API.
 
@@ -1912,13 +1912,13 @@ You will distinguish underfitting from overfitting, interpret training and valid
 
 ## 1. Underfitting misses relevant relationships
 
-Underfitting means that the model does not adequately represent or learn the relationship needed for the task. The slide diagram shows a straight-line fit applied to a strongly nonlinear response. The line cannot represent the response shown, so increasing confidence in that line would not correct the representation.
+Underfitting means that the model does not adequately represent or learn the relationship needed for the task. For example, a straight-line fit may be applied to a strongly nonlinear response. The line cannot represent that response, so increasing confidence in that line would not correct the representation.
 
-High training and validation errors, relative to a useful baseline and with sufficiently reliable data, can suggest underfitting. Possible issues include insufficient model capacity, weak features or inadequate training. Read the diagram as an illustration of a model missing a relationship; the plotted markers do not supply a measured equipment response or a fitted physical equation.
+High training and validation errors, relative to a useful baseline and with sufficiently reliable data, can suggest underfitting. Possible issues include insufficient model capacity, weak features or inadequate training. This example illustrates a model missing a relationship; it does not supply a measured equipment response or a fitted physical equation.
 
 ## 2. High error has other possible causes
 
-High error on both datasets does not, by itself, prove that the model is too simple. The resources also identify measurement noise, incorrect target labels and missing input features. These issues can limit prediction even when model complexity increases.
+High error on both datasets does not, by itself, prove that the model is too simple. Other causes include measurement noise, incorrect target labels and missing input features. These issues can limit prediction even when model complexity increases.
 
 The diagnostic flowchart begins with high training and validation error, then asks whether the data and baseline have been checked. Investigate target quality, available features and noise before treating complexity as the sole explanation. If the supplied inputs omit relevant information, a more flexible model still receives those same incomplete inputs.
 
@@ -1926,7 +1926,7 @@ The practical distinction is between inadequate representation and inadequate ev
 
 ## 3. Overfitting captures training-specific variation
 
-Overfitting occurs when a learned relationship captures variation specific to the training examples and performs poorly on relevant unseen examples [4]. In the slides, an irregular fitted curve follows incidental noise rather than representing a relationship that transfers. Deep decision trees are given as an example of models whose complexity can increase this risk.
+Overfitting occurs when a learned relationship captures variation specific to the training examples and performs poorly on relevant unseen examples [4]. For example, an irregular fitted curve may follow incidental noise rather than representing a relationship that transfers. Deep decision trees are given as an example of models whose complexity can increase this risk.
 
 A common diagnostic pattern is training error substantially below validation error. The training examples are fitted closely, but the improvement does not carry over to the validation examples. Some difference between the two errors is normal, so the lesson does not prescribe a universal numerical gap that proves overfitting.
 
@@ -1934,11 +1934,11 @@ Read training and validation results together. High error on both calls for inve
 
 ## 4. Regularization controls certain complex fits
 
-Regularization discourages selected kinds of complex fitting through penalties or constraints. The supplied example is a penalty on large fitted coefficients. The slides also discuss structural constraints on model complexity. These controls change which fitted relationships the training procedure favours.
+Regularization discourages selected kinds of complex fitting through penalties or constraints. The supplied example is a penalty on large fitted coefficients. Structural constraints on model complexity are another option. These controls change which fitted relationships the training procedure favours.
 
-The purpose is to reduce excessive fitting to training-specific variation and improve generalization. Restricting a model too strongly can also leave it unable to represent relevant relationships. The resources therefore discuss reducing variance without introducing excessive bias. Here, bias and variance concern prediction error; they are distinct from the ethical meaning of fairness bias.
+The purpose is to reduce excessive fitting to training-specific variation and improve generalization. Restricting a model too strongly can also leave it unable to represent relevant relationships. The aim is therefore to reduce variance without introducing excessive bias. Here, bias and variance concern prediction error; they are distinct from the ethical meaning of fairness bias.
 
-The regularization block diagram is schematic. It identifies a control on fitting, but supplies no penalty equation, coefficient value or universally recommended setting. Assess development choices using validation evidence.
+This description is schematic. It identifies a control on fitting, but supplies no penalty equation, coefficient value or universally recommended setting. Assess development choices using validation evidence.
 
 ## Relate complexity to bias and variance
 
@@ -1946,11 +1946,11 @@ Increasing model flexibility can reduce systematic errors from an overly simple 
 
 ## 5. Early stopping uses validation performance
 
-Early stopping selects a training checkpoint using validation performance [56]. The slides show training progressing through epochs and a checkpoint being selected along that progression. The key distinction is between continuing to improve the training fit and retaining a model that performs well on validation examples.
+Early stopping selects a training checkpoint using validation performance [56]. Training progresses through epochs, and a checkpoint is selected along that progression. The key distinction is between continuing to improve the training fit and retaining a model that performs well on validation examples.
 
-In the loss-versus-epochs diagram, training loss continues to decrease while validation loss decreases and then increases. Lower training loss alone would favour continuing. Validation behaviour indicates that further training is no longer improving the chosen validation measure, so a checkpoint is selected within development.
+In a typical overfitting case, training loss continues to decrease while validation loss decreases and then increases. Lower training loss alone would favour continuing. Validation behaviour indicates that further training is no longer improving the chosen validation measure, so a checkpoint is selected within development.
 
-The plotted minimum illustrates checkpoint selection; it does not guarantee optimal performance on every future example. The resources provide no numerical patience setting or stopping tolerance. The final-test score must not select the epoch, because doing so would use the final test for development.
+The validation minimum guides checkpoint selection; it does not guarantee optimal performance on every future example. No universal numerical patience setting or stopping tolerance applies. The final-test score must not select the epoch, because doing so would use the final test for development.
 
 L1 regularization penalizes the absolute sizes of selected model coefficients and can drive some coefficients to zero [57]. This can produce a sparse linear model, but a zero coefficient does not prove that a sensor is physically irrelevant: correlated inputs, scaling and the training sample can affect which coefficient remains. Fit and compare such choices within the development data.
 
@@ -1985,7 +1985,7 @@ You will identify preprocessing, temporal, target-derived and duplicate-event le
 
 Data leakage occurs when information unavailable for the intended prediction or reserved for evaluation improperly influences training or selection [25], [58]. The boundary can concern datasets, machines, events or prediction time. A credible assessment must respect the boundary required by the engineering question.
 
-The slides' boundary diagram shows evaluation information influencing development. This compromises the assessment because the procedure has benefited from evidence that was supposed to remain separate. Leakage is therefore about the information used and when it becomes available, rather than only the filenames assigned to datasets.
+Leakage occurs when evaluation information influences development. This compromises the assessment because the procedure has benefited from evidence that was supposed to remain separate. Leakage is therefore about the information used and when it becomes available, rather than only the filenames assigned to datasets.
 
 ## 2. Preprocessing can leak without using target labels
 
@@ -1993,7 +1993,7 @@ Consider fitting a scaler on all data before dividing the examples for cross-val
 
 The same issue applies to an imputer fitted using combined training and evaluation data. Learned preprocessing is part of the procedure being assessed. Evaluating a globally fitted transformation does not assess the intended procedure that would learn its transformation from training data alone.
 
-Read the two preprocessing diagrams in order. The incorrect sequence fits a global transformation and then forms the evaluation folds. The correct sequence forms the folds first, fits the transformation on the training fold, and applies those fitted values to the evaluation portion.
+Compare two preprocessing sequences. The incorrect sequence fits a global transformation and then forms the evaluation folds. The correct sequence forms the folds first, fits the transformation on the training fold, and applies those fitted values to the evaluation portion.
 
 ## 3. A pipeline must preserve fitting boundaries
 
@@ -2001,13 +2001,13 @@ A pipeline groups feature transformations and model processing into a repeatable
 
 During cross-validation, repeat this fitting separately within each training fold. Calling a sequence a pipeline is insufficient if it is fitted on all examples before evaluation. The important evidence is which examples contributed to each fitted transformation.
 
-The infographic shows training folds passing through feature transformations and fitted pipelines before application to training and evaluation data. Interpret the evaluation branch as applying the training-fitted parameters, not refitting them on held-out examples.
+In a correct pipeline, training folds pass through feature transformations and fitted pipelines before application to training and evaluation data. The evaluation branch applies the training-fitted parameters, not refitting them on held-out examples.
 
 ## 4. Future observations can leak through time windows
 
 At prediction time t, a live alarm must use information available at that time. A centered moving-average feature can combine readings from t−1, t and t+1. The reading at t+1 occurs after the intended prediction and is unavailable when the alarm must operate.
 
-The source timeline uses these symbols to indicate observation order. It does not specify a sampling interval or numerical time unit. The problem is the inclusion of future information, regardless of the unspecified interval.
+These symbols indicate observation order. They do not specify a sampling interval or numerical time unit. The problem is the inclusion of future information, regardless of the unspecified interval.
 
 A chronological dataset split alone does not repair that feature. Even if training rows precede evaluation rows, a feature for an earlier prediction can still contain a later observation. Check feature construction as well as dataset order.
 
@@ -2031,7 +2031,7 @@ The single-evaluation sequence protects the test from repeated development decis
 
 ## 7. Record enough detail to reproduce the result
 
-The resources specify split identifiers, transformation sequences, random seeds, code versions and software dependencies. Split identifiers record which examples belonged to each portion. Transformation records identify the processing sequence. Seeds record the random initialization or selection used. Code and dependency versions identify the implementation and environment.
+Record split identifiers, transformation sequences, random seeds, code versions and software dependencies. Split identifiers record which examples belonged to each portion. Transformation records identify the processing sequence. Seeds record the random initialization or selection used. Code and dependency versions identify the implementation and environment.
 
 These records allow the stated procedure to be repeated and inspected [36]. Reproducing a score does not, by itself, prove that the procedure respected its information boundary. Reproducibility and leakage prevention are complementary requirements.
 
@@ -2091,7 +2091,7 @@ You will explain the roles of inputs, weights, a bias term and an activation in 
 
 ## 1. Follow the computation through a neuron
 
-An artificial neuron is a mathematical computation [4]. It receives numerical inputs, multiplies each input by a corresponding weight, adds the weighted contributions and a bias, and applies an activation function. The supplied block diagram represents these operations in their calculation order.
+An artificial neuron is a mathematical computation [4]. It receives numerical inputs, multiplies each input by a corresponding weight, adds the weighted contributions and a bias, and applies an activation function. These operations are performed in that order.
 
 The weighted sum is z = Σᵢ wᵢxᵢ + b. Here, xᵢ is input i, wᵢ is its weight, b is the bias term, and z is the value before activation. The summation symbol means to add the weighted contributions from the inputs. The activated output is a = f(z), where f is the chosen activation function.
 
@@ -2105,9 +2105,9 @@ A weight is a learned multiplier that scales an input's contribution. The bias t
 
 Weights, bias terms and fitted connection coefficients are learned parameters. A neuron and a layer describe the computational structure: a neuron performs a computation, while a layer is a collection or stage of neural computations. A network combines layers into a mapping from inputs to outputs.
 
-The slides' parameter-versus-structure table separates what training adjusts from how the computation is arranged. Identifying a weight is therefore different from identifying a layer. The later discussion of learning rate adds another distinction: a chosen training setting is not a fitted weight.
+Separate what training adjusts (the parameters) from how the computation is arranged (the structure). Identifying a weight is therefore different from identifying a layer. The later discussion of learning rate adds another distinction: a chosen training setting is not a fitted weight.
 
-## Why identical zero weights are a problem
+## Why identical starting weights are a problem
 
 If two neurons in a layer use the same activation, receive the same inputs and start with identical weights, a deterministic training procedure gives them the same outputs and gradients. They then have no reason to learn different features. Common neural-network initializers use small, varied values to break this symmetry [4, Sec. 8.4]. Initialization is a training choice; it does not guarantee that the resulting network will learn a useful representation.
 
@@ -2115,9 +2115,9 @@ If two neurons in a layer use the same activation, receive the same inputs and s
 
 The Rectified Linear Unit, ReLU, is defined by a = max(0, z) [60]. Compare z with zero and select the larger value. Negative values produce zero, positive values pass through unchanged, and z = 0 produces zero.
 
-In the ReLU graph, the output stays on zero for negative z. To the right of zero, the output equals z. This piecewise behaviour introduces nonlinearity into the computation. The graph shows exact values of the activation function, rather than the measured results of training a network.
+For negative z, the ReLU output is zero. For positive z, the output equals z. This piecewise behaviour introduces nonlinearity into the computation. These are exact values of the activation function, rather than the measured results of training a network.
 
-The infographic gives three examples: z = −3 produces a = 0, z = 0.2 produces a = 0.2, and z = 2 produces a = 2. Each value is dimensionless. Check which branch of the rule applies before performing further calculations.
+Three examples: z = −3 produces a = 0, z = 0.2 produces a = 0.2, and z = 2 produces a = 2. Each value is dimensionless. Check which branch of the rule applies before performing further calculations.
 
 ## 4. Work through the supplied forward calculation
 
@@ -2132,9 +2132,9 @@ The two weighted input contributions cancel in this example, leaving the bias as
 
 ## 5. Explain why nonlinear operations matter between layers
 
-Combining several linear transformations without nonlinear operations still produces a linear transformation [4, Sec. 6.1]; with bias terms, each layer is affine and the combination is still affine. The slides show three successive weight mappings as W₃(W₂(W₁x)), which can be written as one equivalent mapping. Including additive bias terms preserves the affine character of the composition: W₃(W₂(W₁x + b₁) + b₂) + b₃ = W′x + b′, where W′ = W₃W₂W₁ and b′ = W₃W₂b₁ + W₃b₂ + b₃. The result is linear only when b′ is zero.
+Combining several linear transformations without nonlinear operations still produces a linear transformation [4, Sec. 6.1]; with bias terms, each layer is affine and the combination is still affine. Three successive weight mappings, W₃(W₂(W₁x)), which can be written as one equivalent mapping. Including additive bias terms preserves the affine character of the composition: W₃(W₂(W₁x + b₁) + b₂) + b₃ = W′x + b′, where W′ = W₃W₂W₁ and b′ = W₃W₂b₁ + W₃b₂ + b₃. The result is linear only when b′ is zero.
 
-Consequently, adding affine layers alone does not automatically create a useful nonlinear model. An activation such as ReLU between layers changes the mathematical mapping and prevents this simple collapse. Read the equivalent-layer diagram as a statement about the composition of operations, rather than a guarantee that any particular network will predict an engineering quantity accurately.
+Consequently, adding affine layers alone does not automatically create a useful nonlinear model. An activation such as ReLU between layers changes the mathematical mapping and prevents this simple collapse. This equivalence is a statement about the composition of operations, rather than a guarantee that any particular network will predict an engineering quantity accurately.
 
 ReLU is not the only activation. Sigmoid maps values into the interval from 0 to 1 and is often used to produce a binary-classification output; tanh maps values into the interval from -1 to 1 [4, Sec. 6.3.2]. These functions have different mathematical properties and uses. The course focuses on ReLU for its simple calculation, not because it is best for every layer or task.
 
@@ -2165,9 +2165,9 @@ You will distinguish a loss from its gradient, explain the separate roles of bac
 
 ## 1. A loss specifies the training objective
 
-Training needs a numerical objective against which model predictions can be assessed. A loss function, denoted L, measures discrepancy between predictions and the reference targets used for training. In the supplied pipeline diagram, model prediction and ground truth enter the loss calculation.
+Training needs a numerical objective against which model predictions can be assessed. A loss function, denoted L, measures discrepancy between predictions and the reference targets used for training. The model prediction and the ground truth both enter the loss calculation.
 
-The reference target supplies the value against which the prediction is compared. Defining a loss identifies the objective being fitted. The resources do not specify a particular loss formula in this lesson, so the pipeline should be read as a general sequence rather than as an implementation of an unstated loss function.
+The reference target supplies the value against which the prediction is compared. Defining a loss identifies the objective being fitted. This lesson does not specify a particular loss formula, so read this as a general sequence rather than as an implementation of an unstated loss function.
 
 For a numerical target, mean squared error is one possible loss: it averages squared differences between predictions and targets. For classification, cross-entropy losses are commonly used to compare predicted class probabilities with reference labels [4, Sec. 6.2.1.1]. The choice changes the training objective; a loss value is not itself an engineering acceptance criterion. Module 6 distinguishes training loss from evaluation and acceptance.
 
@@ -2181,7 +2181,7 @@ In a network with multiple parameters, the derivatives concern their respective 
 
 ## 3. Backpropagation computes derivatives through the network
 
-Backpropagation uses the chain rule to compute loss derivatives efficiently through the layers [4, Sec. 6.5], [61]. Follow the derivative-computation block in the slides as a calculation through the existing network. Its result provides gradients for the update stage.
+Backpropagation uses the chain rule to compute loss derivatives efficiently through the layers [4, Sec. 6.5], [61]. Treat the derivative computation as a calculation through the existing network. Its result provides gradients for the update stage.
 
 The distinction in the pipeline is functional: backpropagation calculates the gradients, and an optimizer uses them to change parameters. Treating both stages as one unexplained operation would hide which part computes derivatives and which part applies an update rule.
 
@@ -2189,7 +2189,7 @@ The complete sequence is to compute predictions, evaluate the loss, calculate gr
 
 ## 4. Gradient descent applies a parameter update
 
-The supplied gradient-descent rule is θ_new = θ_old − η∇L. Here, θ_old is the parameter value before the update, θ_new is the value afterward, η is the learning rate, and ∇L is the loss gradient for the parameter being updated. Some resources write g for the gradient in the same rule.
+The supplied gradient-descent rule is θ_new = θ_old − η∇L. Here, θ_old is the parameter value before the update, θ_new is the value afterward, η is the learning rate, and ∇L is the loss gradient for the parameter being updated. Some texts write g for the gradient in the same rule.
 
 The learning rate scales the gradient contribution before it is subtracted from the old value. A large learning rate can overshoot, while a small learning rate can make progress slow. The effects depend on the problem; the lesson provides no universally recommended setting.
 
@@ -2237,19 +2237,19 @@ You will distinguish a batch, an update and an epoch; calculate the number of up
 
 ## 1. A batch supplies examples for an update
 
-A batch is a group of training examples used for a parameter update in a typical mini-batch procedure [4]. Read the batch diagram as selecting a subset from the training dataset for the computation that leads to one update.
+A batch is a group of training examples used for a parameter update in a typical mini-batch procedure [4]. Each batch is a subset selected from the training dataset for the computation that leads to one update.
 
 The calculation still involves the stages introduced in Lesson 2: predictions, loss, gradients and a parameter update. Batch size states how many examples are processed together for that update. It is a count of examples, rather than a physical quantity with an SI unit.
 
-The batch diagram therefore connects dataset organization with training operations. A batch is a group of examples; an update is the operation that changes parameters using the calculated gradient information.
+Batches therefore connect dataset organization with training operations. A batch is a group of examples; an update is the operation that changes parameters using the calculated gradient information.
 
 ## 2. An epoch is a complete pass through training data
 
-An epoch is one pass through the training set. In the supplied diagram, the complete dataset pass contains the batches used along that pass. One epoch can therefore contain several parameter updates.
+An epoch is one pass through the training set. The complete dataset pass contains the batches used along that pass. One epoch can therefore contain several parameter updates.
 
 Distinguish the two counts. Counting epochs tells you how many complete training-data passes have occurred. Counting updates tells you how often parameters have been adjusted. These counts answer different questions even though both describe progress through training. Completing an epoch does not guarantee that the training loss decreases; the step size, the order of examples and the optimizer all affect the result [4, Ch. 8].
 
-The resource illustration identifies a batch as a subset and an epoch as the full pass. It does not imply that each batch is a new independent dataset or that completing an epoch demonstrates improved unseen performance.
+A batch is a subset and an epoch is the full pass. This does not imply that each batch is a new independent dataset or that completing an epoch demonstrates improved unseen performance.
 
 ## 3. Calculate updates per epoch
 
@@ -2257,7 +2257,7 @@ The teaching example has 1,000 training examples and a batch size of 50. For the
 
 Updates per epoch = 1,000 ÷ 50 = 20.
 
-The slides write this as U = N_total / N_batch, where U is the number of updates, N_total is the total number of training examples, and N_batch is the number of examples per batch. All are counts, with no physical units. Here the division is exact, so the pass contains 20 batches and 20 updates.
+In symbols, U = N_total / N_batch, where U is the number of updates, N_total is the total number of training examples, and N_batch is the number of examples per batch. All are counts, with no physical units. Here the division is exact, so the pass contains 20 batches and 20 updates.
 
 The exact-divisibility condition matters. If a dataset does not divide evenly into batches, the treatment of the final partial batch must be stated. The supplied example does not require such a choice and does not prescribe one for every training procedure.
 
@@ -2265,15 +2265,15 @@ The exact-divisibility condition matters. If a dataset does not divide evenly in
 
 Deep networks can learn representations useful for complex data; they typically rely on large datasets and substantial computation [3], and their performance must be checked on held-out data. Training duration alone does not establish whether those representations perform well on relevant unseen examples.
 
-The training-loss diagram shows loss decreasing as training continues. The validation-loss diagram shows an initial decrease followed by an increase. Together, they illustrate how an improving training fit can occur alongside worsening validation performance.
+In a typical case, training loss keeps decreasing as training continues, while validation loss shows an initial decrease followed by an increase. Together, these patterns illustrate how an improving training fit can occur alongside worsening validation performance.
 
-Additional epochs can fit training-specific variation. Consequently, a lower training loss or a larger epoch count does not guarantee improved test performance. The curves illustrate this distinction; they do not report measured machinery performance, specify a numerical stopping epoch, or guarantee the same curve shape for every run.
+Additional epochs can fit training-specific variation. Consequently, a lower training loss or a larger epoch count does not guarantee improved test performance. These patterns illustrate this distinction; they do not report measured machinery performance, specify a numerical stopping epoch, or guarantee the same curve shape for every run.
 
 ## 5. Use validation to select a checkpoint
 
-A checkpoint is a saved copy of the model’s parameters during training; early stopping keeps the copy with the best validation error [56]. The supplied selection diagram connects monitoring validation performance with choosing the model state to retain. Checkpoint selection is part of development because it determines which trained model will be used.
+A checkpoint is a saved copy of the model’s parameters during training; early stopping keeps the copy with the best validation error [56]. Monitoring validation performance guides the choice of model state to retain. Checkpoint selection is part of development because it determines which trained model will be used.
 
-Use the validation evidence to guide that choice rather than assuming that the last epoch is best. A validation minimum is evidence for a development choice; it is not a guarantee of the best result on every future observation. The resources supply no numerical stopping tolerance or patience setting to apply universally.
+Use the validation evidence to guide that choice rather than assuming that the last epoch is best. A validation minimum is evidence for a development choice; it is not a guarantee of the best result on every future observation. No numerical stopping tolerance or patience setting applies universally.
 
 After model selection is complete, the locked final test estimates performance on its held-out examples. Final-test results should remain separate from checkpoint selection. Choosing an epoch using those results would allow the final test to influence development.
 
@@ -2281,7 +2281,7 @@ After model selection is complete, the locked final test estimates performance o
 
 The beginner goal is to understand neural computations and training vocabulary. No GPU is required for this course. Full architecture design, automatic differentiation software and large-scale model training are identified as later study.
 
-The arithmetic and diagrams support understanding of computation, updates and evaluation. Synthetic numerical examples do not substitute for physical equipment validation. Completing more epochs does not establish that engineering constraints are satisfied.
+The arithmetic and examples support understanding of computation, updates and evaluation. Synthetic numerical examples do not substitute for physical equipment validation. Completing more epochs does not establish that engineering constraints are satisfied.
 
 Batch size changes how many examples contribute to each parameter update. A larger batch usually gives a less noisy estimate of the training gradient and makes fewer updates per epoch; a smaller batch gives noisier updates and more updates per epoch [4, Sec. 8.1.3]. The effect on speed and generalization depends on the model, data and optimizer, so treat batch size as a setting to evaluate rather than a guaranteed improvement.
 
@@ -2349,7 +2349,7 @@ Before training, document the feature definitions, units, sampling or image-acqu
 
 A multilayer perceptron, or MLP, commonly processes a feature vector through fully connected layers. A convolutional neural network, or CNN, applies shared filters over local regions and can represent local spatial patterns in images or some signals. A filter response is a numerical pattern response; it is not by itself evidence that a crack or other physical defect has been identified. Labels, inspection evidence and suitable validation are still required.
 
-Architecture selection therefore follows the data structure and the required output. The supplied comparison maps tabular feature vectors to an MLP and image pixels and channels to a CNN. This mapping is a starting design choice, not a guarantee of performance.
+Architecture selection therefore follows the data structure and the required output. A common starting point maps tabular feature vectors to an MLP and image pixels and channels to a CNN. This mapping is a starting design choice, not a guarantee of performance.
 
 A convolution applies the same learned filter to local image neighborhoods and combines nearby pixel values into a feature map [62]. Reusing the filter across locations can help a CNN detect spatial patterns such as edges or texture. A filter response is a numerical feature, not proof that a crack or defect is present; inspection labels and validation remain necessary.
 
@@ -2441,7 +2441,7 @@ For a next-day load forecast issued at 18:00, observed load up to 18:00 may be a
 
 Adjacent windows can share many raw samples. If windows are randomly assigned to training and testing sets, shared samples can destroy independence and produce optimistic performance [54]. Use chronological splits, suitable temporal gaps, or event- or equipment-level holdouts when the evaluation question requires independent information.
 
-State how missing intervals, changed sampling rates and incomplete windows are treated. The resource does not prescribe one universal imputation or split rule; the treatment must be justified for the task.
+State how missing intervals, changed sampling rates and incomplete windows are treated. There is no universal imputation or split rule; the treatment must be justified for the task.
 
 ## Check your understanding
 
@@ -2497,7 +2497,7 @@ You are expected to explain what a language model produces, distinguish large la
 
 A language model learns patterns over sequences of tokens and can generate or transform text [67]. A token is a unit processed by the model; Lesson 2 explains why it is not necessarily a complete word. An LLM is a large language model, typically with many parameters and broad training.
 
-Read the language-model diagram as a sequence of computational operations: the model processes token patterns and produces a plausible continuation. That output can take the form of an explanation or source code. Producing a continuation does not, by itself, verify the statements in the explanation, execute the code, or consult an engineering standard.
+A language model performs a sequence of computational operations: the model processes token patterns and produces a plausible continuation. That output can take the form of an explanation or source code. Producing a continuation does not, by itself, verify the statements in the explanation, execute the code, or consult an engineering standard.
 
 Keep the output and the evidence for it separate. A fluent explanation shows that text has been produced coherently. Its equations, references and assumptions still need to be checked before they support an engineering conclusion.
 
@@ -2505,27 +2505,27 @@ Keep the output and the evidence for it separate. A fluent explanation shows tha
 
 A foundation model is pretrained on broad data for reuse across downstream tasks [68]. A downstream task is a task addressed using that previously trained model, including through adaptation or prompting. Broad pretraining provides a basis for reuse; it does not establish accuracy for every engineering application.
 
-A multimodal model processes or generates more than one information type, such as text and images. In the supplied diagram, text and image information enter a model that can work with those different forms. The term describes the kinds of information handled, rather than a guarantee that every detail has been interpreted correctly.
+A multimodal model processes or generates more than one information type, such as text and images. For example, text and image information can enter a model that works with both forms. The term describes the kinds of information handled, rather than a guarantee that every detail has been interpreted correctly.
 
-These names answer different questions. LLM identifies a large language model; foundation model describes broad pretraining and reuse; multimodal describes handling multiple information types. When reading the reference table, connect each capability with its evidence limit: task-specific evaluation remains necessary, and capabilities can vary by task.
+These names answer different questions. LLM identifies a large language model; foundation model describes broad pretraining and reuse; multimodal describes handling multiple information types. Connect each capability with its evidence limit: task-specific evaluation remains necessary, and capabilities can vary by task.
 
 ## 3. Recognise other generative model families
 
-Generative systems also include diffusion models and generative adversarial networks, or GANs [69], [70]. A diffusion model learns a reverse process from noised examples. The slides illustrate a progression from noised data toward a structured output. A GAN involves training a generator and a discriminator. These are different generative approaches.
+Generative systems also include diffusion models and generative adversarial networks, or GANs [69], [70]. A diffusion model learns a reverse process from noised examples. Generation progresses from noised data toward a structured output. A GAN involves training a generator and a discriminator. These are different generative approaches.
 
-At this stage, recognise the names and the broad mechanisms shown in the diagrams. Detailed mathematical derivations are outside the lesson. An image produced by either approach remains generated content; identifying the model family does not validate the dimensions or physical properties depicted.
+At this stage, recognise the names and the broad mechanisms of these model families. Detailed mathematical derivations are outside the lesson. An image produced by either approach remains generated content; identifying the model family does not validate the dimensions or physical properties depicted.
 
 ## 4. Recognise the limits of generated explanations and drawings
 
 A generated explanation may contain an incorrect mathematical equation, invent a reference, or omit an essential engineering assumption [71]. Polished wording does not resolve any of those problems. Check the actual equation, the existence and relevance of the cited source, and the assumptions required for the intended calculation.
 
-A generated concept drawing can suggest an idea while failing dimensional, manufacturing or safety requirements. Its usefulness as an illustration is therefore a different question from whether it satisfies those requirements. The factual and dimensional constraints slide places these textual and visual failure routes alongside one another.
+A generated concept drawing can suggest an idea while failing dimensional, manufacturing or safety requirements. Its usefulness as an illustration is therefore a different question from whether it satisfies those requirements. Textual and visual outputs can both fail factual and dimensional constraints.
 
 Generated text cannot substitute for consulting an applicable engineering standard. Likewise, an illustrative or synthetic result does not validate real equipment. The evidence must support the specific engineering claim being made.
 
 ## 5. Separate code generation, execution and checking
 
-Generating source code creates text. Successful execution requires an execution tool, and a correct engineering result requires further checks. Follow the supplied sequence: generated source text, external execution, and independent testing of the assumptions and numerical result.
+Generating source code creates text. Successful execution requires an execution tool, and a correct engineering result requires further checks. Follow this sequence: generated source text, external execution, and independent testing of the assumptions and numerical result.
 
 Do not treat the presence of a code block as evidence that it ran. Equally, execution alone does not establish that the code used the correct physical assumptions or produced the required numerical answer. The lesson's exercise asks about these distinct stages so that a generated program is assessed using evidence from execution and testing.
 
@@ -2559,41 +2559,41 @@ You are expected to distinguish tokens, context windows and embeddings; explain 
 
 A token is an encoded unit processed by a model [72]. It may be a word fragment, punctuation or another encoded item. Tokenization is the process that converts input into those units, and its rules depend on the model.
 
-The tokenization diagram separates the input string, the tokenizer and the resulting encoded units. A count of words describes the written text; an exact token count depends on how the particular model divides and encodes it. One word may produce several tokens.
+Tokenization involves three parts: the input string, the tokenizer and the resulting encoded units. A count of words describes the written text; an exact token count depends on how the particular model divides and encodes it. One word may produce several tokens.
 
 Consequently, counting words does not provide an exact model-specific token count. This lesson does not imitate a particular provider's tokenizer or supply a universal conversion between words and tokens. Use the distinction to interpret a token limit without assuming that each word occupies exactly one token.
 
 ## 2. A context window bounds the information available
 
-The context window is the finite content available within a model interaction. In the slide diagram, the boundary distinguishes information supplied within the interaction from information outside it. A technical datasheet that is omitted cannot be assumed to have been consulted.
+The context window is the finite content available within a model interaction. The context window is therefore a boundary between information supplied within the interaction and information outside it. A technical datasheet that is omitted cannot be assumed to have been consulted.
 
 A larger context window permits more content to be available, but does not guarantee perfect recall, correct use of every detail, or factual correctness [73]. There are two separate questions: was the relevant information supplied, and did the answer use it accurately? Increasing the available capacity does not answer the second question automatically.
 
-Check that relevant technical material was actually used. A long response or a long input does not demonstrate that definitions, units and assumptions were handled correctly. The context-window comparison in the resources makes this limitation explicit.
+Check that relevant technical material was actually used. A long response or a long input does not demonstrate that definitions, units and assumptions were handled correctly. Comparing what is inside and outside the context window makes this limitation explicit.
 
 ## 3. Supply context to disambiguate technical terms
 
-The source example is the word “cell”. It can refer to a photovoltaic cell, a battery cell or a spreadsheet cell. The same word therefore needs surrounding technical context before its intended meaning is clear.
+Consider the word “cell”. It can refer to a photovoltaic cell, a battery cell or a spreadsheet cell. The same word therefore needs surrounding technical context before its intended meaning is clear.
 
 State which system is being discussed and supply the relevant units and assumptions. Do not expect a model to infer missing operating assumptions correctly. Context helps identify the intended subject, but the supplied information still needs to be accurate and sufficient for the question.
 
-Attention combines representations according to learned computations [63]. In the disambiguation diagram, the ambiguous term and explicit technical context are inputs to that computation. Read it as a computational mechanism for combining representations, rather than evidence that the model has independently established the correct physical interpretation.
+Attention combines representations according to learned computations [63]. When a model disambiguates a term, the ambiguous term and explicit technical context are inputs to that computation. Read this as a computational mechanism for combining representations, rather than evidence that the model has independently established the correct physical interpretation.
 
 ## 4. An embedding represents an item as a numerical vector
 
-An embedding is a numerical vector representation of an item. Mikolov et al. showed how such vectors can be learned for words [74]; retrieval systems can use learned vectors for whole passages [76]. The vector diagram shows an encoded item represented through numerical coordinates. This representation allows numerical comparison between items.
+An embedding is a numerical vector representation of an item. Mikolov et al. showed how such vectors can be learned for words [74]; retrieval systems can use learned vectors for whole passages [76]. An encoded item is represented through numerical coordinates. This representation allows numerical comparison between items.
 
 Keep the roles distinct. A token is a processed unit; the context window bounds the information available in an interaction; an embedding is a vector representation. These concepts describe different parts of the processing system, even though they can contribute to the same interaction.
 
-The lesson introduces the role of a vector representation without requiring an embedding-training derivation, a particular vector size or a specific similarity formula. The coordinate illustration explains the form of the representation; it does not report measured engineering performance.
+The lesson introduces the role of a vector representation without requiring an embedding-training derivation, a particular vector size or a specific similarity formula. This coordinate view explains the form of the representation; it does not report measured engineering performance.
 
 ## 5. Similarity can retrieve a passage without proving a claim
 
-Vector similarity can help locate related passages, such as passages in a manual. In the proximity diagram, numerical relatedness helps identify material to examine. Finding related material is useful, but it is a different operation from checking whether the passage actually supports an engineering claim.
+Vector similarity can help locate related passages, such as passages in a manual. Numerical proximity indicates relatedness and helps identify material to examine. Finding related material is useful, but it is a different operation from checking whether the passage actually supports an engineering claim.
 
 Read the retrieved passage and verify the support it provides. Vector proximity alone does not establish factual correctness or validate a real-equipment safety specification. Likewise, having a relevant passage somewhere in a long context does not guarantee that the answer used it accurately.
 
-The component comparison table therefore pairs each function with its limit: tokenization supplies encoded units, context bounds available information, embeddings provide numerical representations, and similarity assists retrieval. Independent verification of the resulting claim remains necessary.
+Each component therefore has a function and a limit: tokenization supplies encoded units, context bounds available information, embeddings provide numerical representations, and similarity assists retrieval. Independent verification of the resulting claim remains necessary.
 
 ## Check your understanding
 
@@ -2623,17 +2623,17 @@ You are expected to distinguish pretraining, fine-tuning, transfer learning, pro
 
 ## 1. Pretraining learns parameters from broad data
 
-Model weights are learned parameters used in the model's computation. Pretraining learns broadly useful patterns from a corpus, meaning a collection of data used for training. The supplied diagram shows broad data entering a training process that updates internal model weights before downstream use.
+Model weights are learned parameters used in the model's computation. Pretraining learns broadly useful patterns from a corpus, meaning a collection of data used for training. In pretraining, broad data enter a training process that updates internal model weights before downstream use.
 
 Pretraining is therefore a parameter-learning operation. When describing an assistant, distinguish the patterns learned during that training from the instructions or documents supplied during a later interaction. Both can influence the eventual output, but they do so through different mechanisms.
 
 ## 2. Fine-tuning updates parameters using additional examples
 
-Fine-tuning uses additional training examples to update parameters for a task, domain or behaviour [29]. In the fine-tuning diagram, the additional task data are connected to a weight-update operation. This is why fine-tuning belongs in the parameter-changing category of the comparison table.
+Fine-tuning uses additional training examples to update parameters for a task, domain or behaviour [29]. In fine-tuning, the additional task data feed a weight-update operation. This is why fine-tuning belongs in the parameter-changing category.
 
 Transfer learning is the broader idea of reusing knowledge from earlier training for another task [75]. Fine-tuning is one form of transfer learning. Reusing a frozen feature extractor is another: the previously learned representation is used without updating that extractor's weights.
 
-The distinction matters when reading the infographic. Reuse of earlier training does not always imply that the reused weights change. Identify whether the stated operation includes further parameter training or uses a frozen component.
+This distinction matters when classifying an operation. Reuse of earlier training does not always imply that the reused weights change. Identify whether the stated operation includes further parameter training or uses a frozen component.
 
 ## 3. Prompting supplies information during inference
 
@@ -2641,11 +2641,11 @@ Inference uses the existing model to produce an output. Prompting supplies instr
 
 Zero-shot prompting supplies no demonstration examples [67]. Few-shot prompting includes some examples to guide the response. The difference concerns what is placed in the prompt, rather than whether training has occurred.
 
-For the supplied lab-summary case, placing two example lab summaries in the prompt is few-shot prompting. Those summaries provide information for the current inference operation. Their presence does not turn that operation into fine-tuning: the source distinguishes examples supplied as context from examples used in parameter training.
+For the supplied lab-summary case, placing two example lab summaries in the prompt is few-shot prompting. Those summaries provide information for the current inference operation. Their presence does not turn that operation into fine-tuning: examples supplied as context are distinct from examples used in parameter training.
 
 ## 4. Retrieval supplies source passages as context
 
-Retrieval locates external material, such as a passage from an engineering manual, and supplies it within the model's context. The retrieval diagram shows the manual passage entering the context before the existing model produces an output.
+Retrieval locates external material, such as a passage from an engineering manual, and supplies it within the model's context. In retrieval, the manual passage enters the context before the existing model produces an output.
 
 In retrieval-augmented generation, or RAG, retrieved material is used to support generation [76]. Supplying retrieved material during a query does not change the model's weights. A RAG system can still be trained or fine-tuned as a separate step; the original RAG study fine-tuned its models [76]. As with prompting, identify the provision of inference context separately from a weight-update operation.
 
@@ -2665,7 +2665,7 @@ Each route still needs evaluation. Good examples, a relevant manual and changed 
 
 The statement that prompting does not itself update weights describes the computation in that interaction. It does not establish what a service provider retains or whether separate training policies apply to submitted material.
 
-Do not infer privacy from the weight-update distinction. The source explicitly identifies data-retention and training policies as separate matters. This lesson supplies no provider-specific policy claim; it explains how to distinguish inference context from parameter learning.
+Do not infer privacy from the weight-update distinction. Data-retention and training policies are separate matters. This lesson supplies no provider-specific policy claim; it explains how to distinguish inference context from parameter learning.
 
 ## Check your understanding
 
@@ -2919,7 +2919,7 @@ Separate implementation verification from real-system validation, select evidenc
 
 ## Verification: did we implement the method correctly?
 
-Verification checks whether the intended equations, code or algorithm were implemented correctly [13]. Use known cases, dimensional analysis, bounds, limiting cases and sign conventions, and confirm that the workflow can be repeated. For a pump power model, the product of pressure rise and volumetric flow rate, delta-p x Q, has units Pa x m^3/s = W. A unit check and a test against a known calculation can catch implementation errors; they do not establish that the model represents a real pump.
+Verification checks whether the intended equations, code or algorithm were implemented correctly [13]. Use known cases, dimensional analysis, bounds, limiting cases and sign conventions, and confirm that the workflow can be repeated. For a pump power model, the product of pressure rise and volumetric flow rate, Δp × Q, has units Pa × m³/s = W. A unit check and a test against a known calculation can catch implementation errors; they do not establish that the model represents a real pump.
 
 ## Validation: does it represent the real system?
 
@@ -3153,7 +3153,7 @@ The score is a knowledge check, not a practical evaluation. The file exposes ans
 
 ## The practical rubric evaluates engineering evidence
 
-The infographic groups the mini-project rubric into data and preprocessing (45%), evaluation and physics (45%), and reproducibility and AI disclosure (10%). The course's detailed rubric breaks those groups down: problem/data (20%) plus baseline/split/preprocessing (25%); evaluation/interpretation (25%) plus physical verification/limitations (20%); and reproducibility/AI-use disclosure (10%). These are the same three groups, shown at different levels of detail.
+The mini-project rubric has three groups: data and preprocessing (45%), evaluation and physics (45%), and reproducibility and AI disclosure (10%). The course's detailed rubric breaks those groups down: problem/data (20%) plus baseline/split/preprocessing (25%); evaluation/interpretation (25%) plus physical verification/limitations (20%); and reproducibility/AI-use disclosure (10%). These are the same three groups, shown at different levels of detail.
 
 The rubric asks whether the problem and data are well defined, the baseline and split are justified, preprocessing is isolated from evaluation data, results are interpreted with physical checks, and the work can be reproduced with appropriate AI-use disclosure. The course cannot inspect or certify a notebook automatically; an instructor or peer reviewer can inspect the evidence and ask you to reproduce a result.
 
