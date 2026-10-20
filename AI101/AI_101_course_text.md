@@ -93,7 +93,7 @@ The 30 °C threshold is a teaching example, not a recommended setting for equipm
 
 ## 2. Robotics describes physical sensing and action
 
-A robot is a physical machine that senses, decides and acts. Its decisions may come from conventional control rules, from AI or from a combination of the two. Calling a machine a robot does not tell you whether it learns.
+In this lesson, we describe a robot in simple terms as a physical machine that senses, decides and acts. This is an introductory simplification; formal robotics terms are defined in the ISO robotics vocabulary [89]. A robot's decisions may come from conventional control rules, from AI or from a combination of the two. Calling a machine a robot does not tell you whether it learns.
 
 For example, the slides show a conventional PID feedback controller connected to a robot and a sensor. The controller compares the measured output with a target value, called the setpoint, and applies specified feedback rules [7]. This arrangement can work without learning from data. If a component does learn, identify that component and explain what it does.
 
@@ -181,7 +181,7 @@ Keep the stages in order. The model supplies information for the decision. The e
 
 ## 3. Success includes error consequences
 
-A useful system detects faults while keeping false alarms manageable. Missing a fault matters, but repeated false alarms also make an inspection system less useful, because people stop trusting its alerts.
+A useful system detects faults while keeping false alarms manageable. Missed faults can leave damage undetected. Repeated false alarms can also waste inspection time, and in a laboratory study, alerts from automation prone to false alarms were acted on less readily [90]. Evaluate both kinds of error for the intended users and equipment.
 
 The lesson sets no numerical performance target and no score at which an alert should be issued. Its purpose is to show how to define the decision and weigh the consequences of errors. It does not describe a detector ready for use on equipment.
 
@@ -270,7 +270,7 @@ A physics-based model uses governing relationships, stated parameters and approp
 
 A data-driven model estimates an input-output relationship from observations [16]. For example, it can estimate electrical power from flow rate, pressure rise and shaft speed without explicitly imposing a hydraulic-power equation.
 
-A hybrid model retains a physical baseline and adds a learned correction [14], [17]. It is useful when the physical calculation is informative but does not represent every observed effect.
+A hybrid model combines physical knowledge with learning from data [14], [17]. In this lesson's pump example, the hybrid retains a physical baseline and adds a learned correction for the residual. This design is useful when the physical calculation is informative but does not represent every observed effect. Other hybrid designs combine physics and learning differently, for example by adding physical constraints to the training objective (Module 16).
 
 ## Pump-power example
 
@@ -673,7 +673,7 @@ You will explain how self-supervised learning constructs targets from observed d
 
 ## Construct targets from observations
 
-Self-supervised learning obtains training targets from the data themselves through a target-generation rule [29]. Examples in the lesson include reconstructing a hidden part of a signal and predicting a next token from preceding tokens.
+Self-supervised learning obtains training targets from the data themselves through a target-generation rule. For example, BERT hides some words in a text and learns to predict them from the surrounding words [29]. Autoregressive language models predict the next token from the preceding tokens [67]. This lesson illustrates the same target-construction idea by hiding part of a measured signal and reconstructing it; the signal example is a teaching illustration, not a result reported in those papers.
 
 The absence of manually supplied fault labels does not remove the training objective. There are still inputs, targets and a loss used to evaluate disagreement. The difference is how the targets are obtained, rather than whether targets exist.
 
@@ -901,7 +901,7 @@ Fit category handling on training data and declare how an unseen category will b
 
 Scaling is most important when a method uses feature distances or optimization sensitive to feature magnitudes; tree splits are generally not changed just by a consistent monotonic rescaling. Min-max scaling maps stated training bounds to a chosen range but does not make future values stay inside that range. Standardization expresses values relative to training mean and standard deviation; it is not a general outlier remedy. Select the transformation for the model and data, fit it on training examples, and check its effect on validation data rather than treating one method as universally best.
 
-In scikit-learn, StandardScaler is a common implementation of standardization and OneHotEncoder is a common implementation of one-hot encoding. These names identify tools, not a reason to apply a transformation blindly. Fit learned transformations on training data only, then apply the fitted transformation consistently to later data.
+In scikit-learn, StandardScaler is a common implementation of standardization and OneHotEncoder is a common implementation of one-hot encoding. For their current behaviour and options, see the official documentation for the version you use [91]. These names identify tools, not a reason to apply a transformation blindly. Fit learned transformations on training data only, then apply the fitted transformation consistently to later data.
 
 ## Check your understanding
 
@@ -1308,13 +1308,13 @@ RMSE is at least as large as MAE for the same errors [35]. They are equal when a
 
 ## R² is a relative score
 
-R² = 1 − SSE/SST
+R² = 1 − SSE/SST [16, Sec. 3.1.3]
 
 SSE is the sum of squared prediction residuals. SST is the sum of squared deviations of the evaluated targets from their evaluation-set mean. Both have squared target units, which cancel; R² is dimensionless.
 
-The comparison is with predictions equal to the evaluation-set mean. R² can be negative when the model's squared error exceeds that comparison. The supplied example gives approximately −0.1053.
+The comparison is with predictions equal to the evaluation-set mean. R² can be negative when the model's squared error exceeds that comparison [91]. The supplied example gives approximately −0.1053.
 
-If the evaluation target is constant, SST is zero and the usual formula requires explicit handling. A high R² does not establish causation, a small physical error or safe engineering operation.
+If the evaluation target is constant, SST is zero and the formula is undefined. Software then applies its own rule: by default, scikit-learn's r2_score reports 1.0 for perfect predictions and 0.0 otherwise, unless that replacement is switched off [91]. State which rule your result uses. A high R² does not establish causation, a small physical error or safe engineering operation.
 
 MAE averages absolute errors, while RMSE squares errors before averaging and then takes a square root. RMSE therefore gives large residuals more influence than MAE. Neither metric is universally best: compare them with the cost of large errors in the application, and inspect residuals by operating condition rather than relying on one aggregate value.
 
@@ -1647,7 +1647,7 @@ The link function is the additional mathematical mapping between the combined in
 
 ## Geometric boundary models
 
-k-nearest neighbours, or kNN, estimates an output using spatially nearby examples under a defined distance rule [45]. For an engineering use, nearby operating points can support an estimate of power generation. Because the method depends on distances, the selected features, their units and their scaling affect which examples count as neighbours.
+k-nearest neighbours, or kNN, estimates an output using nearby examples under a defined distance rule. Cover and Hart studied the nearest-neighbour rule for classification [45]. For a numerical quantity such as power generation, kNN regression averages the target values of the nearest training examples [16, Sec. 3.5], [91]. Because the method depends on distances, the selected features, their units and their scaling affect which examples count as neighbours.
 
 Here, nearby refers to positions in feature space: the coordinates represent input features describing operating points. It does not mean that two machines must be physically close to one another. Read the diagram by identifying the point requiring a prediction, its neighbouring examples and the distance rule that makes them neighbours. The course introduces this mechanism without specifying a numerical neighbour count or a complete implementation.
 
@@ -1663,7 +1663,7 @@ Select a method by the required output format, dataset size, data structure and 
 
 Use the source's selection questions in order: What output is required? What structure does the method assume? How much data are available? How will performance on unseen examples be checked? The tabular-data and raw-image distinction is a consideration in selection, rather than a guarantee that one method always succeeds for a particular data format.
 
-In scikit-learn, common implementation names include LogisticRegression, KNeighborsClassifier and SVC for a support-vector classifier. Check each method's assumptions and scaling needs, and compare candidates with the same valid split and preprocessing. These names are useful when moving from the lesson to a lab; no one algorithm is best for every engineering dataset.
+In scikit-learn, common implementation names include LogisticRegression, KNeighborsClassifier, KNeighborsRegressor and SVC for a support-vector classifier [91]. Check each method's assumptions and scaling needs, and compare candidates with the same valid split and preprocessing. These names are useful when moving from the lesson to a lab; no one algorithm is best for every engineering dataset.
 
 ## Check your understanding
 
@@ -1702,7 +1702,7 @@ Tree predictions are piecewise outputs. They differ from a smooth response equat
 
 ## Random forests aggregate randomized trees
 
-A random forest combines multiple individual models into one ensemble [48]. It uses randomized trees constructed in parallel and aggregates their predictions, for example by averaging or voting. Aggregation reduces reliance on any one decision tree and can reduce variance, but it adds computational cost and can reduce interpretability [49].
+A random forest combines multiple individual models into one ensemble [48]. It uses randomized trees constructed in parallel and aggregates their predictions, for example by averaging or voting. Aggregation reduces reliance on any one decision tree and can reduce variance, but it adds computational cost and can reduce interpretability [49]. Each tree is grown separately from a random sample, but all the trees learn from the same data, so their predictions are usually correlated rather than independent [48]. Ensembles in general do not require independent members.
 
 An ensemble is a combination of multiple models. In the forest diagram, several trees each supply a prediction to a common aggregation block. Read parallel as the construction contrast with sequential boosting: the diagram does not claim that the software must execute every tree simultaneously. The final output combines the tree predictions rather than simply selecting one tree's output.
 
@@ -1720,7 +1720,7 @@ Educational examples and synthetic data demonstrate construction and evaluation 
 
 The method-limitations table connects each construction with a practical concern: a small tree has restricted representation; a deep tree risks training-specific fitting; a forest adds cost and makes interpretation more difficult; boosting requires validation of complexity. Use these concerns alongside performance evidence when comparing methods. Adding models alone does not establish a better engineering decision.
 
-In scikit-learn, RandomForestClassifier and GradientBoostingClassifier are common classifier interfaces for two tree-ensemble families. Their availability does not make one automatically preferable: compare them with a simple baseline, inspect error consequences and consider whether the result can be validated for the intended machines.
+In scikit-learn, RandomForestClassifier and GradientBoostingClassifier are common classifier interfaces for two tree-ensemble families [91]. Their availability does not make one automatically preferable: compare them with a simple baseline, inspect error consequences and consider whether the result can be validated for the intended machines.
 
 ## Check your understanding
 
@@ -1749,7 +1749,7 @@ You will describe k-means and principal component analysis, explain the effect o
 
 ## Unsupervised grouping and compression
 
-k-means groups unlabelled data points around selected mathematical centres by minimizing a within-cluster distance objective [51]. The number of clusters is a user-selected algorithmic setting. A cluster count does not prove the number of physical faults or guarantee distinct physical fault classes; engineering interpretation and independent evidence are still required.
+Standard k-means groups unlabelled data points around k centres, called centroids. It reduces the within-cluster sum of squares: the sum of squared Euclidean distances from each point to its assigned centroid [51], [91]. The algorithm can stop at a local minimum, so the result depends on the starting centroids and is often repeated from several starts [91]. The number of clusters is a user-selected algorithmic setting. A cluster count does not prove the number of physical faults or guarantee distinct physical fault classes; engineering interpretation and independent evidence are still required.
 
 The engineering example groups unlabelled mechanical operating profiles. A centre represents the mathematical reference for a group in feature space. The distance objective describes the grouping criterion; it supplies no fault diagnosis by itself. Choosing a cluster count tells the algorithm how many groups to form, while identifying what those groups mean physically remains a separate interpretation task.
 
@@ -1782,7 +1782,7 @@ The same boundary must apply to every candidate. A candidate that receives prepr
 
 Candidate selection includes the required output, the data structure, performance evidence and operational cost. A complex architecture must demonstrate performance gains that justify added maintenance and operational burden. Algorithmic variance, cluster structure or a learned boundary does not by itself establish a mechanical fault or an approved operating limit. Use validation and physical evidence before making such claims.
 
-Common implementation names include KMeans for clustering and PCA for principal component analysis. These tools can expose structure or support visualization, but clusters and components are mathematical summaries. They do not establish that a group is a real fault state or that a compressed feature has engineering meaning.
+Common implementation names include KMeans for clustering and PCA for principal component analysis [91]. These tools can expose structure or support visualization, but clusters and components are mathematical summaries. They do not establish that a group is a real fault state or that a compressed feature has engineering meaning.
 
 ## Check your understanding
 
@@ -1800,7 +1800,7 @@ ANSWER: Inside each training fold. Validation supports tuning and selection; an 
 
 ## Key takeaways
 
-- k-means minimizes within-cluster distance; its cluster count is a selected setting, not a proven fault count.
+- k-means reduces the within-cluster sum of squared distances; its cluster count is a selected setting, not a proven fault count.
 - PCA captures high-variance directions, which may not be task-relevant.
 - Isolate preprocessing inside training folds, tune on validation data and lock the final test.
 - Justify complexity with task-relevant validation evidence and operational cost.
@@ -2097,7 +2097,7 @@ The weighted sum is z = Σᵢ wᵢxᵢ + b. Here, xᵢ is input i, wᵢ is its w
 
 For two inputs, read the same calculation as z = w₁x₁ + w₂x₂ + b. First calculate the two products, then add them and the bias. Applying the activation is a further operation. Keeping these stages separate makes the numerical example easier to check.
 
-The supplied examples treat the inputs, weights, bias, weighted sum and activated output as dimensionless quantities. Their numbers do not represent a measured equipment response or establish performance in a physical application.
+The supplied examples treat the inputs, weights, bias, weighted sum and activated output as dimensionless quantities. Their numbers do not represent a measured equipment response or establish performance in a physical application. Treating every value as dimensionless is a convention of this teaching example. In a model with physical inputs, state the units, and make sure each weighted term and the bias have the same units.
 
 ## 2. Distinguish fitted parameters from structure
 
@@ -2109,7 +2109,7 @@ The slides' parameter-versus-structure table separates what training adjusts fro
 
 ## Why identical zero weights are a problem
 
-If identical neurons in a layer start with identical weights, they receive the same inputs and can compute the same outputs and gradients. They then have no reason to learn different features. Common neural-network initializers use small, varied values to break this symmetry. Initialization is a training choice; it does not guarantee that the resulting network will learn a useful representation.
+If two neurons in a layer use the same activation, receive the same inputs and start with identical weights, a deterministic training procedure gives them the same outputs and gradients. They then have no reason to learn different features. Common neural-network initializers use small, varied values to break this symmetry [4, Sec. 8.4]. Initialization is a training choice; it does not guarantee that the resulting network will learn a useful representation.
 
 ## 3. Apply the ReLU activation
 
@@ -2132,11 +2132,11 @@ The two weighted input contributions cancel in this example, leaving the bias as
 
 ## 5. Explain why nonlinear operations matter between layers
 
-Combining several affine transformations without nonlinear operations still produces an affine transformation [4]. The slides show three successive weight mappings as W₃(W₂(W₁x)), which can be written as one equivalent mapping. Including additive bias terms preserves the affine character of the composition.
+Combining several affine transformations without nonlinear operations still produces an affine transformation [4]. The slides show three successive weight mappings as W₃(W₂(W₁x)), which can be written as one equivalent mapping. Including additive bias terms preserves the affine character of the composition: W₃(W₂(W₁x + b₁) + b₂) + b₃ = W′x + b′, where W′ = W₃W₂W₁ and b′ = W₃W₂b₁ + W₃b₂ + b₃. The result is linear only when b′ is zero.
 
 Consequently, adding affine layers alone does not automatically create a useful nonlinear model. An activation such as ReLU between layers changes the mathematical mapping and prevents this simple collapse. Read the equivalent-layer diagram as a statement about the composition of operations, rather than a guarantee that any particular network will predict an engineering quantity accurately.
 
-ReLU is not the only activation. Sigmoid maps values into the interval from 0 to 1 and is often used to produce a binary-classification output; tanh maps values into the interval from -1 to 1. These functions have different mathematical properties and uses. The course focuses on ReLU for its simple calculation, not because it is best for every layer or task.
+ReLU is not the only activation. Sigmoid maps values into the interval from 0 to 1 and is often used to produce a binary-classification output; tanh maps values into the interval from -1 to 1 [4, Sec. 6.3.2]. These functions have different mathematical properties and uses. The course focuses on ReLU for its simple calculation, not because it is best for every layer or task.
 
 ## Check your understanding
 
@@ -2169,7 +2169,7 @@ Training needs a numerical objective against which model predictions can be asse
 
 The reference target supplies the value against which the prediction is compared. Defining a loss identifies the objective being fitted. The resources do not specify a particular loss formula in this lesson, so the pipeline should be read as a general sequence rather than as an implementation of an unstated loss function.
 
-For a numerical target, mean squared error is one possible loss: it averages squared differences between predictions and targets. For classification, cross-entropy losses are commonly used to compare predicted class probabilities with reference labels. The choice changes the training objective; a loss value is not itself an engineering acceptance criterion. Module 6 distinguishes training loss from evaluation and acceptance.
+For a numerical target, mean squared error is one possible loss: it averages squared differences between predictions and targets. For classification, cross-entropy losses are commonly used to compare predicted class probabilities with reference labels [4, Sec. 6.2.1.1]. The choice changes the training objective; a loss value is not itself an engineering acceptance criterion. Module 6 distinguishes training loss from evaluation and acceptance.
 
 ## 2. A gradient describes local change in the loss
 
@@ -2189,7 +2189,7 @@ The complete sequence is to compute predictions, evaluate the loss, calculate gr
 
 ## 4. Gradient descent applies a parameter update
 
-The supplied gradient-descent rule is θ_new = θ_old − η∇L. Here, θ_old is the parameter value before the update, θ_new is the value afterward, η is the learning rate, and ∇L is the loss gradient for the parameter being updated. The infographic also writes g for the gradient in the same rule.
+The supplied gradient-descent rule is θ_new = θ_old − η∇L. Here, θ_old is the parameter value before the update, θ_new is the value afterward, η is the learning rate, and ∇L is the loss gradient for the parameter being updated. Some resources write g for the gradient in the same rule.
 
 The learning rate scales the gradient contribution before it is subtracted from the old value. A large learning rate can overshoot, while a small learning rate can make progress slow. The effects depend on the problem; the lesson provides no universally recommended setting.
 
@@ -2247,7 +2247,7 @@ The batch diagram therefore connects dataset organization with training operatio
 
 An epoch is one pass through the training set. In the supplied diagram, the complete dataset pass contains the batches used along that pass. One epoch can therefore contain several parameter updates.
 
-Distinguish the two counts. Counting epochs tells you how many complete training-data passes have occurred. Counting updates tells you how often parameters have been adjusted. These counts answer different questions even though both describe progress through training.
+Distinguish the two counts. Counting epochs tells you how many complete training-data passes have occurred. Counting updates tells you how often parameters have been adjusted. These counts answer different questions even though both describe progress through training. Completing an epoch does not guarantee that the training loss decreases; the step size, the order of examples and the optimizer all affect the result [4, Ch. 8].
 
 The resource illustration identifies a batch as a subset and an epoch as the full pass. It does not imply that each batch is a new independent dataset or that completing an epoch demonstrates improved unseen performance.
 
@@ -2283,7 +2283,7 @@ The beginner goal is to understand neural computations and training vocabulary. 
 
 The arithmetic and diagrams support understanding of computation, updates and evaluation. Synthetic numerical examples do not substitute for physical equipment validation. Completing more epochs does not establish that engineering constraints are satisfied.
 
-Batch size changes how many examples contribute to each parameter update. A larger batch usually gives a less noisy estimate of the training gradient and makes fewer updates per epoch; a smaller batch gives noisier updates and more updates per epoch. The effect on speed and generalization depends on the model, data and optimizer, so treat batch size as a setting to evaluate rather than a guaranteed improvement.
+Batch size changes how many examples contribute to each parameter update. A larger batch usually gives a less noisy estimate of the training gradient and makes fewer updates per epoch; a smaller batch gives noisier updates and more updates per epoch [4, Sec. 8.1.3]. The effect on speed and generalization depends on the model, data and optimizer, so treat batch size as a setting to evaluate rather than a guaranteed improvement.
 
 ## Check your understanding
 
@@ -2390,7 +2390,7 @@ A simplified RNN update can be written as `h_t = f(W_x x_t + W_h h_(t-1) + b)`. 
 
 ## 2. Attention and transformers
 
-A transformer uses attention to weight and combine representations across sequence positions without carrying a recurrent hidden state in the same manner [63]. When order matters, the sequence requires a suitable positional representation. Attention weights describe how representations contribute to the model computation. They are not human attention and do not prove that a variable is a physical cause [64], [65].
+A transformer uses attention to weight and combine representations across sequence positions without carrying a recurrent hidden state in the same manner [63]. When order matters, the sequence requires a suitable positional representation. Attention weights describe how representations contribute to the model computation. They are not human attention. On their own, attention weights are not a reliable explanation of a prediction [64], [65], and they do not prove that a variable is a physical cause [26]. Evaluate explanatory and causal claims separately.
 
 RNNs, LSTMs and transformers are different mechanisms [63], [66]. The appropriate choice depends on the data, constraints, available evidence and a fair baseline. A simple lagged-feature model can be a useful comparison before adopting a more complex architecture.
 
@@ -2427,9 +2427,9 @@ This lesson explains signal windowing, timestamp integrity and forecast horizons
 
 ## 1. Use timestamps rather than filtered row positions
 
-Signal features are often calculated over a specified window. Root-mean-square, or RMS, summarises signal magnitude over that window; spectral features summarise frequency content. Each feature requires documented window length, alignment and sampling rate.
+Signal features are often calculated over a specified window. Root-mean-square, or RMS, summarises signal magnitude over that window: it is the square root of the mean of the squared sample values, and it has the same unit as the signal. Spectral features summarise frequency content [92]. Each feature requires a documented sampling frequency, window length and alignment. For a spectral estimate, also state the method and its scaling: a power spectral density has squared signal units per hertz, while a power spectrum has squared signal units [93].
 
-For complete regular data sampled every 15 minutes, 96 samples correspond to 24 hours because 24 hours multiplied by 60 minutes per hour, divided by 15 minutes per sample, equals 96 samples. This relationship fails after rows are removed or intervals are missing. A filtered row index is not a clock. Use actual timestamps to align lagged features and targets, and record missing intervals and changes in sampling.
+For complete regular data sampled every 15 minutes, a 24-hour day contains 96 samples, because 24 hours multiplied by 60 minutes per hour, divided by 15 minutes per sample, equals 96. A shift of 96 sampling intervals therefore moves exactly 24 hours, while 96 consecutive timestamps span 23 hours 45 minutes from the first to the last. These relationships fail after rows are removed or intervals are missing. A filtered row index is not a clock. Use actual timestamps to align lagged features and targets, and record missing intervals and changes in sampling.
 
 ## 2. Define horizon and information availability
 
@@ -2581,7 +2581,7 @@ Attention combines representations according to learned computations [63]. In th
 
 ## 4. An embedding represents an item as a numerical vector
 
-An embedding is a numerical vector representation of an item [74]. The vector diagram shows an encoded item represented through numerical coordinates. This representation allows numerical comparison between items.
+An embedding is a numerical vector representation of an item. Mikolov et al. showed how such vectors can be learned for words [74]; retrieval systems can use learned vectors for whole passages [76]. The vector diagram shows an encoded item represented through numerical coordinates. This representation allows numerical comparison between items.
 
 Keep the roles distinct. A token is a processed unit; the context window bounds the information available in an interaction; an embedding is a vector representation. These concepts describe different parts of the processing system, even though they can contribute to the same interaction.
 
@@ -2647,7 +2647,7 @@ For the supplied lab-summary case, placing two example lab summaries in the prom
 
 Retrieval locates external material, such as a passage from an engineering manual, and supplies it within the model's context. The retrieval diagram shows the manual passage entering the context before the existing model produces an output.
 
-In retrieval-augmented generation, or RAG, retrieved material is used to support generation [76]. Supplying that material does not inherently retrain the model. As with prompting, identify the provision of inference context separately from a weight-update operation.
+In retrieval-augmented generation, or RAG, retrieved material is used to support generation [76]. Supplying retrieved material during a query does not change the model's weights. A RAG system can still be trained or fine-tuned as a separate step; the original RAG study fine-tuned its models [76]. As with prompting, identify the provision of inference context separately from a weight-update operation.
 
 First check that the source manual and its revision are correct, then evaluate the resulting answer. An answer can remain incorrect despite access to a relevant document. Retrieval provides material for the response; it does not establish that the material was selected or used correctly.
 
@@ -2685,7 +2685,7 @@ ANSWER: No. The computational operation and the provider's data-retention or sep
 
 - Pretraining and fine-tuning learn or update model parameters.
 - Transfer learning can include fine-tuning or reuse of a frozen feature extractor.
-- Zero-shot prompting has no demonstrations; few-shot prompting includes some.
+- Zero-shot prompting has no demonstrations; few-shot prompting includes some demonstration examples.
 - Prompting and retrieval supply inference context without inherently retraining the model.
 - Every route needs output evaluation, and weight-update behaviour does not determine data-retention policy.
 
@@ -2746,7 +2746,7 @@ Power is an instantaneous rate in watts. Energy is the time integral of power an
 
 ## 4. Zero-shot and few-shot prompts
 
-Zero-shot prompting gives a task without demonstration examples [67]. Few-shot prompting includes examples of the desired input or output format. Examples can make the requested structure clearer, but they do not verify equations or supply missing physical evidence.
+Zero-shot prompting gives a task without demonstration examples [67]. Few-shot prompting includes one or more demonstration examples of the task, each showing an input and the desired output [67]. Both kinds of prompt can state context and the required output format. Examples can make the requested structure clearer, but they do not verify equations or supply missing physical evidence.
 
 ## Check your understanding
 
@@ -2771,7 +2771,7 @@ You are expected to explain retrieval-augmented generation and check whether a r
 
 ## 1. Retrieval-augmented generation
 
-Retrieval-augmented generation, or RAG, searches a collection for material relevant to a query, appends selected passages to the model context and generates a response using that context [76]. Retrieval may use keywords, embeddings or both. The retrieved passage is supplied at inference time; RAG does not inherently update model parameters or retrain the model.
+Retrieval-augmented generation, or RAG, searches a collection for material relevant to a query, appends selected passages to the model context and generates a response using that context [76]. Retrieval may use keywords, embeddings or both. The retrieved passage is supplied at inference time, and supplying it does not update model parameters. Training or fine-tuning a RAG system is a separate operation; the original RAG study included fine-tuning [76].
 
 ## 2. Treat retrieval as evidence that must be checked
 
@@ -2810,7 +2810,7 @@ You are expected to distinguish an assistant, tool, API and agent, and to separa
 
 ## 1. Separate system components
 
-An assistant is an interface that supports a user's task. A tool performs a defined operation, such as executing Python or searching a local document collection. An API is the software interface through which another program requests an operation. An agent system can select and coordinate actions across several steps toward a stated goal, with a defined degree of autonomy. A responsible person defines permissions, input limits and approval requirements and verifies the final engineering output.
+This course uses the following working definitions. An assistant is an interface that supports a user's task. A tool performs a defined operation, such as executing Python or searching a local document collection. An API is the software interface through which another program requests an operation. An agent system can select and coordinate actions across several steps toward a stated goal, with a defined degree of autonomy. ReAct is one research example in which a language model alternates reasoning steps with actions, such as queries to a Wikipedia interface [94]. A responsible person defines permissions, input limits and approval requirements and verifies the final engineering output [9].
 
 ## 2. Separate drafting, execution and correctness
 
@@ -2843,7 +2843,7 @@ Pause and explain: List checks between an assistant drafting code and a tool app
 
 **Zero-shot prompting**: Giving a task without demonstration examples. Example: Ask for an explanation directly.
 
-**Few-shot prompting**: Including demonstration examples in the context. Example: Supply two examples of the desired output format.
+**Few-shot prompting**: Including demonstration examples in the context. Example: Supply two worked examples, each with an input and its desired output.
 
 **Grounding**: Connecting output to relevant supplied evidence. Example: Use and check an actual datasheet passage.
 
@@ -2871,7 +2871,7 @@ Learning outcomes:
 
 ## What you are expected to learn
 
-Distinguish aleatoric uncertainty from epistemic uncertainty, explain why a model's confidence may be unreliable outside its evaluated conditions, and recognize the difference between a distribution shift and gradual drift. Use these distinctions to decide when to monitor, defer a prediction or gather new evidence.
+Distinguish aleatoric uncertainty from epistemic uncertainty, explain why a model's confidence may be unreliable outside its evaluated conditions, and recognize how distribution shift and drift over time differ and overlap. Use these distinctions to decide when to monitor, defer a prediction or gather new evidence.
 
 ## Two sources of uncertainty
 
@@ -2887,7 +2887,7 @@ Calibration checks whether stated probabilities agree with observed frequencies 
 
 ## Distribution shift and drift
 
-Distribution shift occurs when the deployment population differs from the development population, such as transferring a model from one plant type to another [21]. Drift describes gradual change in data or relationships over time, for example sensor ageing, wear or a changing control regime. A random seed only controls aspects of randomized computation; it cannot correct either kind of mismatch.
+Distribution shift means that the data distribution differs between the conditions being compared, such as development data from one plant type and deployment data from another [21]. Drift describes change in data or relationships over time. It can be abrupt, such as replacing a sensor with one calibrated differently; gradual or incremental, such as a sensor slowly wearing; or recurring, when an earlier pattern returns [59, Sec. 2.2]. Concept drift is a change in the relationship between inputs and targets [59, Sec. 2.1]. The terms overlap: drift over time produces a distribution shift between earlier and later data. A random seed only controls aspects of randomized computation; it cannot correct either kind of mismatch.
 
 Monitor input ranges, missingness, output and alert patterns, and compare them with development conditions [59]. Input changes are warning signals, not proof by themselves that accuracy has degraded; check outcomes when trustworthy labels become available. Define action rules in advance: investigate, obtain new validation evidence, recalibrate where justified, retrain only with appropriate data, or defer predictions when conditions fall outside the validated domain.
 
@@ -2899,14 +2899,14 @@ ANSWER: No. Confidence is not proof of calibration or accuracy, and calibration 
 
 A pump model developed at one plant is moved to a different type of plant. Is this drift or distribution shift?
 
-ANSWER: Distribution shift: the deployment population differs from the development population. Drift is gradual change over time, such as sensor ageing or wear.
+ANSWER: Distribution shift: the deployment data come from a different population from the development data. Drift is change over time, such as sensor ageing or a control change; it can be abrupt, gradual or recurring.
 
 ## Key takeaways
 
 - Aleatoric uncertainty is variation in the observations; epistemic uncertainty comes from limited knowledge.
 - Define the operating domain by the conditions that matter, not only by the minimum and maximum of each input.
 - Calibration is a group-level property. High confidence is not proof of accuracy or permission to extrapolate.
-- Distribution shift is a change of population; drift is gradual change over time.
+- Distribution shift is a difference between data distributions; drift is change over time, which can be abrupt, gradual or recurring.
 - Set monitoring, deferral and revalidation rules before deployment.
 
 Pause and explain: Can a high model confidence justify using it outside the validated operating domain?
@@ -3059,11 +3059,11 @@ A candidate can have an attractive predicted objective and still be infeasible: 
 
 ## Connected twins and physics-informed learning
 
-An isolated CAD model has no active data connection to the physical equipment [85]. A digital twin maintains a data linkage with its physical counterpart—for example, a digital representation that receives ongoing pressure, flow or temperature measurements for monitoring and state estimation [86]. The connection, not visual similarity, is the key distinction.
+Definitions of a digital twin vary, and industrial reviews survey several of them [86], [95]. A widely used manufacturing classification distinguishes three levels by how data move between the physical equipment and its digital representation [85], [95]. A digital model, such as an isolated CAD model, exchanges data with the equipment only manually. A digital shadow receives data automatically from the equipment—for example, ongoing pressure, flow or temperature measurements for monitoring and state estimation—but does not act back on the equipment automatically. A digital twin exchanges data automatically in both directions, for example by sending updated settings back to the equipment. The data connection, not visual similarity, is the key distinction. State which definition, and which data connections, your project uses.
 
 An active sensor connection also creates data-integrity and cybersecurity responsibilities. Check that the measurements and data path are trustworthy, and investigate disagreement between the model and independent physical readings before acting on a prediction.
 
-Physics-informed learning incorporates physical equations or constraints into a learning approach, for example by adding a penalty when a predicted state violates a governing equation or conservation relationship [87], [88]. A physics-informed neural network (PINN) is one particular architectural family; it is not a synonym for every hybrid or physics-informed model. Examples of physical structure include a force relationship such as F = ma or thermodynamic constraints.
+Physics-informed learning incorporates physical equations or constraints into a learning approach, for example by adding a penalty when a predicted state violates a governing equation or conservation relationship [87], [88]. A physics-informed neural network (PINN) is one such approach: a neural network trained with a loss that includes the residual of the governing equations and the boundary or initial conditions [87]. PINN does not name one required network architecture, and it is not a synonym for every hybrid or physics-informed model. Examples of physical structure include a force relationship such as F = ma or thermodynamic constraints.
 
 ## Check your understanding
 
@@ -3073,15 +3073,15 @@ ANSWER: Re-evaluate it with the original simulation or experiment, check every c
 
 What makes a digital twin different from an isolated CAD model?
 
-ANSWER: An active data connection to the physical equipment, such as ongoing pressure, flow or temperature measurements. Visual similarity is not the distinction.
+ANSWER: An automatic data connection with the physical equipment. Under the classification in this lesson, data flowing automatically from the equipment, such as ongoing pressure, flow or temperature measurements, makes a digital shadow; a digital twin also sends data back automatically. Visual similarity is not the distinction.
 
 ## Key takeaways
 
 - Choose the model and the evidence to match the engineering decision.
 - A surrogate speeds up design search; re-evaluate promising candidates with the original simulation or experiment.
 - The objective states the goal; constraints decide which designs are feasible.
-- A digital twin has an active data connection to the physical equipment; an isolated CAD model does not.
-- Physics-informed learning builds physical equations into learning; a PINN is one particular type.
+- Under a common classification, a digital shadow receives data automatically from the equipment and a digital twin exchanges data automatically in both directions; an isolated CAD model does neither.
+- Physics-informed learning builds physical equations into learning; a PINN is one approach, not a single architecture.
 
 Pause and explain: A surrogate predicts a promising design. Which checks establish feasibility, and what makes a digital twin different from an isolated CAD model?
 
@@ -3193,7 +3193,7 @@ Pause and explain: What can a clean, reproducible project demonstrate that a bro
 
 **Feasibility**: Satisfaction of the stated bounds and constraints. Example: Verified stress meets the limit.
 
-**Digital twin**: A digital representation connected through data to a physical counterpart. Example: A monitored system representation, not an isolated CAD file.
+**Digital twin**: A digital representation with automatic data exchange with its physical counterpart; definitions vary. Example: A monitored system representation, not an isolated CAD file.
 
 **Physics-informed learning**: Learning using physical structure, equations or constraints. Example: Penalize a conservation residual.
 
@@ -3220,29 +3220,31 @@ Rubric: problem/data 20%; baseline/split/preprocessing 25%; evaluation/interpret
 
 ## References
 
-[1] S. Russell and P. Norvig, *Artificial Intelligence: A Modern Approach*, 4th ed. Hoboken, NJ, USA: Pearson, 2021. (Cited in Lesson 1.1)
+References 1–88 are numbered by first appearance; references 89–95 were added in the October 2026 citation review and keep their own numbers.
 
-[2] K. P. Murphy, *Probabilistic Machine Learning: An Introduction*. Cambridge, MA, USA: MIT Press, 2022. (Cited in Lessons 1.1, 6.1)
+[1] S. Russell and P. Norvig, *Artificial Intelligence: A Modern Approach*, 4th ed. (US). Hoboken, NJ, USA: Pearson, 2021. ISBN 978-0-13-461099-3. (The authors date this edition 2020.) <https://aima.cs.berkeley.edu/> (Cited in Lesson 1.1)
+
+[2] K. P. Murphy, *Probabilistic Machine Learning: An Introduction*. Cambridge, MA, USA: MIT Press, 2022. <https://probml.github.io/pml-book/book1.html> (Cited in Lessons 1.1, 6.1)
 
 [3] Y. LeCun, Y. Bengio, and G. Hinton, “Deep learning,” *Nature*, vol. 521, no. 7553, pp. 436–444, 2015. doi: 10.1038/nature14539 (Cited in Lessons 1.1, 11.3)
 
-[4] I. Goodfellow, Y. Bengio, and A. Courville, *Deep Learning*. Cambridge, MA, USA: MIT Press, 2016. (Cited in Lessons 1.1, 2.2, 4.2, 6.2, 10.2, 11.1, 11.2, 11.3, 12.2)
+[4] I. Goodfellow, Y. Bengio, and A. Courville, *Deep Learning*. Cambridge, MA, USA: MIT Press, 2016. <https://www.deeplearningbook.org/> (Cited in Lessons 1.1, 2.2, 4.2, 6.2, 10.2, 11.1, 11.2, 11.3, 12.2)
 
 [5] F. Provost and T. Fawcett, “Data science and its relationship to big data and data-driven decision making,” *Big Data*, vol. 1, no. 1, pp. 51–59, 2013. doi: 10.1089/big.2013.1508 (Cited in Lesson 1.1)
 
 [6] R. Parasuraman, T. B. Sheridan, and C. D. Wickens, “A model for types and levels of human interaction with automation,” *IEEE Trans. Syst., Man, Cybern. A, Syst. Humans*, vol. 30, no. 3, pp. 286–297, 2000. doi: 10.1109/3468.844354 (Cited in Lesson 1.2)
 
-[7] K. J. Åström and R. M. Murray, *Feedback Systems: An Introduction for Scientists and Engineers*, 2nd ed. Princeton, NJ, USA: Princeton Univ. Press, 2021. (Cited in Lessons 1.2, 2.2)
+[7] K. J. Åström and R. M. Murray, *Feedback Systems: An Introduction for Scientists and Engineers*, 2nd ed. Princeton, NJ, USA: Princeton Univ. Press, 2021. <https://www.cds.caltech.edu/~murray/FBS/Second_Edition.html> (Cited in Lessons 1.2, 2.2)
 
-[8] M. R. Morris et al., “Position: Levels of AGI for operationalizing progress on the path to AGI,” in *Proc. 41st Int. Conf. Mach. Learn. (ICML)*, PMLR, vol. 235, 2024, pp. 36308–36321. (Cited in Lesson 1.2)
+[8] M. R. Morris et al., “Position: Levels of AGI for operationalizing progress on the path to AGI,” in *Proc. 41st Int. Conf. Mach. Learn. (ICML)*, PMLR, vol. 235, 2024, pp. 36308–36321. <https://proceedings.mlr.press/v235/morris24b.html> (Cited in Lesson 1.2)
 
-[9] National Institute of Standards and Technology, “Artificial Intelligence Risk Management Framework (AI RMF 1.0),” NIST AI 100-1, Gaithersburg, MD, USA, 2023. doi: 10.6028/NIST.AI.100-1 (Cited in Lessons 1.2, 1.3, 8.3, 15.3)
+[9] National Institute of Standards and Technology, “Artificial Intelligence Risk Management Framework (AI RMF 1.0),” NIST AI 100-1, Gaithersburg, MD, USA, 2023. doi: 10.6028/NIST.AI.100-1 (Cited in Lessons 1.2, 1.3, 8.3, 14.3, 15.3)
 
 [10] Y. Lei, B. Yang, X. Jiang, F. Jia, N. Li, and A. K. Nandi, “Applications of machine learning to machine fault diagnosis: A review and roadmap,” *Mech. Syst. Signal Process.*, vol. 138, Art. no. 106587, 2020. doi: 10.1016/j.ymssp.2019.106587 (Cited in Lessons 1.2, 2.2, 5.3)
 
 [11] Y. Lei, N. Li, L. Guo, N. Li, T. Yan, and J. Lin, “Machinery health prognostics: A systematic review from data acquisition to RUL prediction,” *Mech. Syst. Signal Process.*, vol. 104, pp. 799–834, 2018. doi: 10.1016/j.ymssp.2017.11.016 (Cited in Lesson 1.3)
 
-[12] C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger, “On calibration of modern neural networks,” in *Proc. 34th Int. Conf. Mach. Learn. (ICML)*, PMLR, vol. 70, 2017, pp. 1321–1330. (Cited in Lessons 1.3, 15.1)
+[12] C. Guo, G. Pleiss, Y. Sun, and K. Q. Weinberger, “On calibration of modern neural networks,” in *Proc. 34th Int. Conf. Mach. Learn. (ICML)*, PMLR, vol. 70, 2017, pp. 1321–1330. <https://proceedings.mlr.press/v70/guo17a.html> (Cited in Lessons 1.3, 15.1)
 
 [13] W. L. Oberkampf and C. J. Roy, *Verification and Validation in Scientific Computing*. Cambridge, U.K.: Cambridge Univ. Press, 2010. doi: 10.1017/CBO9780511760396 (Cited in Lessons 1.3, 15.2)
 
@@ -3250,7 +3252,7 @@ Rubric: problem/data 20%; baseline/split/preprocessing 25%; evaluation/interpret
 
 [15] J. F. Gülich, *Centrifugal Pumps*, 3rd ed. Berlin, Germany: Springer, 2014. doi: 10.1007/978-3-642-40114-5 (Cited in Lesson 2.1)
 
-[16] G. James, D. Witten, T. Hastie, and R. Tibshirani, *An Introduction to Statistical Learning: With Applications in R*, 2nd ed. New York, NY, USA: Springer, 2021. doi: 10.1007/978-1-0716-1418-1 (Cited in Lessons 2.1, 2.3, 3.1, 4.1, 5.2, 7.1, 9.1)
+[16] G. James, D. Witten, T. Hastie, and R. Tibshirani, *An Introduction to Statistical Learning: With Applications in R*, 2nd ed. New York, NY, USA: Springer, 2021. doi: 10.1007/978-1-0716-1418-1 (Cited in Lessons 2.1, 2.3, 3.1, 4.1, 5.2, 7.1, 7.2, 9.1)
 
 [17] A. Karpatne et al., “Theory-guided data science: A new paradigm for scientific discovery from data,” *IEEE Trans. Knowl. Data Eng.*, vol. 29, no. 10, pp. 2318–2331, 2017. doi: 10.1109/TKDE.2017.2720168 (Cited in Lesson 2.1)
 
@@ -3260,7 +3262,7 @@ Rubric: problem/data 20%; baseline/split/preprocessing 25%; evaluation/interpret
 
 [20] A. I. J. Forrester, A. Sóbester, and A. J. Keane, *Engineering Design via Surrogate Modelling: A Practical Guide*. Chichester, U.K.: Wiley, 2008. doi: 10.1002/9780470770801 (Cited in Lessons 2.3, 16.1)
 
-[21] J. Quiñonero-Candela, M. Sugiyama, A. Schwaighofer, and N. D. Lawrence, Eds., *Dataset Shift in Machine Learning*. Cambridge, MA, USA: MIT Press, 2009. doi: 10.7551/mitpress/9780262170055.001.0001 (Cited in Lessons 2.3, 15.1)
+[21] J. Quiñonero-Candela, M. Sugiyama, A. Schwaighofer, and N. D. Lawrence, Eds., *Dataset Shift in Machine Learning*. Cambridge, MA, USA: MIT Press, 2009. ISBN 978-0-262-17005-5. (Copyright 2009; released Dec. 2008.) doi: 10.7551/mitpress/9780262170055.001.0001 (Cited in Lessons 2.3, 15.1)
 
 [22] M. D. Wilkinson et al., “The FAIR Guiding Principles for scientific data management and stewardship,” *Sci. Data*, vol. 3, Art. no. 160018, 2016. doi: 10.1038/sdata.2016.18 (Cited in Lesson 3.2)
 
@@ -3270,7 +3272,7 @@ Rubric: problem/data 20%; baseline/split/preprocessing 25%; evaluation/interpret
 
 [25] S. Kaufman, S. Rosset, C. Perlich, and O. Stitelman, “Leakage in data mining: Formulation, detection, and avoidance,” *ACM Trans. Knowl. Discov. Data*, vol. 6, no. 4, pp. 1–21, 2012. doi: 10.1145/2382577.2382579 (Cited in Lessons 3.3, 10.3)
 
-[26] J. Pearl, *Causality: Models, Reasoning, and Inference*, 2nd ed. Cambridge, U.K.: Cambridge Univ. Press, 2009. doi: 10.1017/CBO9780511803161 (Cited in Lesson 3.3)
+[26] J. Pearl, *Causality: Models, Reasoning, and Inference*, 2nd ed. Cambridge, U.K.: Cambridge Univ. Press, 2009. doi: 10.1017/CBO9780511803161 (Cited in Lessons 3.3, 12.2)
 
 [27] V. Chandola, A. Banerjee, and V. Kumar, “Anomaly detection: A survey,” *ACM Comput. Surv.*, vol. 41, no. 3, pp. 1–58, 2009. doi: 10.1145/1541880.1541882 (Cited in Lessons 4.1, 5.1)
 
@@ -3278,7 +3280,7 @@ Rubric: problem/data 20%; baseline/split/preprocessing 25%; evaluation/interpret
 
 [29] J. Devlin, M.-W. Chang, K. Lee, and K. Toutanova, “BERT: Pre-training of deep bidirectional transformers for language understanding,” in *Proc. 2019 Conf. North Amer. Chapter Assoc. Comput. Linguistics: Human Lang. Technol. (NAACL-HLT)*, 2019, pp. 4171–4186. doi: 10.18653/v1/N19-1423 (Cited in Lessons 4.2, 13.3)
 
-[30] R. S. Sutton and A. G. Barto, *Reinforcement Learning: An Introduction*, 2nd ed. Cambridge, MA, USA: MIT Press, 2018. (Cited in Lesson 4.3)
+[30] R. S. Sutton and A. G. Barto, *Reinforcement Learning: An Introduction*, 2nd ed. Cambridge, MA, USA: MIT Press, 2018. <http://incompleteideas.net/book/the-book-2nd.html> (Cited in Lesson 4.3)
 
 [31] D. Amodei, C. Olah, J. Steinhardt, P. Christiano, J. Schulman, and D. Mané, “Concrete problems in AI safety,” 2016, arXiv:1606.06565. doi: 10.48550/arXiv.1606.06565 (Cited in Lesson 4.3)
 
@@ -3286,11 +3288,11 @@ Rubric: problem/data 20%; baseline/split/preprocessing 25%; evaluation/interpret
 
 [33] J. Han, M. Kamber, and J. Pei, *Data Mining: Concepts and Techniques*, 3rd ed. Waltham, MA, USA: Morgan Kaufmann, 2012. doi: 10.1016/C2009-0-61819-5 (Cited in Lesson 5.2)
 
-[34] F. Pedregosa et al., “Scikit-learn: Machine learning in Python,” *J. Mach. Learn. Res.*, vol. 12, pp. 2825–2830, 2011. (Cited in Lessons 5.2, 5.3)
+[34] F. Pedregosa et al., “Scikit-learn: Machine learning in Python,” *J. Mach. Learn. Res.*, vol. 12, pp. 2825–2830, 2011. <https://www.jmlr.org/papers/v12/pedregosa11a.html> (Cited in Lessons 5.2, 5.3)
 
 [35] C. J. Willmott and K. Matsuura, “Advantages of the mean absolute error (MAE) over the root mean square error (RMSE) in assessing average model performance,” *Clim. Res.*, vol. 30, pp. 79–82, 2005. doi: 10.3354/cr030079 (Cited in Lessons 6.2, 7.2)
 
-[36] J. Pineau et al., “Improving reproducibility in machine learning research (A report from the NeurIPS 2019 reproducibility program),” *J. Mach. Learn. Res.*, vol. 22, no. 164, pp. 1–20, 2021. (Cited in Lessons 6.3, 10.3, 15.2, 16.2)
+[36] J. Pineau et al., “Improving reproducibility in machine learning research (A report from the NeurIPS 2019 reproducibility program),” *J. Mach. Learn. Res.*, vol. 22, no. 164, pp. 1–20, 2021. <https://www.jmlr.org/papers/v22/20-303.html> (Cited in Lessons 6.3, 10.3, 15.2, 16.2)
 
 [37] F. J. Anscombe, “Graphs in statistical analysis,” *Amer. Statistician*, vol. 27, no. 1, pp. 17–21, 1973. doi: 10.1080/00031305.1973.10478966 (Cited in Lesson 7.2)
 
@@ -3312,7 +3314,7 @@ Rubric: problem/data 20%; baseline/split/preprocessing 25%; evaluation/interpret
 
 [46] C. Cortes and V. Vapnik, “Support-vector networks,” *Mach. Learn.*, vol. 20, no. 3, pp. 273–297, 1995. doi: 10.1007/BF00994018 (Cited in Lesson 9.1)
 
-[47] L. Breiman, J. H. Friedman, R. A. Olshen, and C. J. Stone, *Classification and Regression Trees*. Belmont, CA, USA: Wadsworth, 1984. (Cited in Lesson 9.2)
+[47] L. Breiman, J. H. Friedman, R. A. Olshen, and C. J. Stone, *Classification and Regression Trees*. Belmont, CA, USA: Wadsworth, 1984. <https://www.routledge.com/Classification-and-Regression-Trees/Breiman-Friedman-StoneOlshen/p/book/9780412048418> (Cited in Lesson 9.2)
 
 [48] L. Breiman, “Random forests,” *Mach. Learn.*, vol. 45, no. 1, pp. 5–32, 2001. doi: 10.1023/A:1010933404324 (Cited in Lesson 9.2)
 
@@ -3324,7 +3326,7 @@ Rubric: problem/data 20%; baseline/split/preprocessing 25%; evaluation/interpret
 
 [52] I. T. Jolliffe and J. Cadima, “Principal component analysis: A review and recent developments,” *Philos. Trans. R. Soc. A*, vol. 374, no. 2065, Art. no. 20150202, 2016. doi: 10.1098/rsta.2015.0202 (Cited in Lesson 9.3)
 
-[53] G. C. Cawley and N. L. C. Talbot, “On over-fitting in model selection and subsequent selection bias in performance evaluation,” *J. Mach. Learn. Res.*, vol. 11, pp. 2079–2107, 2010. (Cited in Lesson 9.3)
+[53] G. C. Cawley and N. L. C. Talbot, “On over-fitting in model selection and subsequent selection bias in performance evaluation,” *J. Mach. Learn. Res.*, vol. 11, pp. 2079–2107, 2010. <https://www.jmlr.org/papers/v11/cawley10a.html> (Cited in Lesson 9.3)
 
 [54] D. R. Roberts et al., “Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure,” *Ecography*, vol. 40, no. 8, pp. 913–929, 2017. doi: 10.1111/ecog.02881 (Cited in Lessons 10.1, 12.3, 16.2)
 
@@ -3338,13 +3340,13 @@ Rubric: problem/data 20%; baseline/split/preprocessing 25%; evaluation/interpret
 
 [59] J. Gama, I. Žliobaitė, A. Bifet, M. Pechenizkiy, and A. Bouchachia, “A survey on concept drift adaptation,” *ACM Comput. Surv.*, vol. 46, no. 4, pp. 1–37, 2014. doi: 10.1145/2523813 (Cited in Lessons 10.3, 15.1)
 
-[60] V. Nair and G. E. Hinton, “Rectified linear units improve restricted Boltzmann machines,” in *Proc. 27th Int. Conf. Mach. Learn. (ICML)*, 2010, pp. 807–814. (Cited in Lesson 11.1)
+[60] V. Nair and G. E. Hinton, “Rectified linear units improve restricted Boltzmann machines,” in *Proc. 27th Int. Conf. Mach. Learn. (ICML)*, 2010, pp. 807–814. <https://www.cs.utoronto.ca/~hinton/absps/reluICML.pdf> (Cited in Lesson 11.1)
 
 [61] D. E. Rumelhart, G. E. Hinton, and R. J. Williams, “Learning representations by back-propagating errors,” *Nature*, vol. 323, no. 6088, pp. 533–536, 1986. doi: 10.1038/323533a0 (Cited in Lesson 11.2)
 
 [62] Y. LeCun, L. Bottou, Y. Bengio, and P. Haffner, “Gradient-based learning applied to document recognition,” *Proc. IEEE*, vol. 86, no. 11, pp. 2278–2324, 1998. doi: 10.1109/5.726791 (Cited in Lesson 12.1)
 
-[63] A. Vaswani et al., “Attention is all you need,” in *Adv. Neural Inf. Process. Syst. (NeurIPS)*, vol. 30, 2017, pp. 5998–6008. (Cited in Lessons 12.2, 13.2)
+[63] A. Vaswani et al., “Attention is all you need,” in *Adv. Neural Inf. Process. Syst. (NeurIPS)*, vol. 30, 2017, pp. 5998–6008. <https://proceedings.neurips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html> (Cited in Lessons 12.2, 13.2)
 
 [64] S. Jain and B. C. Wallace, “Attention is not explanation,” in *Proc. 2019 Conf. North Amer. Chapter Assoc. Comput. Linguistics: Human Lang. Technol. (NAACL-HLT)*, 2019, pp. 3543–3556. doi: 10.18653/v1/N19-1357 (Cited in Lesson 12.2)
 
@@ -3352,13 +3354,13 @@ Rubric: problem/data 20%; baseline/split/preprocessing 25%; evaluation/interpret
 
 [66] S. Hochreiter and J. Schmidhuber, “Long short-term memory,” *Neural Comput.*, vol. 9, no. 8, pp. 1735–1780, 1997. doi: 10.1162/neco.1997.9.8.1735 (Cited in Lesson 12.2)
 
-[67] T. B. Brown et al., “Language models are few-shot learners,” in *Adv. Neural Inf. Process. Syst. (NeurIPS)*, vol. 33, 2020. (Cited in Lessons 13.1, 13.3, 14.1)
+[67] T. B. Brown et al., “Language models are few-shot learners,” in *Adv. Neural Inf. Process. Syst. (NeurIPS)*, vol. 33, 2020. <https://proceedings.neurips.cc/paper/2020/hash/1457c0d6bfcb4967418bfb8ac142f64a-Abstract.html> (Cited in Lessons 4.2, 13.1, 13.3, 14.1)
 
 [68] R. Bommasani et al., “On the opportunities and risks of foundation models,” 2021, arXiv:2108.07258. doi: 10.48550/arXiv.2108.07258 (Cited in Lesson 13.1)
 
-[69] J. Ho, A. Jain, and P. Abbeel, “Denoising diffusion probabilistic models,” in *Adv. Neural Inf. Process. Syst. (NeurIPS)*, vol. 33, 2020, pp. 6840–6851. (Cited in Lesson 13.1)
+[69] J. Ho, A. Jain, and P. Abbeel, “Denoising diffusion probabilistic models,” in *Adv. Neural Inf. Process. Syst. (NeurIPS)*, vol. 33, 2020, pp. 6840–6851. <https://proceedings.neurips.cc/paper/2020/hash/4c5bcfec8584af0d967f1ab10179ca4b-Abstract.html> (Cited in Lesson 13.1)
 
-[70] I. J. Goodfellow et al., “Generative adversarial nets,” in *Adv. Neural Inf. Process. Syst. (NIPS)*, vol. 27, 2014, pp. 2672–2680. (Cited in Lesson 13.1)
+[70] I. J. Goodfellow et al., “Generative adversarial nets,” in *Adv. Neural Inf. Process. Syst. (NIPS)*, vol. 27, 2014, pp. 2672–2680. <https://proceedings.neurips.cc/paper/2014/hash/f033ed80deb0234979a61f95710dbe25-Abstract.html> (Cited in Lesson 13.1)
 
 [71] Z. Ji et al., “Survey of hallucination in natural language generation,” *ACM Comput. Surv.*, vol. 55, no. 12, pp. 1–38, 2023. doi: 10.1145/3571730 (Cited in Lessons 13.1, 15.3)
 
@@ -3370,7 +3372,7 @@ Rubric: problem/data 20%; baseline/split/preprocessing 25%; evaluation/interpret
 
 [75] S. J. Pan and Q. Yang, “A survey on transfer learning,” *IEEE Trans. Knowl. Data Eng.*, vol. 22, no. 10, pp. 1345–1359, 2010. doi: 10.1109/TKDE.2009.191 (Cited in Lesson 13.3)
 
-[76] P. Lewis et al., “Retrieval-augmented generation for knowledge-intensive NLP tasks,” in *Adv. Neural Inf. Process. Syst. (NeurIPS)*, vol. 33, 2020. (Cited in Lessons 13.3, 14.2)
+[76] P. Lewis et al., “Retrieval-augmented generation for knowledge-intensive NLP tasks,” in *Adv. Neural Inf. Process. Syst. (NeurIPS)*, vol. 33, 2020. <https://proceedings.neurips.cc/paper/2020/hash/6b493230205f780e1bc26945df7481e5-Abstract.html> (Cited in Lessons 13.2, 13.3, 14.2)
 
 [77] J. A. Duffie, W. A. Beckman, and N. Blair, *Solar Engineering of Thermal Processes, Photovoltaics and Wind*, 5th ed. Hoboken, NJ, USA: Wiley, 2020. doi: 10.1002/9781119540328 (Cited in Lesson 14.1)
 
@@ -3395,4 +3397,18 @@ Rubric: problem/data 20%; baseline/split/preprocessing 25%; evaluation/interpret
 [87] M. Raissi, P. Perdikaris, and G. E. Karniadakis, “Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations,” *J. Comput. Phys.*, vol. 378, pp. 686–707, 2019. doi: 10.1016/j.jcp.2018.10.045 (Cited in Lesson 16.1)
 
 [88] G. E. Karniadakis, I. G. Kevrekidis, L. Lu, P. Perdikaris, S. Wang, and L. Yang, “Physics-informed machine learning,” *Nat. Rev. Phys.*, vol. 3, no. 6, pp. 422–440, 2021. doi: 10.1038/s42254-021-00314-5 (Cited in Lesson 16.1)
+
+[89] *Robotics — Vocabulary*, ISO 8373:2021, 3rd ed., International Organization for Standardization, Geneva, Switzerland, Nov. 2021. <https://www.iso.org/standard/75539.html> (Cited in Lesson 1.2)
+
+[90] S. R. Dixon, C. D. Wickens, and J. S. McCarley, “On the independence of compliance and reliance: Are automation false alarms worse than misses?,” *Human Factors*, vol. 49, no. 4, pp. 564–572, 2007. doi: 10.1518/001872007X215656 (Cited in Lesson 1.3)
+
+[91] scikit-learn developers, *scikit-learn User Guide and API Reference*, ver. 1.9.1. [Online]. Available: https://scikit-learn.org/stable/ Accessed: Oct. 20, 2026. (Cited in Lessons 5.2, 7.2, 9.1, 9.2, 9.3)
+
+[92] R. B. Randall, *Vibration-Based Condition Monitoring: Industrial, Automotive and Aerospace Applications*, 2nd ed. Hoboken, NJ, USA: Wiley, 2021. doi: 10.1002/9781119477631 (Cited in Lesson 12.3)
+
+[93] SciPy developers, “scipy.signal.welch,” in *SciPy v1.18.0 Manual*. [Online]. Available: https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.welch.html Accessed: Oct. 20, 2026. (Cited in Lesson 12.3)
+
+[94] S. Yao, J. Zhao, D. Yu, N. Du, I. Shafran, K. Narasimhan, and Y. Cao, “ReAct: Synergizing reasoning and acting in language models,” in *Proc. 11th Int. Conf. Learn. Represent. (ICLR)*, 2023. <https://arxiv.org/abs/2210.03629> (Cited in Lesson 14.3)
+
+[95] B. J. Oakes, A. Parsai, S. Van Mierlo, S. Demeyer, J. Denil, P. De Meulenaere, and H. Vangheluwe, “Improving digital twin experience reports,” in *Proc. 9th Int. Conf. Model-Driven Eng. Softw. Develop. (MODELSWARD)*, 2021, pp. 179–190. doi: 10.5220/0010236101790190 (Cited in Lesson 16.1)
 
