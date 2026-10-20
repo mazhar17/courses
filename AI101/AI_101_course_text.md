@@ -2919,7 +2919,7 @@ Separate implementation verification from real-system validation, select evidenc
 
 ## Verification: did we implement the method correctly?
 
-Verification checks whether the intended equations, code or algorithm were implemented correctly [13]. Use known cases, dimensional analysis, bounds, limiting cases and sign conventions, and confirm that the workflow can be repeated. For a pump power model, the product of pressure drop and volumetric flow, delta-p x Q, has units Pa x m^3/s = W. A unit check and a test against a known calculation can catch implementation errors; they do not establish that the model represents a real pump.
+Verification checks whether the intended equations, code or algorithm were implemented correctly [13]. Use known cases, dimensional analysis, bounds, limiting cases and sign conventions, and confirm that the workflow can be repeated. For a pump power model, the product of pressure rise and volumetric flow rate, delta-p x Q, has units Pa x m^3/s = W. A unit check and a test against a known calculation can catch implementation errors; they do not establish that the model represents a real pump.
 
 ## Validation: does it represent the real system?
 
