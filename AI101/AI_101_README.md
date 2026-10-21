@@ -4,7 +4,7 @@ A beginner, self-paced course for undergraduate mechanical engineering students.
 
 ## Start the course
 
-Open `AI_101_for_Mechanical_Engineers.html` in a modern browser. The course interface, lessons, interactive demonstrations, quizzes, glossary and notebook downloads are contained in this one file. No account, server, API key or internet connection is needed for the HTML course.
+Open `index.html` (online at https://mazhar17.github.io/courses/AI101/) in a modern browser. The old address `AI_101_for_Mechanical_Engineers.html` now redirects there. The course interface, lessons, interactive demonstrations, quizzes, glossary and notebook downloads are contained in this one file. No account, server, API key or internet connection is needed for the HTML course.
 
 The course contains 16 modules, 48 lessons, 154 glossary terms, 128 module quiz questions, a 24-question final assessment and four practical labs. Examples include pumps, faults, sensors, energy calculations and engineering design. Planning estimate: 18–24 hours including practice; adjust to your class.
 
