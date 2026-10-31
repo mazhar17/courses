@@ -5,9 +5,9 @@ Version 1.0. Authored foundational course; synthetic teaching examples. Practica
 ## Module 1: What AI is and where it fits
 
 Learning outcomes:
-- Explain how AI, machine learning, deep learning, generative AI and data science relate to each other.
-- Distinguish automation, robotics and learning, and explain narrow AI and the proposed idea of AGI.
-- Identify the decision, measurements, model output and engineering action in a pump-inspection example, and explain what synthetic examples can and cannot show.
+- Given a description of an engineering system, classify each component as rule-based automation, machine learning, deep learning or generative AI, and state what each component outputs.
+- Given a claim such as “AI-powered robot”, apply the five questions (inputs, learned components, outputs, permitted actions, failure consequences) to judge what evidence the claim needs.
+- Given a maintenance scenario, state the engineering decision, the inputs available before it, the model output and the engineering action, and explain why a synthetic example cannot validate real equipment.
 
 ### A map of related ideas
 
@@ -254,9 +254,9 @@ Pause and explain: For one mechanical-engineering application, state the decisio
 ## Module 2: Engineering problems and modelling approaches
 
 Learning outcomes:
-- Compare physics-based, data-driven and hybrid models and choose one for a stated purpose.
-- Distinguish prediction, forecasting, diagnosis, control and optimization.
-- Identify when ML is worth evaluating by checking purpose, inputs, baseline and data coverage.
+- Given a pump operating point, calculate hydraulic and input power in SI units, calculate the residual against a measurement, and interpret its sign without claiming a cause.
+- Given an engineering question, classify it as prediction, forecasting, diagnosis, control or optimization, and state the output it requires.
+- Given a proposed ML project, decide whether a physics-based, data-driven or hybrid model is appropriate by checking purpose, available inputs, baseline and data coverage, and justify the choice.
 
 ### Physics, data and hybrid models
 
@@ -441,9 +441,9 @@ Pause and explain: Name a baseline and a validation requirement for a power-pred
 ## Module 3: The vocabulary of engineering data
 
 Learning outcomes:
-- Identify samples, features, targets, labels and array shapes in an engineering table.
-- Explain why units, metadata and reference uncertainty are needed to interpret measurements.
-- Distinguish correlation, prediction and causation, and identify inputs unavailable at decision time.
+- Given an engineering data table, identify the samples, features, target and labels, and state the shapes of X and y.
+- Given a measurement record, identify the metadata (units, calibration, sampling and timing) needed to interpret it, and the uncertainty of the reference target.
+- Given candidate inputs, reject those unavailable at decision time, and classify a claim as correlation, prediction or causation according to its evidence.
 
 ### Read a table as a learning problem
 
@@ -612,9 +612,9 @@ Pause and explain: Give one tempting feature that would not exist before a maint
 ## Module 4: How machines learn
 
 Learning outcomes:
-- Distinguish supervised, unsupervised and semi-supervised learning from the feedback available.
-- Explain how self-supervised learning constructs targets from the data.
-- Identify the state, action, reward, environment and policy in a reinforcement-learning example.
+- Given the labels and feedback available in an engineering dataset, determine whether supervised, unsupervised or semi-supervised learning is appropriate, and justify the choice.
+- Given a signal or text dataset, explain how a self-supervised target can be constructed from the data itself.
+- Given a control scenario, identify the state, action, reward, environment and policy, and separate performance rewards from safety constraints.
 
 ### Learning with and without labels
 
@@ -799,9 +799,9 @@ Pause and explain: Name a state, an action and a reward for a simulated thermal 
 ## Module 5: Preparing engineering data
 
 Learning outcomes:
-- Explain how to investigate and document missing or unusual readings before imputing them.
-- Calculate min-max and standardized values, and choose an encoding for categories.
-- Apply training-only fitting of preprocessing within a repeatable pipeline.
+- Given missing or unusual readings, propose an investigation and a documented handling rule before deleting or imputing values.
+- Given measured values, calculate min-max and standardized values, and choose an encoding for categorical inputs.
+- Given a preprocessing workflow, check that fitting uses training data only, and correct a pipeline that leaks evaluation data.
 
 ### Investigate before changing readings
 
@@ -1007,9 +1007,9 @@ Pause and explain: Which statistics should a scaler use when transforming the fi
 ## Module 6: Models, training and inference
 
 Learning outcomes:
-- Distinguish a model from its learning algorithm, and training from inference.
-- Distinguish learned parameters, hyperparameters and supplied engineering values.
-- Compare a model with a fair baseline and identify the context needed to interpret an error metric.
+- Given a modelling workflow, identify the model, the learning algorithm, the training step and the inference step.
+- Given the numbers in a model, classify each as a learned parameter, a hyperparameter or a supplied engineering value.
+- Given a reported error value, state the unit, data split, baseline and context needed to interpret it, and judge whether the performance claim is supported.
 
 ### A model and its learning algorithm
 
@@ -1209,8 +1209,8 @@ Pause and explain: What additional information is needed to interpret “our MAE
 ## Module 7: Your first regression model
 
 Learning outcomes:
-- Interpret slope, residuals, MAE, RMSE and R².
-- Evaluate on held-out data and report units.
+- Given a fitted linear equation and its residuals, interpret the coefficients with their units and calculate MAE, RMSE and R².
+- Given a regression dataset, evaluate a model on held-out data against a baseline, and report its errors in target units with stated domain limits.
 
 ### Fit a line and interpret coefficients
 
@@ -1422,9 +1422,9 @@ Pause and explain: State two limitations to include alongside a regression score
 ## Module 8: Classification and fault detection
 
 Learning outcomes:
-- Interpret the four confusion-matrix outcomes and explain how a threshold changes alerts.
-- Calculate and interpret accuracy, precision, recall and F1.
-- Explain why class imbalance can make accuracy misleading and what evidence is needed before acting on an alert.
+- Given classifier scores and a threshold, build the confusion matrix for a declared positive class, and explain how moving the threshold changes missed faults and false alarms.
+- Calculate accuracy, precision, recall and F1, and choose which to report from the consequences of each error type.
+- Given an imbalanced fault dataset, compare a detector with the majority-class baseline, and recommend whether the evidence supports acting on its alerts.
 
 ### Classes, scores and thresholds
 
@@ -1626,8 +1626,8 @@ Pause and explain: Why can a high-accuracy detector still be useless for rare fa
 ## Module 9: Recognizing common ML methods
 
 Learning outcomes:
-- Describe the intuition and role of common model families.
-- Choose methods by task and evidence, not complexity alone.
+- Given an engineering task, identify suitable model families by output type and data structure, and explain why a learned threshold or cluster does not by itself establish a physical limit or fault type.
+- Given a small dataset and candidate methods, justify a method choice from validation evidence and cost rather than complexity.
 
 ### Lines, neighbours and separating boundaries
 
@@ -1831,9 +1831,9 @@ Pause and explain: Could the direction of greatest variance be unrelated to a ra
 ## Module 10: Generalization and trustworthy evaluation
 
 Learning outcomes:
-- Distinguish the roles of training, validation and final-test data, and choose a split for the deployment question.
-- Interpret training and validation errors to identify underfitting and overfitting.
-- Identify preprocessing, temporal, target-derived and duplicate-event leakage.
+- Given a deployment question, design a training, validation and final-test split, including group or time holdouts where records are related.
+- Given training and validation errors, diagnose underfitting or overfitting and select a suitable remedy.
+- Given a workflow description, identify preprocessing, temporal, target-derived and duplicate-event leakage, and correct it.
 
 ### Protect the evaluation boundary
 
@@ -2080,8 +2080,8 @@ Pause and explain: Why might a centered moving-average feature leak in a real-ti
 ## Module 11: Neural networks and deep learning
 
 Learning outcomes:
-- Explain weights, biases, activations, layers and basic training terms.
-- Distinguish gradients from parameter updates.
+- Calculate a neuron's output from given inputs, weights, bias and activation, and identify which values are fitted parameters.
+- Given a loss gradient and learning rate, calculate a parameter update, distinguish the gradient from the update, and use validation evidence to select a training checkpoint.
 
 ### A neuron is a small computation
 
@@ -2330,8 +2330,8 @@ Pause and explain: Would 100 additional epochs guarantee improved test performan
 ## Module 12: AI for images, signals and sequences
 
 Learning outcomes:
-- Match representations and architectures to data types.
-- Explain temporal availability and windowing.
+- Given tabular, image or signal data, choose a representation and a suitable network type, and define a split that matches deployment.
+- Given a forecasting task, define the issue time, horizon, sampling rate and window length, and reject inputs that are unavailable at issue time.
 
 ### Represent the information before choosing a network
 
@@ -2484,8 +2484,8 @@ Pause and explain: Does shifting 96 rows after filtering to daylight still mean 
 ## Module 13: Generative AI and language models
 
 Learning outcomes:
-- Explain tokens, context, embeddings and foundation models.
-- Separate pretraining, adaptation and prompting.
+- Given an assistant task, explain how tokens, the context window and embeddings limit what the model can use.
+- Given a use of an AI model, classify it as pretraining, fine-tuning, prompting or retrieval, and state which of these change the model's weights.
 
 ### What a language model produces
 
@@ -2721,8 +2721,8 @@ Pause and explain: Which changes weights: fine-tuning, adding examples to a prom
 ## Module 14: Using AI assistants effectively
 
 Learning outcomes:
-- Build a prompt with task, evidence, assumptions and checks.
-- Explain retrieval, tools, APIs and agent boundaries.
+- Write an engineering prompt that states the task, system, values, units, assumptions and output format, and independently check the returned calculation.
+- Given a retrieval, tool or agent workflow, verify that the sources support each claim, and specify the permissions and human approval needed before any action.
 
 ### Write an engineering prompt
 
@@ -2863,9 +2863,9 @@ Pause and explain: List checks between an assistant drafting code and a tool app
 ## Module 15: Reliability and responsible practice
 
 Learning outcomes:
-- Distinguish aleatoric from epistemic uncertainty, and distribution shift from drift.
-- Distinguish verification from validation, and identify the evidence each requires.
-- Identify unsupported AI output, information-protection needs and specific human-oversight responsibilities.
+- Given a change in operating conditions, identify the type of uncertainty and whether it is distribution shift or drift, and define monitoring and revalidation rules.
+- Given a model result, decide whether verification or validation evidence exists, and state what further evidence is needed.
+- Given an AI-assisted engineering task, identify unsupported output and data-protection risks, and specify the human oversight and disclosure required.
 
 ### Uncertainty and changing conditions
 
@@ -3027,9 +3027,9 @@ Pause and explain: What evidence and disclosure would you attach to an AI-assist
 ## Module 16: Engineering applications and your mini-project
 
 Learning outcomes:
-- Distinguish surrogate models, feasibility constraints, digital twins and physics-informed methods, and identify the evidence each engineering application needs.
-- Frame a bounded project with traceable data, a relevant baseline, leakage-resistant evaluation, physical checks and stated limitations.
-- Separate browser knowledge scores from practical evidence and prepare a reproducible, reviewable mini-project submission.
+- Given an engineering application (surrogate model, digital twin or physics-informed model), identify the evidence it needs before a design or operating decision.
+- Frame and carry out a bounded mini-project with traceable data, a relevant baseline, leakage-resistant evaluation, physical checks and stated limitations.
+- Prepare a reproducible, reviewable submission that separates browser knowledge scores from practical evidence, reports errors in SI units and discloses any AI assistance.
 
 ### Applications with different evidence needs
 
