@@ -1641,9 +1641,9 @@ Linear regression predicts a numerical value from a weighted combination of inpu
 
 Input feature values enter the model, weights determine their contributions, and the combined contributions produce the prediction. A predicted continuous pressure is a numerical output. It differs from a category such as fault or healthy. This schematic form supplies no numerical coefficients or physical units for its generic symbols.
 
-Logistic regression is commonly used for binary classification [16]. It combines features and weights, then applies a mathematical link function to estimate a class probability. For example, it can estimate the probability of a binary fault. The word regression in the method name does not mean that the output must be a continuous engineering measurement.
+Logistic regression is commonly used for binary classification [16]. It combines features and weights, then applies the sigmoid (logistic) function to estimate a class probability. For example, it can estimate the probability of a binary fault. The word regression in the method name does not mean that the output must be a continuous engineering measurement.
 
-The link function is the additional mathematical mapping between the combined input contributions and the probability output. Distinguish the weighted combination from this final mapping. Linear and logistic regression can therefore use similar input combinations while serving different output tasks. Their names describe model construction; neither name proves useful performance on the available data.
+The sigmoid is the additional mathematical mapping from the combined input contributions to the probability output. Distinguish the weighted combination from this final mapping. In statistics, the logit link function maps in the opposite direction, from the probability to the weighted combination. Linear and logistic regression can therefore use similar input combinations while serving different output tasks. Their names describe model construction; neither name proves useful performance on the available data.
 
 ## Geometric boundary models
 
@@ -1673,11 +1673,11 @@ ANSWER: The physical length is unchanged, but its numerical coordinate is multip
 
 How do linear and logistic regression differ in their typical outputs?
 
-ANSWER: Linear regression predicts a numerical value, such as continuous pressure. Logistic regression commonly estimates a class probability, such as a binary fault probability, through a link function.
+ANSWER: Linear regression predicts a numerical value, such as continuous pressure. Logistic regression commonly estimates a class probability, such as a binary fault probability, by applying the sigmoid function to a weighted combination.
 
 ## Key takeaways
 
-- Linear regression predicts numbers; logistic regression estimates class probabilities through a link function.
+- Linear regression predicts numbers; logistic regression estimates class probabilities using the sigmoid function.
 - kNN uses nearby examples, while SVM uses a separating margin and may use a kernel.
 - Distance-based methods require careful unit scaling.
 - Choose methods by output, data structure, dataset size and verified performance.
@@ -1694,7 +1694,7 @@ You will explain how decision trees partition inputs, how random forests and boo
 
 A decision tree divides input examples through feature tests [16, Ch. 8], [47]. Tests on variables such as load or vibration create piecewise prediction regions, and a terminal region produces the corresponding prediction. A small tree permits direct engineering inspection. A deep tree uses many partitions and can fit training-specific patterns, so its complexity requires validation.
 
-A tree is built in three stages. First, the root input enters the tree. Next, successive feature tests determine the applicable branch. Finally, the input reaches a terminal region and receives that region's prediction. Partitioning means dividing the input space into these regions. Piecewise means that the prediction is determined separately within each region.
+A fitted tree makes a prediction in three stages. First, the input enters at the root. Next, successive feature tests select the applicable branch. Finally, the input reaches a terminal region, called a leaf, and receives that region's prediction. Training is a separate step: it selects the feature tests and split thresholds from training examples. Partitioning means dividing the input space into these regions. Piecewise means that the prediction is determined separately within each region.
 
 The load-and-vibration example explains why the regions matter: operating examples are separated by tests on their feature values. This example provides no numerical split threshold, so it cannot supply an equipment setting. A small tree's inspectability means its tests can be examined; it does not establish that those tests are physically valid.
 
